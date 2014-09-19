@@ -163,13 +163,6 @@
 			remoteGlobalIDString = 2C11C9C81014035800A2746E;
 			remoteInfo = Preferences;
 		};
-		9FB2C1A7130881B900DAABA0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1D6058900D05DD3D006BFB54;
-			remoteInfo = MobileTerminal;
-		};
 		9FE6978312E2524600EDE939 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -633,20 +626,6 @@
 			passBuildSettingsInEnvironment = 1;
 			productName = svnversion;
 		};
-		9FE697B312E254C000EDE939 /* deb */ = {
-			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = 9FE697BF12E254DD00EDE939 /* Build configuration list for PBXLegacyTarget "deb" */;
-			buildPhases = (
-			);
-			buildToolPath = ./build_deb.sh;
-			dependencies = (
-				9FB2C1A8130881B900DAABA0 /* PBXTargetDependency */,
-			);
-			name = deb;
-			passBuildSettingsInEnvironment = 1;
-			productName = deb;
-		};
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
@@ -657,7 +636,6 @@
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
-				9FDE6CBF11C4941300139215 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -810,7 +788,6 @@
 				2C11C9C81014035800A2746E /* Preferences */,
 				2C72B2BA101ABA9100F10E63 /* PreferencesTests */,
 				9FE6978012E2522700EDE939 /* svnversion */,
-				9FE697B312E254C000EDE939 /* deb */,
 			);
 		};
 /* End PBXProject section */
@@ -893,19 +870,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#\n# When compiling for the device, copy term.h from the simulator SDK\n#\n\nif [ $PLATFORM_NAME == \"iphoneos\" ]\nthen\n  # Get the path to the iphone simulator SDK for the same version\n  SIMULATOR_SDK_DIR=${SDK_DIR//iPhoneOS/iPhoneSimulator}\n\n  # Copy to a temporary directory where the build will find the needed\n  # header files.  This directory may not already exist, but is passed\n  # as a header search path when compiling the source files.\n  mkdir -p $DERIVED_SOURCES_DIR\n  cp $SIMULATOR_SDK_DIR/usr/include/ncurses_dll.h $DERIVED_SOURCES_DIR/\n  cp $SIMULATOR_SDK_DIR/usr/include/term.h $DERIVED_SOURCES_DIR/\n\nfi";
-		};
-		9FDE6CBF11C4941300139215 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "set -e\nset -u\n\nexport CODESIGN_ALLOCATE=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate\nexport CODESIGN_ALLOCATE=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate\nif [ \"${PLATFORM_NAME}\" == \"iphoneos\" ]; then\n/Developer/iphoneentitlements312/gen_entitlements.py \"com.googlecode.mobileterminal.${PROJECT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\";\ncodesign -f -s \"iPhone Developer\" --entitlements \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1042,11 +1006,6 @@
 			target = 2C11C9C81014035800A2746E /* Preferences */;
 			targetProxy = 2C72B2C0101ABA9600F10E63 /* PBXContainerItemProxy */;
 		};
-		9FB2C1A8130881B900DAABA0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1D6058900D05DD3D006BFB54 /* MobileTerminal */;
-			targetProxy = 9FB2C1A7130881B900DAABA0 /* PBXContainerItemProxy */;
-		};
 		9FE6978412E2524600EDE939 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9FE6978012E2522700EDE939 /* svnversion */;
@@ -1061,6 +1020,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ANALYZER_OBJC_UNUSED_IVARS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: 慶 上川 (KWJHH6PH5G)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1087,6 +1047,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ANALYZER_OBJC_UNUSED_IVARS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: 慶 上川 (KWJHH6PH5G)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MobileTerminal_Prefix.pch;
@@ -1344,27 +1305,6 @@
 			};
 			name = Release;
 		};
-		9FE697B412E254C000EDE939 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = deb;
-			};
-			name = Debug;
-		};
-		9FE697B512E254C000EDE939 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = deb;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1480,15 +1420,6 @@
 			buildConfigurations = (
 				9FE6978112E2522700EDE939 /* Debug */,
 				9FE6978212E2522700EDE939 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9FE697BF12E254DD00EDE939 /* Build configuration list for PBXLegacyTarget "deb" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9FE697B412E254C000EDE939 /* Debug */,
-				9FE697B512E254C000EDE939 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

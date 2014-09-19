@@ -23,12 +23,13 @@ static NSString* kGestureSettings = @"gestureSettings";
 static NSString* kTerminalSettings = @"terminalSettings";
 
 static NSString* kDefaultMenuItems[][2] = {
-  { @"ls", @"ls" },
-  { @"ls -l", @"ls -l\n" },
-  { @"ping google.com", @"ping google.com\n" },
   { @"^C", @"\x03" },
   { @"^D", @"\x04" },
   { @"Esc", @"\x1b" },
+  { @"Tab", @"\x09" },
+  { @"ls -al", @"ls -al\n" },
+  { @"ping google.com", @"ping google.com\n" },
+  
 };
 static int kDefaultMenuItemsCount =
     sizeof(kDefaultMenuItems) / sizeof(NSString*) / 2;

@@ -20,7 +20,7 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
   Settings* settings = [Settings sharedInstance];
-  settings.svnVersion = 8.0;
+  settings.svnVersion = 8.0; // Version
   
   [[UIApplication sharedApplication] setStatusBarHidden:NO];
   
