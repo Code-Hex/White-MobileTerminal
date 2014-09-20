@@ -24,7 +24,11 @@
   [sections addObject:@"About"];
   [controllers addObject:menuSettingsController];
   [controllers addObject:gestureSettingsController];
-  [controllers addObject:aboutController];      
+  [controllers addObject:aboutController];
+    
+  self.navigationItem.title = @"Top";
+  /* Delete cell separator */
+  //self.tableView.SeparatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)dealloc
@@ -59,6 +63,13 @@
     }
   }
   return cell;
+}
+
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.tableView.backgroundColor = [UIColor whiteColor]; // Background Color
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

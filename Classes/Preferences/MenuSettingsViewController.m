@@ -49,6 +49,13 @@
   return cell;
 }
 
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.tableView.backgroundColor = [UIColor whiteColor]; // Background Color
+}
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
   return YES;

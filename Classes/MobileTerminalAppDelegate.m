@@ -23,7 +23,7 @@
   settings.svnVersion = 8.0; // Version
   
   [[UIApplication sharedApplication] setStatusBarHidden:NO];
-  
+    
   NSMutableArray* viewControllers = [[NSMutableArray alloc] init];
   [viewControllers addObject:terminalViewController];  
   [navigationController setViewControllers:viewControllers animated:NO];
@@ -31,8 +31,28 @@
    window.rootViewController = navigationController;
   [window makeKeyAndVisible];
   inPreferences = FALSE;
+
+  /* Navigation color */
+  [UINavigationBar appearance].TintColor = [UIColor blackColor];
+  [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
+    
+  /* http://stackoverflow.com/questions/19226965/how-to-hide-ios7-uinavigationbar-1px-bottom-line */
+  UINavigationBar *navigationBar = self.navigationController.navigationBar;
+  UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:navigationBar];
+  navBarHairlineImageView.hidden = YES;
 }
 
+/* http://stackoverflow.com/questions/19226965/how-to-hide-ios7-uinavigationbar-1px-bottom-line */
+- (UIImageView *)findHairlineImageViewUnder:(UIView *)view {
+    if ([view isKindOfClass:UIImageView.class] && view.bounds.size.height <= 1.0) {
+        return (UIImageView *)view;
+    }
+    for (UIView *subview in view.subviews) {
+        UIImageView *imageView = [self findHairlineImageViewUnder:subview];
+        if (imageView) return imageView;
+    }
+    return nil;
+}
 // static const NSTimeInterval kAnimationDuration = 1.00f;
 
 - (void)preferencesButtonPressed
