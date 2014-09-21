@@ -9,6 +9,7 @@
 @synthesize navigationController;
 @synthesize menuSettingsController;
 @synthesize gestureSettingsController;
+@synthesize fontSettingsController;
 @synthesize aboutController;
 
 #pragma mark -
@@ -21,9 +22,11 @@
   controllers = [[NSMutableArray alloc] init];
   [sections addObject:@"Shortcut Menu"];
   [sections addObject:@"Gestures"];
+  [sections addObject:@"Fonts"];
   [sections addObject:@"About"];
   [controllers addObject:menuSettingsController];
   [controllers addObject:gestureSettingsController];
+  [controllers addObject:fontSettingsController];
   [controllers addObject:aboutController];
     
   self.navigationItem.title = @"Top";

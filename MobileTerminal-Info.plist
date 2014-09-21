@@ -35,6 +35,13 @@
 	<string>MainWindow</string>
 	<key>NSMainNibFile~ipad</key>
 	<string>MainWindow-iPad</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Anonymous Pro.ttf</string>
+		<string>MesloLGM-Regular.ttf</string>
+		<string>SourceCodePro-Regular.ttf</string>
+		<string>UbuntuMono-R.ttf</string>
+	</array>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIStatusBarHidden</key>

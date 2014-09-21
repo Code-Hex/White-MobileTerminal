@@ -79,7 +79,7 @@
 - (void)awakeFromNib
 {
   [super awakeFromNib];
-    /* svnVersion type float */
+    /* svnVersion is float type */
   Settings* settings = [Settings sharedInstance];
   versionLabel.text = [NSString stringWithFormat:@"w%0.1f", settings.svnVersion];
 }

@@ -59,6 +59,11 @@
 		70222E1219CBD723000B0282 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70222E1119CBD723000B0282 /* Social.framework */; };
 		70222E1419CBD78B000B0282 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70222E1319CBD78B000B0282 /* Accounts.framework */; };
 		70222E1619CBD935000B0282 /* twitlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70222E1519CBD935000B0282 /* twitlogo.png */; };
+		7060B02819CD4B2C004B43B2 /* FontSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7060B02719CD4B2C004B43B2 /* FontSettingsController.m */; };
+		7060B03319CEA5FE004B43B2 /* Anonymous Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B03019CEA5FE004B43B2 /* Anonymous Pro.ttf */; };
+		7060B03419CEA5FE004B43B2 /* MesloLGM-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B03119CEA5FE004B43B2 /* MesloLGM-Regular.ttf */; };
+		7060B03519CEA5FE004B43B2 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B03219CEA5FE004B43B2 /* SourceCodePro-Regular.ttf */; };
+		7060B03719CEA60D004B43B2 /* UbuntuMono-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B03619CEA60D004B43B2 /* UbuntuMono-R.ttf */; };
 		9F24A70111D7C6EF00E6EFC0 /* MenuSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F24A6FF11D7C6EF00E6EFC0 /* MenuSettingsViewController.h */; };
 		9F24A70211D7C6EF00E6EFC0 /* MenuSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F24A70011D7C6EF00E6EFC0 /* MenuSettingsViewController.m */; };
 		9F24A7FF11D7EE8100E6EFC0 /* MenuEditViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F24A7FD11D7EE8100E6EFC0 /* MenuEditViewController.h */; };
@@ -237,6 +242,12 @@
 		70222E1119CBD723000B0282 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		70222E1319CBD78B000B0282 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		70222E1519CBD935000B0282 /* twitlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitlogo.png; path = Resources/twitlogo.png; sourceTree = "<group>"; };
+		7060B02619CD4B2C004B43B2 /* FontSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontSettingsController.h; path = Preferences/FontSettingsController.h; sourceTree = "<group>"; };
+		7060B02719CD4B2C004B43B2 /* FontSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontSettingsController.m; path = Preferences/FontSettingsController.m; sourceTree = "<group>"; };
+		7060B03019CEA5FE004B43B2 /* Anonymous Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Anonymous Pro.ttf"; path = "Resources/Anonymous Pro.ttf"; sourceTree = "<group>"; };
+		7060B03119CEA5FE004B43B2 /* MesloLGM-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MesloLGM-Regular.ttf"; path = "Resources/MesloLGM-Regular.ttf"; sourceTree = "<group>"; };
+		7060B03219CEA5FE004B43B2 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceCodePro-Regular.ttf"; path = "Resources/SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
+		7060B03619CEA60D004B43B2 /* UbuntuMono-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "UbuntuMono-R.ttf"; path = "Resources/UbuntuMono-R.ttf"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* MobileTerminal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MobileTerminal-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9F24A6FF11D7C6EF00E6EFC0 /* MenuSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuSettingsViewController.h; path = Preferences/MenuSettingsViewController.h; sourceTree = "<group>"; };
 		9F24A70011D7C6EF00E6EFC0 /* MenuSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuSettingsViewController.m; path = Preferences/MenuSettingsViewController.m; sourceTree = "<group>"; };
@@ -424,6 +435,10 @@
 				9F6B6D5012297447007BAD59 /* Icon-Small@2x.png */,
 				9F6B6D5112297447007BAD59 /* Icon.png */,
 				9F6B6D5212297447007BAD59 /* Icon@2x.png */,
+				7060B03019CEA5FE004B43B2 /* Anonymous Pro.ttf */,
+				7060B03119CEA5FE004B43B2 /* MesloLGM-Regular.ttf */,
+				7060B03219CEA5FE004B43B2 /* SourceCodePro-Regular.ttf */,
+				7060B03619CEA60D004B43B2 /* UbuntuMono-R.ttf */,
 				2C72B2BC101ABA9100F10E63 /* PreferencesTests-Info.plist */,
 				2C11C5B41013A5AF00A2746E /* VT100Tests-Info.plist */,
 				2899E5210DE3E06400AC0155 /* MobileTerminalViewController.xib */,
@@ -536,6 +551,8 @@
 				2C4E19CE101D23E9004CA39E /* MenuSettings.m */,
 				9F24A6FF11D7C6EF00E6EFC0 /* MenuSettingsViewController.h */,
 				9F24A70011D7C6EF00E6EFC0 /* MenuSettingsViewController.m */,
+				7060B02619CD4B2C004B43B2 /* FontSettingsController.h */,
+				7060B02719CD4B2C004B43B2 /* FontSettingsController.m */,
 				9F74BF6F11D326890013DA87 /* PreferencesViewController.h */,
 				9F74BF7011D326890013DA87 /* PreferencesViewController.m */,
 				2C11CC7E10159F7400A2746E /* Settings.h */,
@@ -798,17 +815,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				7060B03519CEA5FE004B43B2 /* SourceCodePro-Regular.ttf in Resources */,
 				2899E5220DE3E06400AC0155 /* MobileTerminalViewController.xib in Resources */,
 				9FB73ED911C476BA005E3764 /* MainWindow-iPad.xib in Resources */,
+				7060B03719CEA60D004B43B2 /* UbuntuMono-R.ttf in Resources */,
 				9F6B6D5312297447007BAD59 /* Icon-Small.png in Resources */,
 				9F6B6D5412297447007BAD59 /* Icon-Small@2x.png in Resources */,
 				70222E0F19CB345C000B0282 /* Default-568h@2x.png in Resources */,
 				9F6B6D5512297447007BAD59 /* Icon.png in Resources */,
+				7060B03319CEA5FE004B43B2 /* Anonymous Pro.ttf in Resources */,
 				70222E1019CB345C000B0282 /* Default.png in Resources */,
 				9F6B6D5612297447007BAD59 /* Icon@2x.png in Resources */,
 				9F6B6D5912297452007BAD59 /* Icon-72.png in Resources */,
 				70222E1619CBD935000B0282 /* twitlogo.png in Resources */,
 				9F6B6D5A12297452007BAD59 /* Icon-Small-50.png in Resources */,
+				7060B03419CEA5FE004B43B2 /* MesloLGM-Regular.ttf in Resources */,
 				7007FD0219CBE03A006D11C6 /* About.png in Resources */,
 				9F6B6E481229A71E007BAD59 /* GestureInputActions.plist in Resources */,
 				9F86D380123D386A00FAA3C4 /* PreferencesViewController.xib in Resources */,
@@ -884,6 +905,7 @@
 				2C66C084101C47FB00E4189B /* MenuView.m in Sources */,
 				9FF8508E12177F81000CC2A2 /* GestureResponder.m in Sources */,
 				9F6B6D9912297822007BAD59 /* GestureActionRegistry.m in Sources */,
+				7060B02819CD4B2C004B43B2 /* FontSettingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

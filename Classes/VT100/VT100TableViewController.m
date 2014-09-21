@@ -18,10 +18,10 @@
   self = [super init];
   if (self != nil) {
     colorMap = [someColormap retain];
-    [self.tableView setIndicatorStyle:UIScrollViewIndicatorStyleBlack];
-    [self.tableView setBackgroundColor:[colorMap background]];
-    [self.tableView setAllowsSelection:NO];
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    self.tableView.IndicatorStyle = UIScrollViewIndicatorStyleBlack;
+    self.tableView.BackgroundColor = [colorMap background];
+    self.tableView.AllowsSelection = NO;
+    self.tableView.SeparatorStyle = UITableViewCellSeparatorStyleNone;
   }
   return self;
 }
@@ -36,7 +36,7 @@
 - (CGRect)cellFrame {
   int height = [fontMetrics boundingBox].height;
   int width = [self.tableView frame].size.width;
-    return (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) ? CGRectMake(0.f, 0, width, height): CGRectMake(2.f, 0, width, height); // Start position
+    return CGRectMake(0.f, 0, width, height); // Start position
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

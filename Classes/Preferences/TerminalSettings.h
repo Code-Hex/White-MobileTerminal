@@ -13,11 +13,13 @@
   UIFont* font;
   ColorMap* colorMap;
   NSString* args;
+  NSString* fontname;
 }
 
 @property(nonatomic, retain) UIFont* font;
 @property(nonatomic, retain) ColorMap* colorMap;
 @property(nonatomic, retain) NSString* args;
+@property(nonatomic, retain) NSString* fontname;
 
 - (instancetype)initWithCoder:(NSCoder *)decoder;
 - (void)encodeWithCoder:(NSCoder *)encoder;
