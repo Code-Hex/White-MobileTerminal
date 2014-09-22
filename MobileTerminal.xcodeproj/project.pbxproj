@@ -60,10 +60,14 @@
 		70222E1419CBD78B000B0282 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70222E1319CBD78B000B0282 /* Accounts.framework */; };
 		70222E1619CBD935000B0282 /* twitlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70222E1519CBD935000B0282 /* twitlogo.png */; };
 		7060B02819CD4B2C004B43B2 /* FontSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7060B02719CD4B2C004B43B2 /* FontSettingsController.m */; };
-		7060B03319CEA5FE004B43B2 /* Anonymous Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B03019CEA5FE004B43B2 /* Anonymous Pro.ttf */; };
-		7060B03419CEA5FE004B43B2 /* MesloLGM-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B03119CEA5FE004B43B2 /* MesloLGM-Regular.ttf */; };
-		7060B03519CEA5FE004B43B2 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B03219CEA5FE004B43B2 /* SourceCodePro-Regular.ttf */; };
-		7060B03719CEA60D004B43B2 /* UbuntuMono-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B03619CEA60D004B43B2 /* UbuntuMono-R.ttf */; };
+		7060B05119CFE250004B43B2 /* Anonymous Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B04919CFE24F004B43B2 /* Anonymous Pro.ttf */; };
+		7060B05219CFE250004B43B2 /* Cousine-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B04A19CFE250004B43B2 /* Cousine-Regular.ttf */; };
+		7060B05319CFE250004B43B2 /* CutiveMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B04B19CFE250004B43B2 /* CutiveMono-Regular.ttf */; };
+		7060B05419CFE250004B43B2 /* Inconsolata-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B04C19CFE250004B43B2 /* Inconsolata-Regular.ttf */; };
+		7060B05519CFE250004B43B2 /* MesloLGM-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B04D19CFE250004B43B2 /* MesloLGM-Regular.ttf */; };
+		7060B05619CFE250004B43B2 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B04E19CFE250004B43B2 /* SourceCodePro-Regular.ttf */; };
+		7060B05719CFE250004B43B2 /* UbuntuMono-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B04F19CFE250004B43B2 /* UbuntuMono-R.ttf */; };
+		7060B05819CFE250004B43B2 /* VT323-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B05019CFE250004B43B2 /* VT323-Regular.ttf */; };
 		9F24A70111D7C6EF00E6EFC0 /* MenuSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F24A6FF11D7C6EF00E6EFC0 /* MenuSettingsViewController.h */; };
 		9F24A70211D7C6EF00E6EFC0 /* MenuSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F24A70011D7C6EF00E6EFC0 /* MenuSettingsViewController.m */; };
 		9F24A7FF11D7EE8100E6EFC0 /* MenuEditViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F24A7FD11D7EE8100E6EFC0 /* MenuEditViewController.h */; };
@@ -244,10 +248,16 @@
 		70222E1519CBD935000B0282 /* twitlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitlogo.png; path = Resources/twitlogo.png; sourceTree = "<group>"; };
 		7060B02619CD4B2C004B43B2 /* FontSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontSettingsController.h; path = Preferences/FontSettingsController.h; sourceTree = "<group>"; };
 		7060B02719CD4B2C004B43B2 /* FontSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontSettingsController.m; path = Preferences/FontSettingsController.m; sourceTree = "<group>"; };
-		7060B03019CEA5FE004B43B2 /* Anonymous Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Anonymous Pro.ttf"; path = "Resources/Anonymous Pro.ttf"; sourceTree = "<group>"; };
-		7060B03119CEA5FE004B43B2 /* MesloLGM-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MesloLGM-Regular.ttf"; path = "Resources/MesloLGM-Regular.ttf"; sourceTree = "<group>"; };
-		7060B03219CEA5FE004B43B2 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SourceCodePro-Regular.ttf"; path = "Resources/SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
-		7060B03619CEA60D004B43B2 /* UbuntuMono-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "UbuntuMono-R.ttf"; path = "Resources/UbuntuMono-R.ttf"; sourceTree = "<group>"; };
+		7060B04919CFE24F004B43B2 /* Anonymous Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Anonymous Pro.ttf"; sourceTree = "<group>"; };
+		7060B04A19CFE250004B43B2 /* Cousine-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cousine-Regular.ttf"; sourceTree = "<group>"; };
+		7060B04B19CFE250004B43B2 /* CutiveMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CutiveMono-Regular.ttf"; sourceTree = "<group>"; };
+		7060B04C19CFE250004B43B2 /* Inconsolata-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inconsolata-Regular.ttf"; sourceTree = "<group>"; };
+		7060B04D19CFE250004B43B2 /* MesloLGM-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MesloLGM-Regular.ttf"; sourceTree = "<group>"; };
+		7060B04E19CFE250004B43B2 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
+		7060B04F19CFE250004B43B2 /* UbuntuMono-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UbuntuMono-R.ttf"; sourceTree = "<group>"; };
+		7060B05019CFE250004B43B2 /* VT323-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VT323-Regular.ttf"; sourceTree = "<group>"; };
+		7060B05919CFE3D0004B43B2 /* LICENSE-2.0.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "LICENSE-2.0.txt"; sourceTree = "<group>"; };
+		7060B05A19CFE3D0004B43B2 /* OFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* MobileTerminal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MobileTerminal-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9F24A6FF11D7C6EF00E6EFC0 /* MenuSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuSettingsViewController.h; path = Preferences/MenuSettingsViewController.h; sourceTree = "<group>"; };
 		9F24A70011D7C6EF00E6EFC0 /* MenuSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuSettingsViewController.m; path = Preferences/MenuSettingsViewController.m; sourceTree = "<group>"; };
@@ -429,16 +439,13 @@
 				70222E0D19CB345C000B0282 /* Default-568h@2x.png */,
 				70222E0E19CB345C000B0282 /* Default.png */,
 				9FE6971312E240C200EDE939 /* control.def */,
+				7060B04819CFE24F004B43B2 /* fonts */,
 				9F6B6D5712297452007BAD59 /* Icon-72.png */,
 				9F6B6D5812297452007BAD59 /* Icon-Small-50.png */,
 				9F6B6D4F12297447007BAD59 /* Icon-Small.png */,
 				9F6B6D5012297447007BAD59 /* Icon-Small@2x.png */,
 				9F6B6D5112297447007BAD59 /* Icon.png */,
 				9F6B6D5212297447007BAD59 /* Icon@2x.png */,
-				7060B03019CEA5FE004B43B2 /* Anonymous Pro.ttf */,
-				7060B03119CEA5FE004B43B2 /* MesloLGM-Regular.ttf */,
-				7060B03219CEA5FE004B43B2 /* SourceCodePro-Regular.ttf */,
-				7060B03619CEA60D004B43B2 /* UbuntuMono-R.ttf */,
 				2C72B2BC101ABA9100F10E63 /* PreferencesTests-Info.plist */,
 				2C11C5B41013A5AF00A2746E /* VT100Tests-Info.plist */,
 				2899E5210DE3E06400AC0155 /* MobileTerminalViewController.xib */,
@@ -561,6 +568,24 @@
 				2C11CC8110159F7400A2746E /* TerminalSettings.m */,
 			);
 			name = Preferences;
+			sourceTree = "<group>";
+		};
+		7060B04819CFE24F004B43B2 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7060B05919CFE3D0004B43B2 /* LICENSE-2.0.txt */,
+				7060B05A19CFE3D0004B43B2 /* OFL.txt */,
+				7060B04919CFE24F004B43B2 /* Anonymous Pro.ttf */,
+				7060B04A19CFE250004B43B2 /* Cousine-Regular.ttf */,
+				7060B04B19CFE250004B43B2 /* CutiveMono-Regular.ttf */,
+				7060B04C19CFE250004B43B2 /* Inconsolata-Regular.ttf */,
+				7060B04D19CFE250004B43B2 /* MesloLGM-Regular.ttf */,
+				7060B04E19CFE250004B43B2 /* SourceCodePro-Regular.ttf */,
+				7060B04F19CFE250004B43B2 /* UbuntuMono-R.ttf */,
+				7060B05019CFE250004B43B2 /* VT323-Regular.ttf */,
+			);
+			name = fonts;
+			path = Resources/fonts;
 			sourceTree = "<group>";
 		};
 		9FB73ED711C476B9005E3764 /* Resources-iPad */ = {
@@ -815,24 +840,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				7060B03519CEA5FE004B43B2 /* SourceCodePro-Regular.ttf in Resources */,
+				7060B05719CFE250004B43B2 /* UbuntuMono-R.ttf in Resources */,
 				2899E5220DE3E06400AC0155 /* MobileTerminalViewController.xib in Resources */,
+				7060B05319CFE250004B43B2 /* CutiveMono-Regular.ttf in Resources */,
 				9FB73ED911C476BA005E3764 /* MainWindow-iPad.xib in Resources */,
-				7060B03719CEA60D004B43B2 /* UbuntuMono-R.ttf in Resources */,
 				9F6B6D5312297447007BAD59 /* Icon-Small.png in Resources */,
 				9F6B6D5412297447007BAD59 /* Icon-Small@2x.png in Resources */,
 				70222E0F19CB345C000B0282 /* Default-568h@2x.png in Resources */,
 				9F6B6D5512297447007BAD59 /* Icon.png in Resources */,
-				7060B03319CEA5FE004B43B2 /* Anonymous Pro.ttf in Resources */,
+				7060B05119CFE250004B43B2 /* Anonymous Pro.ttf in Resources */,
 				70222E1019CB345C000B0282 /* Default.png in Resources */,
 				9F6B6D5612297447007BAD59 /* Icon@2x.png in Resources */,
 				9F6B6D5912297452007BAD59 /* Icon-72.png in Resources */,
+				7060B05819CFE250004B43B2 /* VT323-Regular.ttf in Resources */,
 				70222E1619CBD935000B0282 /* twitlogo.png in Resources */,
 				9F6B6D5A12297452007BAD59 /* Icon-Small-50.png in Resources */,
-				7060B03419CEA5FE004B43B2 /* MesloLGM-Regular.ttf in Resources */,
 				7007FD0219CBE03A006D11C6 /* About.png in Resources */,
 				9F6B6E481229A71E007BAD59 /* GestureInputActions.plist in Resources */,
+				7060B05219CFE250004B43B2 /* Cousine-Regular.ttf in Resources */,
 				9F86D380123D386A00FAA3C4 /* PreferencesViewController.xib in Resources */,
+				7060B05419CFE250004B43B2 /* Inconsolata-Regular.ttf in Resources */,
+				7060B05619CFE250004B43B2 /* SourceCodePro-Regular.ttf in Resources */,
+				7060B05519CFE250004B43B2 /* MesloLGM-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1042,7 +1071,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ANALYZER_OBJC_UNUSED_IVARS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 慶 上川 (KWJHH6PH5G)";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1069,7 +1098,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ANALYZER_OBJC_UNUSED_IVARS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 慶 上川 (KWJHH6PH5G)";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MobileTerminal_Prefix.pch;

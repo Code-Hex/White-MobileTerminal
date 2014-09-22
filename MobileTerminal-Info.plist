@@ -38,9 +38,13 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Anonymous Pro.ttf</string>
+		<string>Cousine-Regular.ttf</string>
+		<string>CutiveMono-Regular.ttf</string>
+		<string>Inconsolata-Regular.ttf</string>
 		<string>MesloLGM-Regular.ttf</string>
 		<string>SourceCodePro-Regular.ttf</string>
 		<string>UbuntuMono-R.ttf</string>
+		<string>VT323-Regular.ttf</string>
 	</array>
 	<key>UIPrerenderedIcon</key>
 	<true/>
