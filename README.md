@@ -13,7 +13,11 @@ Original(GNU GPL v2)
 https://code.google.com/p/mobileterminal/  
   
 Used code(in MobileTerminalViewController.m)  
-https://github.com/coolstar/mobileterminal/blob/master/Classes/MobileTerminalViewController.m
+https://github.com/coolstar/mobileterminal/blob/master/Classes/MobileTerminalViewController.m  
+  
+###Idea  
+in fonts settings.  
+https://github.com/hbang/NewTerm  
   
 ###Fonts  
 AnonymousPro, CutiveMono-Regular, MesloLGM-Regular, SourceCodePro-Regular, VT323-Regular  
