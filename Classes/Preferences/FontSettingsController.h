@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FontSettingsController : UITableViewController <NSCoding> {
+@interface FontSettingsController : UITableViewController {
 @private
     UIFont* font;
     NSMutableArray* sheets;

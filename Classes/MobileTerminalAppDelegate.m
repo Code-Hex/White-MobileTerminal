@@ -19,6 +19,7 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
+  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]; // Fixed 4 inch problem
   Settings* settings = [Settings sharedInstance];
   settings.svnVersion = 8.0; // Version
   

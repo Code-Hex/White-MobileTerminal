@@ -75,6 +75,10 @@
     [self presentViewController:tweet animated:YES completion:nil];
 }
 
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
 
 - (void)awakeFromNib
 {

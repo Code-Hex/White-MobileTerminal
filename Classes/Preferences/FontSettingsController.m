@@ -32,7 +32,12 @@
               [NSNumber numberWithFloat:18.5],
               [NSNumber numberWithFloat:19.0], nil];
     
-    name = [[NSMutableArray alloc] initWithObjects:@"AnonymousPro",@"Courier",@"MesloLGM-Regular",@"SourceCodePro-Regular",@"UbuntuMono-Regular",@"Futura",nil];
+    name = [[NSMutableArray alloc] initWithObjects:@"AnonymousPro",@"Courier",@"Cousine",@"CutiveMono-Regular",@"Inconsolata-Regular",@"Menlo-Regular",@"MesloLGM-Regular",@"SourceCodePro-Regular",@"UbuntuMono-Regular",@"VT323-Regular",nil];
+}
+
+- (void)viewWillDisappear {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize]; // Store fontsize
 }
 
 - (void)dealloc
@@ -41,6 +46,7 @@
     [sheets dealloc];
     [name dealloc];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -83,9 +89,8 @@ if(indexPath.section == 0) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     
-    NSLog(@"「%@」が選択されました", [sheets objectAtIndex:[indexPath row]]);
+    NSLog(@"Selected %@", [sheets objectAtIndex:[indexPath row]]);
     [defaults setObject:[sheets objectAtIndex:[indexPath row]] forKey:@"font-Size"];
-    [defaults synchronize]; // Store fontsize
 } else {
     
     if (fontName){
@@ -101,11 +106,12 @@ if(indexPath.section == 0) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     
-    NSLog(@"「%@」が選択されました", [name objectAtIndex:[indexPath row]]);
+    NSLog(@"Selected %@", [name objectAtIndex:[indexPath row]]);
     [defaults setObject:[name objectAtIndex:[indexPath row]] forKey:@"font-Name"];
-    [defaults synchronize]; // Store fontsize
     
 }
+    BOOL successful = [defaults synchronize];
+    if (successful) NSLog(@"Stored settings.");
 }
 
 
@@ -165,7 +171,6 @@ if(indexPath.section == 0) {
         if (indexPath.row == 0)
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
-
     
     return cell;
 }
