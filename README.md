@@ -8,6 +8,9 @@ Changed UI(Cool more than before).
 Fixed some issues.  
 Completely remove the screen of black.  
 (Had solved this problem only white mobile terminal for now.)  
+Added fonts setting controler!!  
+I've prepared a font of 10 types :D  
+  
 #License  
 Original(GNU GPL v2)  
 https://code.google.com/p/mobileterminal/  
@@ -16,7 +19,7 @@ Used code(in MobileTerminalViewController.m)
 https://github.com/coolstar/mobileterminal/blob/master/Classes/MobileTerminalViewController.m  
   
 ###Idea  
-in fonts settings.  
+In fonts settings.  
 https://github.com/hbang/NewTerm  
   
 ###Fonts  
