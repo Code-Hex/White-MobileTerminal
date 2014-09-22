@@ -12,5 +12,13 @@ Completely remove the screen of black.
 Original(GNU GPL v2)  
 https://code.google.com/p/mobileterminal/  
   
-Used code(in MobileTerminalViewController.m)  
-https://github.com/coolstar/mobileterminal/blob/master/Classes/MobileTerminalViewController.m
+Used this code in MobileTerminalViewController.m  
+https://github.com/coolstar/mobileterminal/blob/master/Classes/MobileTerminalViewController.m  
+  
+##Fonts  
+AnonymousPro, Courier, MesloLGM-Regular, SourceCodePro-Regular, 
+They are based on the [SIL Open Font License](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL).  
+  
+UbuntuMono-Regular  
+This is based on the [Ubuntu Font Licence](http://font.ubuntu.com/licence/).
+
