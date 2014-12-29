@@ -71,11 +71,12 @@
     
     [self.tableView reloadData];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
     CGFloat fontSize = [defaults floatForKey:@"font-Size"];
     NSString *fontName = [defaults objectForKey:@"font-Name"];
     
-if(indexPath.section == 0) {
-    
+if (indexPath.section == 0) {
+
     if (fontSize){
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[sheets objectAtIndex:[indexPath row]] inSection:0]];
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -85,31 +86,33 @@ if(indexPath.section == 0) {
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
         cell.accessoryType = UITableViewCellAccessoryNone;
 
-    if (indexPath.row == index)
+        if (indexPath.row == index)
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    
     }
     
     NSLog(@"Selected %@", [sheets objectAtIndex:[indexPath row]]);
     [defaults setObject:[sheets objectAtIndex:[indexPath row]] forKey:@"font-Size"];
+    
 } else {
     
-    if (fontName){
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[name objectAtIndex:[indexPath row]] inSection:1]];
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    
-    for (NSInteger index=0; index<[self.tableView numberOfRowsInSection:0]; index++) {
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:1]];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        
-        if (indexPath.row == index)
+        if (fontName){
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[name objectAtIndex:[indexPath row]] inSection:1]];
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
+        }
     
-    NSLog(@"Selected %@", [name objectAtIndex:[indexPath row]]);
-    [defaults setObject:[name objectAtIndex:[indexPath row]] forKey:@"font-Name"];
+        for (NSInteger index=0; index<[self.tableView numberOfRowsInSection:0]; index++) {
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:1]];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        
+            if (indexPath.row == index)
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
     
-}
+        NSLog(@"Selected %@", [name objectAtIndex:[indexPath row]]);
+        [defaults setObject:[name objectAtIndex:[indexPath row]] forKey:@"font-Name"];
+    
+        }
     BOOL successful = [defaults synchronize];
     if (successful) NSLog(@"Stored settings.");
 }
@@ -135,11 +138,18 @@ if(indexPath.section == 0) {
     NSUInteger check = [sheets indexOfObject:[NSNumber numberWithFloat:fontSize]];
     
    if (index != NSNotFound) {
-       NSLog(@"check is Found!!");
-      if (indexPath.row == check)
-         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+       
+       if (IPAD && !fontSize && indexPath.row == 10){
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [defaults setObject:[sheets objectAtIndex:10] forKey:@"font-Size"];
+       } else if (!IPAD && !fontSize && !indexPath.row){
+           cell.accessoryType = UITableViewCellAccessoryCheckmark;
+           [defaults setObject:[sheets objectAtIndex:0] forKey:@"font-Size"];
+       }
+       
+       if (indexPath.row == check)
+          cell.accessoryType = UITableViewCellAccessoryCheckmark;
    } else {
-       NSLog(@"check is Not Found...");
       if (indexPath.row == 0)
            cell.accessoryType = UITableViewCellAccessoryCheckmark;
    }
@@ -163,11 +173,14 @@ if(indexPath.section == 0) {
     NSUInteger check = [name indexOfObject:fontName];
     
     if (index != NSNotFound) {
-        NSLog(@"check is Found!!");
+        if (!fontName && indexPath.row == 1){
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [defaults setObject:[name objectAtIndex:1] forKey:@"font-Name"];
+        }
+        
         if (indexPath.row == check)
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
-        NSLog(@"check is Not Found...");
         if (indexPath.row == 0)
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }

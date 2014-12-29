@@ -15,7 +15,7 @@
 
 static NSString* kDefaultFontName = @"Courier";
 static const CGFloat kDefaultIPhoneFont = 11.0f;
-static const CGFloat kDefaultIPadFont = 18.0f;
+static const CGFloat kDefaultIPadFont = 19.0f;
 
 - (id) init
 {
@@ -54,13 +54,9 @@ static const CGFloat kDefaultIPadFont = 18.0f;
         if (IPAD){
             fontsize = [defaults floatForKey:@"font-Size"]?[defaults floatForKey:@"font-Size"]: kDefaultIPadFont;
             fontname = [defaults objectForKey:@"font-Name"]?[defaults objectForKey:@"font-Name"]: kDefaultFontName;
-            NSLog(@"%f がセットされた値です", fontsize);
-            NSLog(@"%@ がセットされたフォントです", fontname);
         }else{
             fontsize = [defaults floatForKey:@"font-Size"]?[defaults floatForKey:@"font-Size"]: kDefaultIPhoneFont;
             fontname = [defaults objectForKey:@"font-Name"]?[defaults objectForKey:@"font-Name"]: kDefaultFontName;
-            NSLog(@"%f がセットされた値です", fontsize);
-            NSLog(@"%@ がセットされたフォントです", fontname);
         }
       font = [UIFont fontWithName:fontname size:fontsize];
     }
