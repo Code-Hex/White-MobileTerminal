@@ -34,6 +34,7 @@
 
   // Copy and paste is off by default
   copyPasteEnabled = NO;
+    
 }
 
 - (void)registerForKeyboardNotifications
@@ -78,8 +79,101 @@
     [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c%c%c",(char)0x1B,(char)0x5B,(char)0x44] dataUsingEncoding:NSASCIIStringEncoding]];
 }
 
+-(void)longPress_left:(UILongPressGestureRecognizer *)left_sender {
+    switch (left_sender.state) {
+        case UIGestureRecognizerStateBegan:
+            [self performSelector:@selector(repeat_left:) withObject:nil afterDelay:0.1];
+            break;
+            
+        case UIGestureRecognizerStateEnded:
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(repeat_left:) object:nil];
+            break;
+        default:
+            NSLog(@"Default_left");
+            break;
+
+    }
+    
+}
+
+
+-(void)repeat_left:(id)sender{
+    [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c%c%c",(char)0x1B,(char)0x5B,(char)0x44] dataUsingEncoding:NSASCIIStringEncoding]];
+    [self performSelector:@selector(repeat_left:) withObject:nil afterDelay:0.1];
+}
+
+-(void)longPress_right:(UILongPressGestureRecognizer *)right_sender {
+    switch (right_sender.state) {
+        case UIGestureRecognizerStateBegan:
+            [self performSelector:@selector(repeat_right:) withObject:nil afterDelay:0.1];
+            break;
+            
+        case UIGestureRecognizerStateEnded:
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(repeat_right:) object:nil];
+            break;
+        default:
+            NSLog(@"Default_right");
+            break;
+    }
+
+}
+
+
+-(void)repeat_right:(id)sender{
+    [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c%c%c",(char)0x1B,(char)0x5B,(char)0x43] dataUsingEncoding:NSASCIIStringEncoding]];
+    [self performSelector:@selector(repeat_right:) withObject:nil afterDelay:0.1];
+}
+
+-(void)longPress_up:(UILongPressGestureRecognizer *)up_sender {
+    switch (up_sender.state) {
+        case UIGestureRecognizerStateBegan:
+            [self performSelector:@selector(repeat_up:) withObject:nil afterDelay:0.1];
+            break;
+            
+        case UIGestureRecognizerStateEnded:
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(repeat_up:) object:nil];
+            break;
+        default:
+            NSLog(@"Default_up");
+            break;
+    }
+    
+}
+
+
+-(void)repeat_up:(id)sender{
+    [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c%c%c",(char)0x1B,(char)0x5B,(char)0x41] dataUsingEncoding:NSASCIIStringEncoding]];
+    [self performSelector:@selector(repeat_up:) withObject:nil afterDelay:0.1];
+}
+
+-(void)longPress_down:(UILongPressGestureRecognizer *)down_sender {
+    switch (down_sender.state) {
+        case UIGestureRecognizerStateBegan:
+            [self performSelector:@selector(repeat_down:) withObject:nil afterDelay:0.1];
+            break;
+            
+        case UIGestureRecognizerStateEnded:
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(repeat_down:) object:nil];
+            break;
+        default:
+            NSLog(@"Default_down");
+            break;
+    }
+    
+}
+
+
+-(void)repeat_down:(id)sender{
+    [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c%c%c",(char)0x1B,(char)0x5B,(char)0x42] dataUsingEncoding:NSASCIIStringEncoding]];
+    [self performSelector:@selector(repeat_down:) withObject:nil afterDelay:0.1];
+}
+
 -(IBAction)esc:(id)sender {
     [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c",0x1b] dataUsingEncoding:NSASCIIStringEncoding]];
+}
+
+-(IBAction)ctrl:(id)sender {
+    [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c",0x00] dataUsingEncoding:NSASCIIStringEncoding]];
 }
 
 // TODO(allen): Fix the deprecation of UIKeyboardBoundsUserInfoKey
@@ -235,6 +329,19 @@
   [terminalSelector setCurrentPage:0];
   // Make the first terminal active
   [self terminalSelectionDidChange:self];
+   UILongPressGestureRecognizer *longPress_left = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress_left:)];
+    longPress_left.minimumPressDuration = 0.8;
+    [_left addGestureRecognizer:longPress_left];
+    UILongPressGestureRecognizer *longPress_right = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress_right:)];
+    longPress_right.minimumPressDuration = 0.8;
+    [_right addGestureRecognizer:longPress_right];
+    UILongPressGestureRecognizer *longPress_up = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress_up:)];
+    longPress_up.minimumPressDuration = 0.8;
+    [_up addGestureRecognizer:longPress_up];
+    UILongPressGestureRecognizer *longPress_down = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress_down:)];
+    longPress_down.minimumPressDuration = 0.8;
+    [_down addGestureRecognizer:longPress_down];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -284,6 +391,10 @@
 
 - (void)dealloc {
   [terminalKeyboard release];
+    [_left release];
+    [_right release];
+    [_up release];
+    [_down release];
   [super dealloc];
 }
 

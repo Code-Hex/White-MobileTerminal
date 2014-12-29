@@ -44,6 +44,10 @@
 @property (nonatomic, retain) IBOutlet MenuView* menuView;
 @property (nonatomic, retain) IBOutlet GestureResponder* gestureResponder;
 @property (nonatomic, retain) IBOutlet GestureActionRegistry* gestureActionRegistry;
+@property (retain, nonatomic) IBOutlet UIButton *left;
+@property (retain, nonatomic) IBOutlet UIButton *right;
+@property (retain, nonatomic) IBOutlet UIButton *up;
+@property (retain, nonatomic) IBOutlet UIButton *down;
 
 - (void)terminalSelectionDidChange:(id)sender;
 - (void)preferencesButtonPressed:(id)sender;

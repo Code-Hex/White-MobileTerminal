@@ -9,11 +9,15 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MobileTerminalViewController">
             <connections>
                 <outlet property="contentView" destination="24" id="26"/>
+                <outlet property="down" destination="PMi-kR-Aux" id="xpy-Hx-owt"/>
+                <outlet property="left" destination="qsw-GJ-PKC" id="hks-Kt-07q"/>
                 <outlet property="menuButton" destination="35" id="36"/>
                 <outlet property="menuView" destination="62" id="66"/>
                 <outlet property="preferencesButton" destination="21" id="33"/>
+                <outlet property="right" destination="MkZ-Lr-whA" id="7AT-ve-AXi"/>
                 <outlet property="terminalGroupView" destination="8" id="31"/>
                 <outlet property="terminalSelector" destination="15" id="32"/>
+                <outlet property="up" destination="uER-fP-aWZ" id="wYQ-KZ-AqY"/>
                 <outlet property="view" destination="6" id="23"/>
             </connections>
         </placeholder>
