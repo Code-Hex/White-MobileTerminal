@@ -12,6 +12,7 @@
 #import "MenuView.h"
 #import "GestureResponder.h"
 #import "GestureActionRegistry.h"
+#import <QuartzCore/QuartzCore.h>
 #define ORIENTATION [[UIDevice currentDevice] orientation]
 
 @implementation MobileTerminalViewController
@@ -25,6 +26,8 @@
 @synthesize menuView;
 @synthesize gestureResponder;
 @synthesize gestureActionRegistry;
+@synthesize toolbar;
+@synthesize ctrl;
 
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (void)awakeFromNib
@@ -34,7 +37,6 @@
 
   // Copy and paste is off by default
   copyPasteEnabled = NO;
-    
 }
 
 - (void)registerForKeyboardNotifications
@@ -82,7 +84,7 @@
 -(void)longPress_left:(UILongPressGestureRecognizer *)left_sender {
     switch (left_sender.state) {
         case UIGestureRecognizerStateBegan:
-            [self performSelector:@selector(repeat_left:) withObject:nil afterDelay:0.1];
+            [self performSelector:@selector(repeat_left:) withObject:nil afterDelay:0.07];
             break;
             
         case UIGestureRecognizerStateEnded:
@@ -99,13 +101,13 @@
 
 -(void)repeat_left:(id)sender{
     [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c%c%c",(char)0x1B,(char)0x5B,(char)0x44] dataUsingEncoding:NSASCIIStringEncoding]];
-    [self performSelector:@selector(repeat_left:) withObject:nil afterDelay:0.1];
+    [self performSelector:@selector(repeat_left:) withObject:nil afterDelay:0.07];
 }
 
 -(void)longPress_right:(UILongPressGestureRecognizer *)right_sender {
     switch (right_sender.state) {
         case UIGestureRecognizerStateBegan:
-            [self performSelector:@selector(repeat_right:) withObject:nil afterDelay:0.1];
+            [self performSelector:@selector(repeat_right:) withObject:nil afterDelay:0.07];
             break;
             
         case UIGestureRecognizerStateEnded:
@@ -121,7 +123,7 @@
 
 -(void)repeat_right:(id)sender{
     [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c%c%c",(char)0x1B,(char)0x5B,(char)0x43] dataUsingEncoding:NSASCIIStringEncoding]];
-    [self performSelector:@selector(repeat_right:) withObject:nil afterDelay:0.1];
+    [self performSelector:@selector(repeat_right:) withObject:nil afterDelay:0.07];
 }
 
 -(void)longPress_up:(UILongPressGestureRecognizer *)up_sender {
@@ -170,11 +172,29 @@
 
 -(IBAction)esc:(id)sender {
     [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c",0x1b] dataUsingEncoding:NSASCIIStringEncoding]];
+    menuView.hidden = YES;
+    toolbar.hidden = YES;
 }
 
--(IBAction)ctrl:(id)sender {
-    [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c",0x00] dataUsingEncoding:NSASCIIStringEncoding]];
+- (IBAction)tab:(id)sender {
+    [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[NSData dataWithBytes:"\t" length:1]];
+    menuView.hidden = YES;
+    toolbar.hidden = YES;
 }
+
+- (IBAction)ctrl:(id)ctrl_button {
+    TerminalKeyboard *keyInput = (TerminalKeyboard *)terminalKeyboard.inputTextField;
+    keyInput.controlKeyMode = !keyInput.controlKeyMode;
+    menuView.hidden = YES;
+    toolbar.hidden = YES;
+}
+
+- (IBAction)restart:(id)sender {
+    [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"exec $SHELL -l"] dataUsingEncoding:NSASCIIStringEncoding]];
+    menuView.hidden = YES;
+    toolbar.hidden = YES;
+}
+
 
 // TODO(allen): Fix the deprecation of UIKeyboardBoundsUserInfoKey
 // below -- it requires more of a change because the replacement
@@ -270,6 +290,13 @@
 - (void)menuButtonPressed:(id)sender 
 {
   [menuView setHidden:![menuView isHidden]];
+    toolbar.layer.shouldRasterize = YES;
+    CATransition *animation = [CATransition animation];
+    animation.type = kCATransitionMoveIn;
+    animation.subtype = kCATransitionFromTop;
+    animation.duration = 0.25;
+    [toolbar.layer addAnimation:animation forKey:nil];
+    [toolbar setHidden:![toolbar isHidden]];
 }
 
 // Invoked when a menu item is clicked, to run the specified command.
@@ -279,7 +306,9 @@
   [terminalView receiveKeyboardInput:[command dataUsingEncoding:NSUTF8StringEncoding]];
   
   // Make the menu disappear
-  [menuView setHidden:YES];
+    menuView.hidden = YES;
+    toolbar.hidden = YES;
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -318,10 +347,18 @@
   // later allow us to make it the first responder so we can show the keyboard
   // on the screen.
   [[self view] addSubview:terminalKeyboard];
-
+    
   // The menu button points to the right, but for this context it should point
   // up, since the menu moves that way.
-  menuButton.transform = CGAffineTransformMakeRotation(-90.0f * M_PI / 180.0f);
+    
+  //menuButton.transform = CGAffineTransformMakeRotation(-90.0f * M_PI / 180.0f);
+   toolbar.clipsToBounds = YES;
+   toolbar.hidden = YES;
+    [self.toolbar setBackgroundImage:[UIImage new]
+    forToolbarPosition:UIBarPositionAny
+    barMetrics:UIBarMetricsDefault];
+    [self.toolbar setShadowImage:[UIImage new]
+              forToolbarPosition:UIToolbarPositionAny];
   [menuButton setNeedsLayout];  
   
   // Setup the page control that selects the active terminal
@@ -330,16 +367,16 @@
   // Make the first terminal active
   [self terminalSelectionDidChange:self];
    UILongPressGestureRecognizer *longPress_left = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress_left:)];
-    longPress_left.minimumPressDuration = 0.8;
+    longPress_left.minimumPressDuration = 0.5;
     [_left addGestureRecognizer:longPress_left];
     UILongPressGestureRecognizer *longPress_right = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress_right:)];
-    longPress_right.minimumPressDuration = 0.8;
+    longPress_right.minimumPressDuration = 0.5;
     [_right addGestureRecognizer:longPress_right];
     UILongPressGestureRecognizer *longPress_up = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress_up:)];
-    longPress_up.minimumPressDuration = 0.8;
+    longPress_up.minimumPressDuration = 0.5;
     [_up addGestureRecognizer:longPress_up];
     UILongPressGestureRecognizer *longPress_down = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress_down:)];
-    longPress_down.minimumPressDuration = 0.8;
+    longPress_down.minimumPressDuration = 0.5;
     [_down addGestureRecognizer:longPress_down];
 
 }
@@ -349,7 +386,7 @@
   [interfaceDelegate rootViewDidAppear];
   [self registerForKeyboardNotifications];
   [self setShowKeyboard:shouldShowKeyboard];
-  
+
   // Reset the font in case it changed in the preferenes view
   TerminalSettings* settings = [[Settings sharedInstance] terminalSettings];
   UIFont* font = [settings font];
@@ -395,6 +432,8 @@
     [_right release];
     [_up release];
     [_down release];
+    [toolbar release];
+    [ctrl release];
   [super dealloc];
 }
 

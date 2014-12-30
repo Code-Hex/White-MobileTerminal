@@ -13,8 +13,6 @@ static const int kControlCharacter = 0x2022;
 @private
   TerminalKeyboard* keyboard;  
   NSData* backspaceData;
-  // Should the next character pressed be a control character?
-  BOOL controlKeyMode;  
 
   // UIKeyInput
   UITextAutocapitalizationType autocapitalizationType;
@@ -27,6 +25,10 @@ static const int kControlCharacter = 0x2022;
 }
 
 @property (nonatomic, retain) TerminalKeyboard* keyboard;
+
+// https://github.com/hbang/NewTerm/blob/master/Classes/Terminal/TerminalKeyboard.h
+@property (nonatomic) BOOL controlKeyMode;
+@property (copy) void(^controlKeyChanged)();
 
 // UIKeyInput
 @property (nonatomic) UITextAutocapitalizationType autocapitalizationType;
@@ -48,6 +50,8 @@ static const int kControlCharacter = 0x2022;
 @synthesize keyboardType;
 @synthesize returnKeyType;
 @synthesize secureTextEntry;
+@synthesize controlKeyMode;
+@synthesize controlKeyChanged;
 
 - (id)init:(TerminalKeyboard*)theKeyboard
 {
@@ -96,6 +100,7 @@ static const int kControlCharacter = 0x2022;
       // Lowercase
       c -= 0x60;
     }
+      if (controlKeyChanged) controlKeyChanged();
   } else {
     if (c == kControlCharacter) {
       // Control character was pressed.  The next character will be interpred
@@ -106,7 +111,8 @@ static const int kControlCharacter = 0x2022;
       // Convert newline to a carraige return
       c = 0x0d;
     }
-  }    
+      if (controlKeyChanged) controlKeyChanged();
+  }
   // Re-encode as UTF8
   NSString* encoded = [NSString stringWithCharacters:&c length:1];
   NSData* data = [encoded dataUsingEncoding:NSUTF8StringEncoding];
@@ -170,8 +176,8 @@ static const int kControlCharacter = 0x2022;
   self = [super init];
   if (self != nil) {
     [self setOpaque:YES];  
-    inputTextField = [[TerminalKeyInput alloc] init:self];
-    [self addSubview:inputTextField];
+    _inputTextField = [[TerminalKeyInput alloc] init:self];
+    [self addSubview:_inputTextField];
   }
   return self;
 }
@@ -183,16 +189,16 @@ static const int kControlCharacter = 0x2022;
 - (BOOL)becomeFirstResponder
 {
   // XXX
-  return [inputTextField becomeFirstResponder];
+  return [_inputTextField becomeFirstResponder];
 }
 
 - (BOOL)resignFirstResponder
 {
-  return [inputTextField resignFirstResponder];
+  return [_inputTextField resignFirstResponder];
 }
   
 - (void)dealloc {
-  [inputTextField release];
+  [_inputTextField release];
   [super dealloc];
 }
 

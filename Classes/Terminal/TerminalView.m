@@ -14,8 +14,10 @@
 {
   stopped = NO;
   
-  subProcess = [[SubProcess alloc] init];  
+  subProcess = [[SubProcess alloc] init];
   [subProcess start];
+  [textView clearScreen];
+  [self addSubview:textView];
     
   // The PTY will be sized correctly on the first call to layoutSubViews
   pty = [[PTY alloc] initWithFileHandle:[subProcess fileHandle]];
@@ -26,14 +28,12 @@
                                            selector:@selector(dataAvailable:)
                                                name:NSFileHandleReadCompletionNotification
                                              object:[subProcess fileHandle]];
-  [[subProcess fileHandle] readInBackgroundAndNotify];   
+  [[subProcess fileHandle] readInBackgroundAndNotify];
 }
 
 - (void)releaseSubProcess
 {
-  if (subProcess == nil) {
-    return;
-  }
+  if (subProcess == nil) return;
   [[NSNotificationCenter defaultCenter] removeObserver:self];
   
   stopped = YES;
@@ -84,6 +84,7 @@ static const char* kProcessExitedMessage =
     copyAndPasteEnabled = NO;
     textView = [[VT100TextView alloc] initWithCoder:decoder];
     [textView setFrame:self.frame];
+    [textView clearScreen];
     [self addSubview:textView];
   }
   return self;

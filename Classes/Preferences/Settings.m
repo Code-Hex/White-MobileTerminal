@@ -16,7 +16,7 @@
 @synthesize gestureSettings;
 @synthesize terminalSettings;
 
-static NSString* kSettingsKey = @"com.googlecode.mobileterminal.Settings";
+static NSString* kSettingsKey = @"com.googlecode.whitemobileterminal.Settings";
 static NSString* kVersionKey = @"version";
 static NSString* kMenuSettings = @"menuSettings";
 static NSString* kGestureSettings = @"gestureSettings";

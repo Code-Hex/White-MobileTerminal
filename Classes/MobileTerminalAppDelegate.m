@@ -26,7 +26,7 @@
   [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
   NSMutableArray* viewControllers = [[NSMutableArray alloc] init];
-  [viewControllers addObject:terminalViewController];  
+  [viewControllers addObject:terminalViewController];
   [navigationController setViewControllers:viewControllers animated:NO];
   [viewControllers release];
    window.rootViewController = navigationController;

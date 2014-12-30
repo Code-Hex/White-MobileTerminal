@@ -681,17 +681,17 @@ static __inline__ screen_char_t *incrementLinePointer(
             break;
         case ANSICSI_ECH:
             if (CURSOR_X<WIDTH) {
-				i=WIDTH *CURSOR_Y+CURSOR_X;
-				j=token.u.csi.p[0];
-				if (j + CURSOR_X > WIDTH)
+                i=WIDTH *CURSOR_Y+CURSOR_X;
+                j=token.u.csi.p[0];
+                if (j + CURSOR_X > WIDTH)
                     j = WIDTH - CURSOR_X;
-				aLine = [self getLineAtScreenIndex: CURSOR_Y];
-				for(k = 0; k < j; k++) {
+                aLine = [self getLineAtScreenIndex: CURSOR_Y];
+                for(k = 0; k < j; k++) {
                     aLine[CURSOR_X+k].ch = 0;
                     aLine[CURSOR_X+k].fg_color = [TERMINAL foregroundColorCode];
                     aLine[CURSOR_X+k].bg_color = [TERMINAL backgroundColorCode];
-				}
-				memset(dirty+i,1,j);
+                }
+                memset(dirty+i,1,j);
             }
             break;
             
@@ -726,17 +726,17 @@ static __inline__ screen_char_t *incrementLinePointer(
         case XTERMCC_DELCH: [self deleteCharacters:token.u.csi.p[0]]; break;
         case XTERMCC_DELLN: [self deleteLines:token.u.csi.p[0]]; break;
         case XTERMCC_SU:
-            for (i=0; i<token.u.csi.p[0]; i++) [self scrollUp];
-            break;
+											 for (i=0; i<token.u.csi.p[0]; i++) [self scrollUp];
+											 break;
         case XTERMCC_SD:
-            for (i=0; i<token.u.csi.p[0]; i++) [self scrollDown];
-            break;
+											 for (i=0; i<token.u.csi.p[0]; i++) [self scrollDown];
+											 break;
             
             
         default:
-            NSLog(@"%s(%d): Unexpected token.type = %d",
-                  __FILE__, __LINE__, token.type);
-            break;
+												NSLog(@"%s(%d): Unexpected token.type = %d",
+                                                      __FILE__, __LINE__, token.type);
+												break;
     }
     if (oldCursorX != CURSOR_X || oldCursorY != CURSOR_Y) {
         dirty[oldCursorY *WIDTH+oldCursorX] = 1;
@@ -867,7 +867,7 @@ static __inline__ screen_char_t *incrementLinePointer(
         buffer = (screen_char_t *) malloc([string length] * sizeof(screen_char_t));
         if (!buffer) {
             NSLog(@"%s: Out of memory", __PRETTY_FUNCTION__);
-			free(sc);
+            free(sc);
             return;
         }
         
@@ -898,9 +898,9 @@ static __inline__ screen_char_t *incrementLinePointer(
     }
     
     if (len < 1) {
-		free(buffer);
+        free(buffer);
         return;
-	}
+    }
     
     // TODO(allen): Implement insert mode
     for (int idx = 0; idx < len; idx++) {
@@ -923,7 +923,7 @@ static __inline__ screen_char_t *incrementLinePointer(
             [self setNewLine];
         }
     }
-	
+    
     free(buffer);
     
 #if DEBUG_METHOD_TRACE
@@ -1573,15 +1573,15 @@ static __inline__ screen_char_t *incrementLinePointer(
 }
 
 - (int)numberOfLines {
-	return ([self numberOfScrollbackLines] + HEIGHT);
+    return ([self numberOfScrollbackLines] + HEIGHT);
 }
 
 - (unsigned)numberOfScrollbackLines {
-	int num_lines_in_scrollback =
+    int num_lines_in_scrollback =
     (current_scrollback_lines > max_scrollback_lines)
     ? max_scrollback_lines
     : current_scrollback_lines;
-	return num_lines_in_scrollback;
+    return num_lines_in_scrollback;
 }
 
 - (char *)dirty
