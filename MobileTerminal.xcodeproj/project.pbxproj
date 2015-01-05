@@ -78,7 +78,6 @@
 		70D805D41A57A39F00CACAA9 /* HRHSVColorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805C91A57A39F00CACAA9 /* HRHSVColorUtil.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		70D805D51A57A39F00CACAA9 /* UIImage+CoreGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805CB1A57A39F00CACAA9 /* UIImage+CoreGraphics.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		70D805D61A57A39F00CACAA9 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 70D805CC1A57A39F00CACAA9 /* LICENSE.txt */; };
-		70D805D71A57A39F00CACAA9 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 70D805CD1A57A39F00CACAA9 /* README.md */; };
 		70D805DA1A57A3BE00CACAA9 /* BGColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805D91A57A3BE00CACAA9 /* BGColorPickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		70D805DC1A57CC8400CACAA9 /* RotationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805DB1A57CC8400CACAA9 /* RotationController.m */; };
 		70D805E01A5811EA00CACAA9 /* TextColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805DF1A5811EA00CACAA9 /* TextColorPickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -201,7 +200,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* MobileTerminalAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileTerminalAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* MobileTerminalAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileTerminalAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* Terminal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Terminal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* WhiteTerminal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhiteTerminal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2899E5210DE3E06400AC0155 /* MobileTerminalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobileTerminalViewController.xib; sourceTree = "<group>"; };
@@ -445,7 +444,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* Terminal.app */,
+				1D6058910D05DD3D006BFB54 /* WhiteTerminal.app */,
 				2C11C9C91014035800A2746E /* libPreferences.a */,
 				2C11C58A1013A55500A2746E /* libSubProcess.a */,
 				2C11C9321013F87100A2746E /* libTerminal.a */,
@@ -782,7 +781,7 @@
 			);
 			name = MobileTerminal;
 			productName = MobileTerminal;
-			productReference = 1D6058910D05DD3D006BFB54 /* Terminal.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* WhiteTerminal.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2C11C57A1013A51E00A2746E /* VT100 */ = {
@@ -1034,7 +1033,6 @@
 				70D805DC1A57CC8400CACAA9 /* RotationController.m in Sources */,
 				706352081A53D89E00FE9BD1 /* ThemeSettingsController.m in Sources */,
 				70D805CF1A57A39F00CACAA9 /* HRBrightnessSlider.m in Sources */,
-				70D805D71A57A39F00CACAA9 /* README.md in Sources */,
 				70D805CE1A57A39F00CACAA9 /* HRBrightnessCursor.m in Sources */,
 				9FF8508E12177F81000CC2A2 /* GestureResponder.m in Sources */,
 				70D805E61A5811F700CACAA9 /* CursorColorPickerViewController.m in Sources */,
@@ -1179,7 +1177,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ANALYZER_OBJC_UNUSED_IVARS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 慶 上川 (KWJHH6PH5G)";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1194,7 +1192,7 @@
 				INFOPLIST_FILE = "MobileTerminal-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = Terminal;
+				PRODUCT_NAME = WhiteTerminal;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1206,7 +1204,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ANALYZER_OBJC_UNUSED_IVARS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 慶 上川 (KWJHH6PH5G)";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MobileTerminal_Prefix.pch;
@@ -1219,7 +1217,7 @@
 				INFOPLIST_FILE = "MobileTerminal-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = Terminal;
+				PRODUCT_NAME = WhiteTerminal;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1479,7 +1477,7 @@
 				OTHER_LDFLAGS = "-all_load";
 				PLIST_FILE_OUTPUT_FORMAT = "same-as-input";
 				PREBINDING = NO;
-				PRODUCT_NAME = Terminal;
+				PRODUCT_NAME = WhiteTerminal;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1502,7 +1500,7 @@
 				OTHER_LDFLAGS = "-all_load";
 				PLIST_FILE_OUTPUT_FORMAT = "same-as-input";
 				PREBINDING = NO;
-				PRODUCT_NAME = Terminal;
+				PRODUCT_NAME = WhiteTerminal;
 				SDKROOT = iphoneos;
 				WARNING_CFLAGS = "-Wall";
 			};

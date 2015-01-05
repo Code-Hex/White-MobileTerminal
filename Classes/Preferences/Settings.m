@@ -23,15 +23,13 @@ static NSString* kGestureSettings = @"gestureSettings";
 static NSString* kTerminalSettings = @"terminalSettings";
 
 static NSString* kDefaultMenuItems[][2] = {
-  { @"Esc", @"\x1b" },
-  { @"Tab", @"\x09" },
-  { @"ls -al", @"ls -al" },
   { @"|", @"|" },
   { @"cd", @"cd" },
   { @"../", @"../" },  
   { @"pwd", @"pwd" },
+  { @"ls -al", @"ls -al" },
   { @"chsh -s", @"chsh -s" },
-  { @"find -name \"NAME\" DIRECTORY ", @"find -name" },
+  { @"find -name \"NAME\" \"DIR\"", @"find -name" },
   { @"ping google.com", @"ping google.com\n" },
   
 };
