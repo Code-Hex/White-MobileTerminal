@@ -18,6 +18,8 @@ https://code.google.com/p/mobileterminal/
   
 Used code(in MobileTerminalViewController.m)  
 https://github.com/coolstar/mobileterminal/blob/master/Classes/MobileTerminalViewController.m  
+Used library(new BSD License)  
+https://github.com/hayashi311/Color-Picker-for-iOS  
   
 ###Inspired   
 Fonts & themes settings.  
