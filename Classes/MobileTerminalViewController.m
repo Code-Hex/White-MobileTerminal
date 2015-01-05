@@ -324,6 +324,7 @@
         NSLog(@"WelcomeTerminal!!");
         [ud setObject:@"Yes" forKey:@"AlreadyLaunched"];
         [ud setBool:true forKey:@"BlackOrWhite"];
+        [ud setBool:false forKey:@"KeyboardTypeURL"];
         [ud setObject:@"Courier" forKey:@"font-Name"];
         [ud setObject:IPAD?[NSNumber numberWithFloat:19.0]:[NSNumber numberWithFloat:11.0] forKey:@"font-Size"];
         [ud synchronize];

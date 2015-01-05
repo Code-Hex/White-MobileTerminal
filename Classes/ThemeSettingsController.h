@@ -18,6 +18,7 @@
     NSMutableArray* pickers;
     NSMutableArray* controllers;
     NSMutableArray* blackorwhite;
+    NSMutableArray* keyboardtype;
 }
 
 @property (retain, nonatomic) IBOutlet UIViewController *BGColorPickerViewController;

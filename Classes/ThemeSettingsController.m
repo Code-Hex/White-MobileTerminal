@@ -38,6 +38,7 @@
                @"Cursor",nil];
     
     blackorwhite = [[NSMutableArray alloc]initWithObjects:@"BlackMode",nil];
+    keyboardtype = [[NSMutableArray alloc]initWithObjects:@"KeyTypeURL", nil];
     
     NSUserDefaults *colorDefaults = [NSUserDefaults standardUserDefaults];
     NSData *colorData1 = [colorDefaults objectForKey:@"Term_Background"];
@@ -70,6 +71,7 @@
     [pickers dealloc];
     [controllers dealloc];
     [blackorwhite dealloc];
+    [keyboardtype dealloc];
     [BGColorPickerViewController dealloc];
     [TextColorPickerViewController dealloc];
     [BoldColorPickerViewController dealloc];
@@ -84,12 +86,12 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return section == 0 ? [sections count] : section == 1 ? [pickers count] : section == 2 ? [blackorwhite count] : 0;
+    return section == 0 ? [sections count] : section == 1 ? [pickers count] : section == 2 ? [blackorwhite count] : section == 3 ? [keyboardtype count] : 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -189,7 +191,24 @@
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         bwswitch.on = ![ud boolForKey:@"BlackOrWhite"] ? YES : NO;
         cell.accessoryView = bwswitch;
+        cell.textLabel.text = itemTitle;
         
+        return cell;
+        
+    } else if (indexPath.section == 3) {
+        NSUInteger index = [indexPath indexAtPosition:1];
+        NSString* itemTitle = [keyboardtype objectAtIndex:index];
+        
+        static NSString *CellIdentifier = @"Cell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (!cell) {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemTitle] autorelease];
+        }
+        UISwitch *keytypeswitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+        [keytypeswitch  addTarget:self action:@selector(keyboardtypechanger:) forControlEvents:UIControlEventTouchUpInside];
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        keytypeswitch.on = [ud boolForKey:@"KeyboardTypeURL"] ? YES : NO;
+        cell.accessoryView = keytypeswitch;
         cell.textLabel.text = itemTitle;
         
         return cell;
@@ -206,14 +225,21 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
-    return section == 0 ? [NSString stringWithFormat:@"Themes"] : section == 1 ? [NSString stringWithFormat:@"My Theme"] : section == 2 ? [NSString stringWithFormat:@"UIChange"] : 0;
+    return section == 0 ? [NSString stringWithFormat:@"Themes"] : section == 1 ? [NSString stringWithFormat:@"My Theme"] : section == 2 ? [NSString stringWithFormat:@"UIChange"] : section == 3 ? [NSString stringWithFormat:@"KeyBoardType"] : 0;
 }
 
 -(void)bwchanger:(id)sender {
     UISwitch *bwswitch = (UISwitch *)sender;
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     bwswitch.on ? [ud setBool:false forKey:@"BlackOrWhite"] : [ud setBool:true forKey:@"BlackOrWhite"];
-    NSLog(@"switch tapped. value = %@", (bwswitch.on ? @"ON(false)" : @"OFF(true)"));
+    NSLog(@"black or white switch tapped. value = %@", (bwswitch.on ? @"ON(false)" : @"OFF(true)"));
+}
+
+-(void)keyboardtypechanger:(id)sender {
+    UISwitch *keytypeswitch = (UISwitch *)sender;
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    keytypeswitch.on ? [ud setBool:true forKey:@"KeyboardTypeURL"] : [ud setBool:false forKey:@"KeyboardTypeURL"];
+    NSLog(@"keyboard switch tapped. value = %@", (keytypeswitch.on ? @"ON(true)" : @"OFF(false)"));
 }
 
 

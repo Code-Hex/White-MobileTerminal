@@ -69,7 +69,6 @@
 		7060B05719CFE250004B43B2 /* UbuntuMono-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B04F19CFE250004B43B2 /* UbuntuMono-R.ttf */; };
 		7060B05819CFE250004B43B2 /* VT323-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B05019CFE250004B43B2 /* VT323-Regular.ttf */; };
 		706352081A53D89E00FE9BD1 /* ThemeSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706352071A53D89E00FE9BD1 /* ThemeSettingsController.m */; };
-		70A3B2C81A596D7B00866321 /* BlackOrWhite.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A3B2C71A596D7B00866321 /* BlackOrWhite.m */; };
 		70D805CE1A57A39F00CACAA9 /* HRBrightnessCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805BD1A57A39F00CACAA9 /* HRBrightnessCursor.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		70D805CF1A57A39F00CACAA9 /* HRBrightnessSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805BF1A57A39F00CACAA9 /* HRBrightnessSlider.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		70D805D01A57A39F00CACAA9 /* HRColorCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805C11A57A39F00CACAA9 /* HRColorCursor.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -277,8 +276,6 @@
 		7060B05A19CFE3D0004B43B2 /* OFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		706352071A53D89E00FE9BD1 /* ThemeSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeSettingsController.m; sourceTree = "<group>"; };
 		706352091A53D8BF00FE9BD1 /* ThemeSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemeSettingsController.h; sourceTree = "<group>"; };
-		70A3B2C71A596D7B00866321 /* BlackOrWhite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlackOrWhite.m; path = Preferences/BlackOrWhite.m; sourceTree = "<group>"; };
-		70A3B2C91A596D9200866321 /* BlackOrWhite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BlackOrWhite.h; path = Preferences/BlackOrWhite.h; sourceTree = "<group>"; };
 		70D805BC1A57A39F00CACAA9 /* HRBrightnessCursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBrightnessCursor.h; sourceTree = "<group>"; };
 		70D805BD1A57A39F00CACAA9 /* HRBrightnessCursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBrightnessCursor.m; sourceTree = "<group>"; };
 		70D805BE1A57A39F00CACAA9 /* HRBrightnessSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBrightnessSlider.h; sourceTree = "<group>"; };
@@ -628,8 +625,6 @@
 				2C11CC8110159F7400A2746E /* TerminalSettings.m */,
 				70D805DD1A57CC9F00CACAA9 /* RotationController.h */,
 				70D805DB1A57CC8400CACAA9 /* RotationController.m */,
-				70A3B2C91A596D9200866321 /* BlackOrWhite.h */,
-				70A3B2C71A596D7B00866321 /* BlackOrWhite.m */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -1030,7 +1025,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				70D805D41A57A39F00CACAA9 /* HRHSVColorUtil.m in Sources */,
 				1D3623260D0F684500981E51 /* MobileTerminalAppDelegate.m in Sources */,
-				70A3B2C81A596D7B00866321 /* BlackOrWhite.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* MobileTerminalViewController.m in Sources */,
 				2C66C084101C47FB00E4189B /* MenuView.m in Sources */,
 				70D805D11A57A39F00CACAA9 /* HRColorInfoView.m in Sources */,

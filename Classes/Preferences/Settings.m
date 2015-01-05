@@ -25,11 +25,13 @@ static NSString* kTerminalSettings = @"terminalSettings";
 static NSString* kDefaultMenuItems[][2] = {
   { @"Esc", @"\x1b" },
   { @"Tab", @"\x09" },
-  { @"ls -al", @"ls -al\n" },
+  { @"ls -al", @"ls -al" },
+  { @"|", @"|" },
   { @"cd", @"cd" },
+  { @"../", @"../" },  
   { @"pwd", @"pwd" },
   { @"chsh -s", @"chsh -s" },
-  { @"../", @"../" },
+  { @"find -name \"NAME\" DIRECTORY ", @"find -name" },
   { @"ping google.com", @"ping google.com\n" },
   
 };

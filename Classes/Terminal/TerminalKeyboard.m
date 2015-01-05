@@ -65,7 +65,13 @@ static const int kControlCharacter = 0x2022;
         [self setKeyboardAppearance:UIKeyboardAppearanceLight];
     else
         [self setKeyboardAppearance:UIKeyboardAppearanceDark];
-    [self setKeyboardType:UIKeyboardTypeASCIICapable];
+      
+      if ([[NSUserDefaults standardUserDefaults] boolForKey:@"KeyboardTypeURL"]){
+        [self setKeyboardType:UIKeyboardTypeURL];
+          NSLog(@"AAAAAAAAAAAAA");
+      }else
+        [self setKeyboardType:UIKeyboardTypeASCIICapable];
+      
     [self setReturnKeyType:UIReturnKeyDefault];
     [self setSecureTextEntry:NO];
 
