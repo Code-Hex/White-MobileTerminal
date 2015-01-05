@@ -2,14 +2,15 @@ WhiteTerminal
 ====================
   
 Hello everyone :D  
-Support ios 8.1!!
+Supports ios versions from 7.0 to  8.1 !!  
   
-Changed UI(Cool more than before).  
-Fixed some issues.  
-Completely remove the screen of black.  
-(Had solved this problem only white mobile terminal for now.)  
-Added fonts setting controler!!  
-I've prepared a font of 10 types :D  
+Changed UI(Cooler than before).  
+Fixed some issues(restart subprocesses).  
+Completely removed the black line on the screen.  
+(This problem is only solved in white mobile terminal for now.)  
+Added fonts setting controller!!  
+Added theme setting controller!!  
+I've prepared 10 types of fonts and limitless color themes :D  
   
 #License  
 Original(GNU GPL v2)  
@@ -19,7 +20,7 @@ Used code(in MobileTerminalViewController.m)
 https://github.com/coolstar/mobileterminal/blob/master/Classes/MobileTerminalViewController.m  
   
 ###Inspired   
-In fonts settings.  
+Fonts & theme settings.  
 https://github.com/hbang/NewTerm  
   
 ###Fonts  
