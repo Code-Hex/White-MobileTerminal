@@ -1,8 +1,8 @@
 White-MobileTerminal
 ====================
   
-Hello everyone :)  
-Support ios 8.0!!
+Hello everyone :D 
+Support ios 8.1!!
   
 Changed UI(Cool more than before).  
 Fixed some issues.  
@@ -18,7 +18,7 @@ https://code.google.com/p/mobileterminal/
 Used code(in MobileTerminalViewController.m)  
 https://github.com/coolstar/mobileterminal/blob/master/Classes/MobileTerminalViewController.m  
   
-###Idea  
+###Inspired   
 In fonts settings.  
 https://github.com/hbang/NewTerm  
   
