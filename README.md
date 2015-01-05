@@ -5,11 +5,11 @@ Hello everyone :D
 Supports ios versions from 7.0 to  8.1 !!  
   
 Changed UI(Cooler than before).  
-Fixed some issues(restart subprocesses).  
+Fixed some issues(for example: problems when restarting subprocesses).  
 Completely removed the black line on the screen.  
 (This problem is only solved in white mobile terminal for now.)  
 Added fonts setting controller!!  
-Added theme setting controller!!  
+Added themes setting controller!!  
 I've prepared 10 types of fonts and limitless color themes :D  
   
 #License  
@@ -20,7 +20,7 @@ Used code(in MobileTerminalViewController.m)
 https://github.com/coolstar/mobileterminal/blob/master/Classes/MobileTerminalViewController.m  
   
 ###Inspired   
-Fonts & theme settings.  
+Fonts & themes settings.  
 https://github.com/hbang/NewTerm  
   
 ###Fonts  
