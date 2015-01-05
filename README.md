@@ -1,7 +1,7 @@
-White-MobileTerminal
+WhiteTerminal
 ====================
   
-Hello everyone :D 
+Hello everyone :D  
 Support ios 8.1!!
   
 Changed UI(Cool more than before).  
