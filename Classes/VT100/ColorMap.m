@@ -4,6 +4,16 @@
 #import "ColorMap.h"
 #import "VT100Terminal.h"
 
+#define CASE(str) if ([__s__ isEqualToString:(str)])
+#define SWITCH(s) for (NSString *__s__ = (s); ; )
+#define DEFAULT
+#define HEXCOLOR(c) [UIColor colorWithRed:((c>>16)&0xFF)/255.0 \
+green:((c>>8)&0xFF)/255.0 \
+blue:(c&0xFF)/255.0 \
+alpha:1.0];
+
+
+
 // 16 terminal color slots available
 //static const int kNumTerminalColors = 16;
 
@@ -44,33 +54,182 @@
 - (id)initWithCoder:(NSCoder *)decoder
 {
     self = [super init];
-    if (self != nil) {
+    
+    if (self) {
         [self initColorTable];
-        if ([decoder containsValueForKey:@"background"])
-            background = [[decoder decodeObjectForKey:@"background"] retain];
-        else
-            background = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
         
-        if ([decoder containsValueForKey:@"foreground"])
-            foreground = [[decoder decodeObjectForKey:@"foreground"] retain];
-        else
-            foreground = [[UIColor alloc] initWithWhite:0.0f alpha:1.f];
+        NSUserDefaults *colorDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *colorMap = [colorDefaults objectForKey:@"colorMap"];
+        //BOOL truth = NO;
         
-        if ([decoder containsValueForKey:@"foregroundBold"])
-            foregroundBold = [[decoder decodeObjectForKey:@"foregroundBold"] retain];
-        else
-            foregroundBold = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
-            
-        if ([decoder containsValueForKey:@"foregroundCursor"])
-            foregroundCursor = [[decoder decodeObjectForKey:@"foregroundCursor"] retain];
-        else
-            foregroundCursor = [[UIColor alloc] initWithWhite:1.f alpha:0.95f];
-            
-        if ([decoder containsValueForKey:@"backgroundCursor"])
-            backgroundCursor = [[decoder decodeObjectForKey:@"backgroundCursor"] retain];
-        else
-            backgroundCursor = [[UIColor alloc] initWithWhite:0.f alpha:0.4f];
+        SWITCH (colorMap) {
+            CASE (@"Basic") {
+                background = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
+                foreground = [[UIColor alloc] initWithWhite:0.0f alpha:1.f];
+                foregroundBold = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
+                foregroundCursor = [[UIColor alloc] initWithWhite:1.f alpha:0.95f];
+                backgroundCursor = [[UIColor alloc] initWithWhite:0.f alpha:0.4f];
+                break;
+            }
+            CASE (@"Grass") {
+                background = [[UIColor alloc] initWithRed:19/255.0 green:119/255.0 blue:61/255.0 alpha:1.f];
+                foreground = [[UIColor alloc] initWithRed:255/255.0 green:240/255.0 blue:165/255.0 alpha:1.f];
+                foregroundBold = [[UIColor alloc] initWithRed:255/255.0 green:176/255.0 blue:59/255.0 alpha:1.f];
+                foregroundCursor = [[UIColor alloc] initWithRed:142/255.0 green:40/255.0 blue:0.f alpha:1.f];
+                backgroundCursor = foregroundCursor;
+                //truth = YES;
+                break;
+            }
+            CASE (@"Homebrew") {
+                background = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
+                foreground = [[UIColor alloc] initWithRed:19/255.0 green:119/255.0 blue:61/255.0 alpha:1.f];
+                foregroundBold = [[UIColor alloc] initWithRed:0.f green:255/255.0 blue:0.f alpha:1.f];
+                foregroundCursor = [[UIColor alloc] initWithRed:56/255.0 green:254/255.0 blue:39/255.0 alpha:1.f];
+                backgroundCursor = foregroundCursor;
+                //truth = YES;
+                break;
+            }
+            CASE(@"Man Page") {
+                background = [[UIColor alloc] initWithRed:254/255.0 green:244/255.0 blue:156/255.0 alpha:1.f];
+                foreground = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
+                foregroundBold = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
+                foregroundCursor = [[UIColor alloc] initWithRed:127/255.0 green:127/255.0 blue:127/255.0 alpha:1.f];
+                backgroundCursor = foregroundCursor;
+                break;
+            }
+            CASE(@"Novel") {
+                background = [[UIColor alloc] initWithRed:223/255.0 green:219/255.0 blue:195/255.0 alpha:1.f];
+                foreground = [[UIColor alloc] initWithRed:59/255.0 green:35/255.0 blue:34/255.0 alpha:1.f];
+                foregroundBold = [[UIColor alloc] initWithRed:127/255.0 green:42/255.0 blue:25/255.0 alpha:1.f];
+                foregroundCursor = [[UIColor alloc] initWithRed:58/255.0 green:35/255.0 blue:34/255.0 alpha:1.f];
+                backgroundCursor = foregroundCursor;
+                break;
+            }
+            CASE(@"Ocean") {
+                background = [[UIColor alloc] initWithRed:34/255.0 green:79/255.0 blue:188/255.0 alpha:1.f];
+                foreground = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
+                foregroundBold = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
+                foregroundCursor = [[UIColor alloc] initWithRed:127/255.0 green:127/255.0 blue:127/255.0 alpha:1.f];
+                backgroundCursor = foregroundCursor;
+                //truth = YES;
+                break;
+            }
+            CASE(@"Pro") {
+                background = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
+                foreground = [[UIColor alloc] initWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.f];
+                foregroundBold = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
+                foregroundCursor = [[UIColor alloc] initWithRed:77/255.0 green:77/255.0 blue:77/255.0 alpha:1.f];
+                backgroundCursor = foregroundCursor;
+                //truth = YES;
+                break;
+            }
+            CASE(@"Red Sands") {
+                background = [[UIColor alloc] initWithRed:122/255.0 green:37/255.0 blue:30/255.0 alpha:1.f];
+                foreground = [[UIColor alloc] initWithRed:215/255.0 green:201/255.0 blue:167/255.0 alpha:1.f];
+                foregroundBold = [[UIColor alloc] initWithRed:223/255.0 green:189/255.0 blue:34/255.0 alpha:1.f];
+                foregroundCursor = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
+                backgroundCursor = foregroundCursor;
+                //truth = YES;
+                break;
+            }
+            CASE(@"Silver Aerogel") {
+                background = [[UIColor alloc] initWithRed:128/255.0 green:128/255.0 blue:128/255.0 alpha:1.f];
+                foreground = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
+                foregroundBold = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
+                foregroundCursor = [[UIColor alloc] initWithRed:217/255.0 green:217/255.0 blue:217/255.0 alpha:1.f];
+                backgroundCursor = foregroundCursor;
+                break;
+            }
+            CASE(@"My Theme") {
+                
+                CGFloat red, green, blue;
 
+                NSUserDefaults *colorDefaults = [NSUserDefaults standardUserDefaults];
+                NSData *colorData1 = [colorDefaults objectForKey:@"Term_Background"];
+                NSData *colorData2 = [colorDefaults objectForKey:@"Term_Text"];
+                NSData *colorData3 = [colorDefaults objectForKey:@"Term_BoldText"];
+                NSData *colorData4 = [colorDefaults objectForKey:@"Term_Cursor"];
+                
+                UIColor *term_background = [NSKeyedUnarchiver unarchiveObjectWithData:colorData1];
+                UIColor *term_text = [NSKeyedUnarchiver unarchiveObjectWithData:colorData2];
+                UIColor *term_bold = [NSKeyedUnarchiver unarchiveObjectWithData:colorData3];
+                UIColor *term_cursor = [NSKeyedUnarchiver unarchiveObjectWithData:colorData4];
+                
+                if (term_background) {
+                    const CGFloat *rgba = CGColorGetComponents(term_background.CGColor);
+                    red = rgba[0];
+                    green = rgba[1];
+                    blue = rgba[2];
+                    term_background = [[UIColor alloc] initWithRed:red green:green blue:blue alpha:1.f];
+                } else
+                    term_background = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
+                
+                if (term_text) {
+                    const CGFloat *rgba = CGColorGetComponents(term_text.CGColor);
+                    red = rgba[0];
+                    green = rgba[1];
+                    blue = rgba[2];
+                    term_text = [[UIColor alloc] initWithRed:red green:green blue:blue alpha:1.f];
+                } else
+                    term_text = [[UIColor alloc] initWithRed:0.2 green:0.8 blue:0 alpha:1.f];
+                
+                if (term_bold) {
+                    const CGFloat *rgba = CGColorGetComponents(term_bold.CGColor);
+                    red = rgba[0];
+                    green = rgba[1];
+                    blue = rgba[2];
+                    term_bold = [[UIColor alloc] initWithRed:red green:green blue:blue alpha:1.f];
+                } else
+                    term_bold = [[UIColor alloc] initWithRed:0.6 green:0 blue:0 alpha:1.f];
+                
+                if (term_cursor) {
+                    const CGFloat *rgba = CGColorGetComponents(term_cursor.CGColor);
+                    red = rgba[0];
+                    green = rgba[1];
+                    blue = rgba[2];
+                    term_cursor = [[UIColor alloc] initWithRed:red green:green blue:blue alpha:1.f];
+                } else
+                    term_cursor = [[UIColor alloc] initWithRed:0.6 green:0 blue:0 alpha:1.f];
+                
+                background = term_background;
+                foreground = term_text;
+                foregroundBold = term_bold;
+                foregroundCursor = term_cursor;
+                backgroundCursor = term_cursor;
+                break;
+            }
+            DEFAULT {
+                if ([decoder containsValueForKey:@"background"])
+                    background = [[decoder decodeObjectForKey:@"background"] retain];
+                else
+                    background = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
+        
+                if ([decoder containsValueForKey:@"foreground"])
+                    foreground = [[decoder decodeObjectForKey:@"foreground"] retain];
+                else
+                    foreground = [[UIColor alloc] initWithWhite:0.0f alpha:1.f];
+        
+                if ([decoder containsValueForKey:@"foregroundBold"])
+                    foregroundBold = [[decoder decodeObjectForKey:@"foregroundBold"] retain];
+                else
+                    foregroundBold = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
+            
+                if ([decoder containsValueForKey:@"foregroundCursor"])
+                    foregroundCursor = [[decoder decodeObjectForKey:@"foregroundCursor"] retain];
+                else
+                    foregroundCursor = [[UIColor alloc] initWithWhite:1.f alpha:0.95f];
+            
+                if ([decoder containsValueForKey:@"backgroundCursor"])
+                    backgroundCursor = [[decoder decodeObjectForKey:@"backgroundCursor"] retain];
+                else
+                    backgroundCursor = [[UIColor alloc] initWithWhite:0.f alpha:0.4f];
+                break;
+            }
+        }
+        NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:background];
+        [colorDefaults setObject:colorData forKey:@"Background"];
+        // [colorDefaults setBool:truth forKey:@"Statusbar"]; If you want to use statusbar
+        [colorDefaults synchronize];
     }
     return self;
 }

@@ -3,46 +3,34 @@
 <plist version="1.0">
 <array>
 	<string>Left Arrow</string>
-	<string>&#27;[D</string>
-
+	<string>[D</string>
 	<string>Right Arrow</string>
-	<string>&#27;[C</string>
-
+	<string>[C</string>
 	<string>Up Arrow</string>
-	<string>&#27;[A</string>
-
+	<string>[A</string>
 	<string>Down Arrow</string>
-	<string>&#27;[B</string>
-
+	<string>[B</string>
 	<string>Escape</string>
-	<string>&#27;</string>
-
+	<string></string>
 	<string>Backspace</string>
-	<string>&#8;</string>
-
+	<string></string>
 	<string>Tab</string>
-	<string>&#9;</string>
-
+	<string>	</string>
 	<string>Home</string>
-	<string>&#27;[1~</string>
-
+	<string>[1~</string>
 	<string>End</string>
-	<string>&#27;[4~</string>
-
+	<string>[4~</string>
 	<string>Insert</string>
-	<string>&#27;[2~</string>
-
+	<string>[2~</string>
 	<string>Delete</string>
-	<string>&#27;[3~</string>
-
+	<string>[3~</string>
 	<string>Page Up</string>
-	<string>&#27;[5~</string>
-
+	<string>[5~</string>
 	<string>Page Down</string>
-	<string>&#27;[6~</string>
-
+	<string>[6~</string>
 	<string>^C</string>
-	<string>&#3;</string>
-
+	<string></string>
+	<string>Return</string>
+	<string></string>
 </array>
 </plist>

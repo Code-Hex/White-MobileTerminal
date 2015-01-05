@@ -9,13 +9,7 @@
 #import "FontSettingsController.h"
 #define IPAD ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
 
-@interface FontSettingsController ()
-
-@end
-
 @implementation FontSettingsController
-
-@synthesize font;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,7 +26,17 @@
               [NSNumber numberWithFloat:18.5],
               [NSNumber numberWithFloat:19.0], nil];
     
-    name = [[NSMutableArray alloc] initWithObjects:@"AnonymousPro",@"Courier",@"Cousine",@"CutiveMono-Regular",@"Inconsolata-Regular",@"Menlo-Regular",@"MesloLGM-Regular",@"SourceCodePro-Regular",@"UbuntuMono-Regular",@"VT323-Regular",nil];
+    name = [[NSMutableArray alloc] initWithObjects:
+            @"AnonymousPro",
+            @"Courier",
+            @"Cousine",
+            @"CutiveMono-Regular",
+            @"Inconsolata-Regular",
+            @"Menlo-Regular",
+            @"MesloLGM-Regular",
+            @"SourceCodePro-Regular",
+            @"UbuntuMono-Regular",
+            @"VT323-Regular",nil];
 }
 
 - (void)viewWillDisappear {

@@ -10,11 +10,8 @@
 
 @interface FontSettingsController : UITableViewController {
 @private
-    UIFont* font;
     NSMutableArray* sheets;
     NSMutableArray* name;
 }
-
-@property(nonatomic, retain) UIFont* font;
 
 @end

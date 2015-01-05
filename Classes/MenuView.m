@@ -45,10 +45,20 @@
   }
   static NSString *CellIdentifier = @"Cell";
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  if (cell == nil) {
+  if (!cell) {
     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
   }
   MenuItem* menuItem = [menuSettings menuItemAtIndex:[indexPath indexAtPosition:1]];
+  NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    if ([ud boolForKey:@"BlackOrWhite"]) {
+        cell.textLabel.textColor = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
+        cell.backgroundColor = [[UIColor alloc] initWithWhite:1.f alpha:0.85f];
+        menuTableView.backgroundColor = [[UIColor alloc] initWithWhite:0.667f alpha:0.85f];
+    } else {
+        cell.textLabel.textColor = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
+        cell.backgroundColor = [[UIColor alloc] initWithWhite:0.f alpha:0.55f];
+        menuTableView.backgroundColor = [[UIColor alloc] initWithWhite:0.333f alpha:0.85f];
+    }
   cell.textLabel.text = menuItem.label;
   cell.textLabel.font = font;
   return cell;

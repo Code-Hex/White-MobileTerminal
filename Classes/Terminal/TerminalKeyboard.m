@@ -61,7 +61,10 @@ static const int kControlCharacter = 0x2022;
     [self setAutocapitalizationType:UITextAutocapitalizationTypeNone];
     [self setAutocorrectionType:UITextAutocorrectionTypeNo];
     [self setEnablesReturnKeyAutomatically:NO];
-    [self setKeyboardAppearance:UIKeyboardAppearanceDefault];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"BlackOrWhite"])
+        [self setKeyboardAppearance:UIKeyboardAppearanceLight];
+    else
+        [self setKeyboardAppearance:UIKeyboardAppearanceDark];
     [self setKeyboardType:UIKeyboardTypeASCIICapable];
     [self setReturnKeyType:UIReturnKeyDefault];
     [self setSecureTextEntry:NO];

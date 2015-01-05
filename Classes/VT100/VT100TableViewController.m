@@ -36,7 +36,7 @@
 - (CGRect)cellFrame {
   int height = [fontMetrics boundingBox].height;
   int width = [self.tableView frame].size.width;
-    return CGRectMake(0.f, 0, width, height); // Start position
+    return CGRectMake(0, 0, width, height); // Start position
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

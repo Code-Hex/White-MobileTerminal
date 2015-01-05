@@ -39,12 +39,24 @@
                         dispatch_async(dispatch_get_main_queue(), ^{
                             NSLog(@"tap");
                             //alert
-                            UIAlertView *alert = [[UIAlertView alloc]
-                                                  initWithTitle:@"Failed!"
-                                                  message:@"I'm sorry. Please try search for the account of @CodeHex in twitter."
-                                                  delegate:self
-                                                  cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                            [alert show];
+                            Class class = NSClassFromString(@"UIAlertController");
+                            if(class){
+                                UIAlertController *alert = nil;
+                                alert = [UIAlertController alertControllerWithTitle:@"Accomplished"
+                                                                            message:@"I'm sorry. Please try search for the account of @CodeHex in twitter."
+                                                                     preferredStyle:UIAlertControllerStyleAlert];
+                                [alert addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                                          style:UIAlertActionStyleDefault
+                                                                        handler:nil]];
+                                [self presentViewController:alert animated:YES completion:nil];
+                            } else {
+                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Accomplished"
+                                                                                message:@"I'm sorry. Please try search for the account of @CodeHex in twitter."
+                                                                               delegate:self
+                                                                      cancelButtonTitle:@"OK"
+                                                                      otherButtonTitles:nil];
+                                [alert show];
+                            }
                             //Update UI to show follow request failed
                         });
                     }
@@ -52,12 +64,24 @@
                         dispatch_async(dispatch_get_main_queue(), ^{
                             NSLog(@"tap");
                             //alert
-                            UIAlertView *alert = [[UIAlertView alloc]
-                                                  initWithTitle:@"Accomplished!"
-                                                  message:@"Thanks follow me 😊"
-                                                  delegate:self
-                                                  cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                            [alert show];
+                            Class class = NSClassFromString(@"UIAlertController");
+                            if(class){
+                                UIAlertController *alert = nil;
+                                alert = [UIAlertController alertControllerWithTitle:@"Accomplished"
+                                                                            message:@"Thanks follow me 😊"
+                                                                     preferredStyle:UIAlertControllerStyleAlert];
+                                [alert addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                                          style:UIAlertActionStyleDefault
+                                                                        handler:nil]];
+                                [self presentViewController:alert animated:YES completion:nil];
+                            } else {
+                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Accomplished"
+                                                                                message:@"Thanks follow me 😊"
+                                                                               delegate:self
+                                                                      cancelButtonTitle:@"OK"
+                                                                      otherButtonTitles:nil];
+                                [alert show];
+                            }
                             //Update UI to show success
                         });
                     }
@@ -71,7 +95,7 @@
 -(IBAction)tweetbutton:(id)sender
 {
     SLComposeViewController *tweet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-    [tweet setInitialText:@"White mobile Terminal is simple & awesome!! Don`t you wanna try it?\nRepo http://simplecake.tk/apt"];
+    [tweet setInitialText:@"\"#WhiteTerminal is simple & powerful & awesome!! Don't you wanna try it?\""];
     [self presentViewController:tweet animated:YES completion:nil];
 }
 
@@ -85,7 +109,7 @@
   [super awakeFromNib];
     /* svnVersion is float type */
   Settings* settings = [Settings sharedInstance];
-  versionLabel.text = [NSString stringWithFormat:@"w%0.1f", settings.svnVersion];
+  versionLabel.text = [NSString stringWithFormat:@"%0.1f", settings.svnVersion];
 }
 
 @end

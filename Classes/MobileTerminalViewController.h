@@ -35,7 +35,6 @@
   GestureActionRegistry* gestureActionRegistry;
 }
 
-@property(nonatomic,getter=isSelected) BOOL selected;
 @property (nonatomic, retain) IBOutlet UIView* contentView;
 @property (nonatomic, retain) IBOutlet TerminalGroupView* terminalGroupView;
 @property (nonatomic, retain) IBOutlet UIPageControl* terminalSelector;
@@ -45,12 +44,14 @@
 @property (nonatomic, retain) IBOutlet MenuView* menuView;
 @property (nonatomic, retain) IBOutlet GestureResponder* gestureResponder;
 @property (nonatomic, retain) IBOutlet GestureActionRegistry* gestureActionRegistry;
-@property (retain, nonatomic) IBOutlet UIToolbar *toolbar;
-@property (retain, nonatomic) IBOutlet UIButton *left;
-@property (retain, nonatomic) IBOutlet UIButton *right;
-@property (retain, nonatomic) IBOutlet UIButton *up;
-@property (retain, nonatomic) IBOutlet UIButton *down;
-@property (retain, nonatomic) IBOutlet UIBarButtonItem *ctrl;
+@property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, retain) IBOutlet UIButton *left;
+@property (nonatomic, retain) IBOutlet UIButton *right;
+@property (nonatomic, retain) IBOutlet UIButton *up;
+@property (nonatomic, retain) IBOutlet UIButton *down;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *ctrl;
+@property (nonatomic, retain) IBOutlet UIView *back;
+@property (nonatomic, retain) IBOutlet UIView *behind;
 
 - (void)terminalSelectionDidChange:(id)sender;
 - (void)preferencesButtonPressed:(id)sender;

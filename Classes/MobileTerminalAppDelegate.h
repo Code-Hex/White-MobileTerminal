@@ -4,6 +4,7 @@
 #import <UIKit/UIKit.h>
 #import "MobileTerminalViewController.h"
 #import "Preferences/PreferencesViewController.h"
+#import "Preferences/RotationController.h"
 
 @class Settings;
 
@@ -24,6 +25,5 @@
 
 - (void)preferencesButtonPressed;
 - (void)rootViewDidAppear;
-
 @end
 

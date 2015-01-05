@@ -2,7 +2,7 @@
 // MobileTerminal
 
 #import "PreferencesViewController.h"
-
+#import "RotationController.h"
 
 @implementation PreferencesViewController
 
@@ -10,6 +10,7 @@
 @synthesize menuSettingsController;
 @synthesize gestureSettingsController;
 @synthesize fontSettingsController;
+@synthesize themeSettingsController;
 @synthesize aboutController;
 
 #pragma mark -
@@ -22,14 +23,17 @@
   controllers = [[NSMutableArray alloc] init];
   [sections addObject:@"Shortcut Menu"];
   [sections addObject:@"Gestures"];
+  [sections addObject:@"Themes"];
   [sections addObject:@"Fonts"];
   [sections addObject:@"About"];
   [controllers addObject:menuSettingsController];
   [controllers addObject:gestureSettingsController];
+  [controllers addObject:themeSettingsController];
   [controllers addObject:fontSettingsController];
   [controllers addObject:aboutController];
     
   self.navigationItem.title = @"Top";
+    
   /* Delete cell separator */
   //self.tableView.SeparatorStyle = UITableViewCellSeparatorStyleNone;
 }

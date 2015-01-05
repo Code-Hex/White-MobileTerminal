@@ -21,7 +21,7 @@
 {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]; // Fixed 4 inch problem
   Settings* settings = [Settings sharedInstance];
-  settings.svnVersion = 8.0; // Version
+  settings.svnVersion = 8.1; // Version
   
   [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
@@ -29,7 +29,7 @@
   [viewControllers addObject:terminalViewController];
   [navigationController setViewControllers:viewControllers animated:NO];
   [viewControllers release];
-   window.rootViewController = navigationController;
+   self.window.rootViewController = navigationController;
   [window makeKeyAndVisible];
   inPreferences = FALSE;
 

@@ -13,7 +13,7 @@
 #import "GestureResponder.h"
 #import "GestureActionRegistry.h"
 #import <QuartzCore/QuartzCore.h>
-#define ORIENTATION [[UIDevice currentDevice] orientation]
+#define IPAD ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
 
 @implementation MobileTerminalViewController
 
@@ -189,10 +189,8 @@
     toolbar.hidden = YES;
 }
 
-- (IBAction)restart:(id)sender {
-    [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"exec $SHELL -l"] dataUsingEncoding:NSASCIIStringEncoding]];
-    menuView.hidden = YES;
-    toolbar.hidden = YES;
+- (IBAction)exit:(id)sender {
+    exit(0);
 }
 
 
@@ -319,7 +317,24 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-
+  NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *result = [ud objectForKey:@"AlreadyLaunched"];
+    
+    if(![result isEqual:@"Yes"]){
+        NSLog(@"WelcomeTerminal!!");
+        [ud setObject:@"Yes" forKey:@"AlreadyLaunched"];
+        [ud setBool:true forKey:@"BlackOrWhite"];
+        [ud setObject:@"Courier" forKey:@"font-Name"];
+        [ud setObject:IPAD?[NSNumber numberWithFloat:19.0]:[NSNumber numberWithFloat:11.0] forKey:@"font-Size"];
+        [ud synchronize];
+    }
+    
+  NSData *colorData = [ud objectForKey:@"Background"];
+  [self setNeedsStatusBarAppearanceUpdate];
+  UIColor *background = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+  _back.backgroundColor = background;
+  _behind.backgroundColor = background;
+    
   @try {
     [terminalGroupView startSubProcess];
   } @catch (NSException* e) {
@@ -354,6 +369,32 @@
   //menuButton.transform = CGAffineTransformMakeRotation(-90.0f * M_PI / 180.0f);
    toolbar.clipsToBounds = YES;
    toolbar.hidden = YES;
+    if ([ud boolForKey:@"BlackOrWhite"]) {
+        toolbar.backgroundColor = [[UIColor alloc] initWithWhite:1.f alpha:0.85f];
+        toolbar.tintColor = [UIColor blackColor];
+        _left.tintColor = [UIColor blackColor];
+        _right.tintColor = [UIColor blackColor];
+        _up.tintColor = [UIColor blackColor];
+        _down.tintColor = [UIColor blackColor];
+        menuButton.tintColor = [UIColor blackColor];
+        preferencesButton.tintColor = [UIColor blackColor];
+        terminalSelector.pageIndicatorTintColor = [UIColor lightGrayColor];
+        terminalSelector.currentPageIndicatorTintColor = [UIColor blackColor];
+        terminalSelector.backgroundColor = [[UIColor alloc] initWithWhite:1.f alpha:0.85f];
+    } else {
+        toolbar.backgroundColor = [[UIColor alloc] initWithWhite:0.f alpha:0.8f];
+        toolbar.tintColor = [UIColor whiteColor];
+        _left.tintColor = [UIColor whiteColor];
+        _right.tintColor = [UIColor whiteColor];
+        _up.tintColor = [UIColor whiteColor];
+        _down.tintColor = [UIColor whiteColor];
+        menuButton.tintColor = [UIColor whiteColor];
+        preferencesButton.tintColor = [UIColor whiteColor];
+        terminalSelector.pageIndicatorTintColor = [UIColor darkGrayColor];
+        terminalSelector.currentPageIndicatorTintColor = [UIColor whiteColor];
+        terminalSelector.backgroundColor = [[UIColor alloc] initWithWhite:0.f alpha:0.8f];
+    }
+    
     [self.toolbar setBackgroundImage:[UIImage new]
     forToolbarPosition:UIBarPositionAny
     barMetrics:UIBarMetricsDefault];
@@ -362,6 +403,7 @@
   [menuButton setNeedsLayout];  
   
   // Setup the page control that selects the active terminal
+
   [terminalSelector setNumberOfPages:[terminalGroupView terminalCount]];
   [terminalSelector setCurrentPage:0];
   // Make the first terminal active
@@ -381,6 +423,18 @@
 
 }
 
+/* If you want to use statusbar
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    BOOL light = [[NSUserDefaults standardUserDefaults] boolForKey:@"Statusbar"];
+    return light? UIStatusBarStyleLightContent:UIStatusBarStyleDefault;
+}
+*/
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES; // Or "NO"
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
   [interfaceDelegate rootViewDidAppear];
@@ -396,24 +450,6 @@
     [terminalView setNeedsLayout];
   }
 }
-
-- (BOOL)shouldAutorotate {
-    // After iOS6
-    switch (ORIENTATION) {
-        case UIDeviceOrientationPortrait:
-        case UIDeviceOrientationLandscapeLeft:
-        case UIDeviceOrientationLandscapeRight:
-            return YES;
-        default:
-            return NO;
-    }
-
-}
-
-- (NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskAllButUpsideDown;
-}
-
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
@@ -434,6 +470,8 @@
     [_down release];
     [toolbar release];
     [ctrl release];
+    [_back release];
+    [_behind release];
   [super dealloc];
 }
 

@@ -12,6 +12,7 @@
                 <outlet property="fontSettingsController" destination="6T8-lN-SfE" id="xFk-yn-zXd"/>
                 <outlet property="gestureSettingsController" destination="9" id="44"/>
                 <outlet property="menuSettingsController" destination="4" id="42"/>
+                <outlet property="themeSettingsController" destination="Zee-Hc-KTF" id="FZ7-Ti-GjH"/>
                 <outlet property="view" destination="51" id="52"/>
             </connections>
         </placeholder>
@@ -50,8 +51,8 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="White MobileTerminal" textAlignment="center" lineBreakMode="clip" minimumFontSize="10" id="26">
-                        <rect key="frame" x="78" y="41" width="165" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="WhiteTerminal" textAlignment="center" lineBreakMode="clip" minimumFontSize="10" id="26">
+                        <rect key="frame" x="107" y="41" width="108" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -257,6 +258,76 @@
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </tableViewController>
+        <tableViewController id="Zee-Hc-KTF" userLabel="ThemeSettingsViewController" customClass="ThemeSettingsController">
+            <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="8yI-6O-680">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                <connections>
+                    <outlet property="dataSource" destination="Zee-Hc-KTF" id="Lki-1Q-6xA"/>
+                    <outlet property="delegate" destination="Zee-Hc-KTF" id="TXj-M5-bJ6"/>
+                </connections>
+            </tableView>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="BGColorPickerViewController" destination="Mlt-3v-2Ap" id="ANo-Uf-to9"/>
+                <outlet property="BoldColorPickerViewController" destination="MLm-Sa-1YH" id="CjW-1G-yBA"/>
+                <outlet property="CursorColorPickerViewController" destination="uNp-0c-aLF" id="tCf-Ab-6wo"/>
+                <outlet property="TextColorPickerViewController" destination="I74-rI-Gd7" id="Sup-4G-oXv"/>
+            </connections>
+        </tableViewController>
+        <viewController id="Mlt-3v-2Ap" userLabel="BGColorPickerViewController" customClass="BGColorPickerViewController">
+            <view key="view" contentMode="scaleToFill" id="CBM-o5-6ix">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            </view>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </viewController>
+        <viewController id="I74-rI-Gd7" userLabel="TextColorPickerViewController" customClass="TextColorPickerViewController">
+            <view key="view" contentMode="scaleToFill" id="1fv-m2-RJf">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            </view>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </viewController>
+        <viewController id="MLm-Sa-1YH" userLabel="BoldColorPickerViewController" customClass="BoldColorPickerViewController">
+            <view key="view" contentMode="scaleToFill" id="ZhI-aR-kpH">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            </view>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </viewController>
+        <viewController id="uNp-0c-aLF" userLabel="CursorColorPickerViewController" customClass="CursorColorPickerViewController">
+            <view key="view" contentMode="scaleToFill" id="3NO-gw-oNi">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            </view>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </viewController>
         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="51">
             <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

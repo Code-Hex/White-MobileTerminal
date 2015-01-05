@@ -60,9 +60,9 @@ static const CGFloat kDefaultIPadFont = 19.0f;
         }
       font = [UIFont fontWithName:fontname size:fontsize];
     }
-    if (font == nil) {
+    if (!font) {
       NSLog(@"Default font unavailable, using system font");
-      font = [[UIFont systemFontOfSize:[UIFont systemFontSize]] retain];
+        font = [UIFont fontWithName:kDefaultFontName size:IPAD ? kDefaultIPadFont : kDefaultIPhoneFont];
     }
   }
   return self;
@@ -72,6 +72,7 @@ static const CGFloat kDefaultIPadFont = 19.0f;
 {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   [encoder encodeObject:args forKey:@"args"];
+    
   [encoder encodeObject:colorMap forKey:@"colorMap"];
   // UIFont does not implement NSCoding, so encode its arguments instead
   NSString* fontName = [defaults objectForKey:@"font-Name"];

@@ -9,7 +9,8 @@
   UINavigationController* navigationController;  
   UIViewController* menuSettingsController;
   UIViewController* gestureSettingsController;
-  UITableViewController *fontSettingsController;
+  UITableViewController* fontSettingsController;
+  UITableViewController* themeSettingsController;
   UIViewController* aboutController;
   
   NSMutableArray* sections;
@@ -20,6 +21,7 @@
 @property(nonatomic, retain) IBOutlet UIViewController* menuSettingsController;
 @property(nonatomic, retain) IBOutlet UIViewController* gestureSettingsController;
 @property(nonatomic, retain) IBOutlet UITableViewController *fontSettingsController; // New!!
+@property(nonatomic, retain) IBOutlet UITableViewController *themeSettingsController; //New!!
 @property(nonatomic, retain) IBOutlet UIViewController* aboutController;
 
 @end

@@ -68,6 +68,23 @@
 		7060B05619CFE250004B43B2 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B04E19CFE250004B43B2 /* SourceCodePro-Regular.ttf */; };
 		7060B05719CFE250004B43B2 /* UbuntuMono-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B04F19CFE250004B43B2 /* UbuntuMono-R.ttf */; };
 		7060B05819CFE250004B43B2 /* VT323-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B05019CFE250004B43B2 /* VT323-Regular.ttf */; };
+		706352081A53D89E00FE9BD1 /* ThemeSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706352071A53D89E00FE9BD1 /* ThemeSettingsController.m */; };
+		70A3B2C81A596D7B00866321 /* BlackOrWhite.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A3B2C71A596D7B00866321 /* BlackOrWhite.m */; };
+		70D805CE1A57A39F00CACAA9 /* HRBrightnessCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805BD1A57A39F00CACAA9 /* HRBrightnessCursor.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		70D805CF1A57A39F00CACAA9 /* HRBrightnessSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805BF1A57A39F00CACAA9 /* HRBrightnessSlider.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		70D805D01A57A39F00CACAA9 /* HRColorCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805C11A57A39F00CACAA9 /* HRColorCursor.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		70D805D11A57A39F00CACAA9 /* HRColorInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805C31A57A39F00CACAA9 /* HRColorInfoView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		70D805D21A57A39F00CACAA9 /* HRColorMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805C51A57A39F00CACAA9 /* HRColorMapView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		70D805D31A57A39F00CACAA9 /* HRColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805C71A57A39F00CACAA9 /* HRColorPickerView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		70D805D41A57A39F00CACAA9 /* HRHSVColorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805C91A57A39F00CACAA9 /* HRHSVColorUtil.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		70D805D51A57A39F00CACAA9 /* UIImage+CoreGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805CB1A57A39F00CACAA9 /* UIImage+CoreGraphics.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		70D805D61A57A39F00CACAA9 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 70D805CC1A57A39F00CACAA9 /* LICENSE.txt */; };
+		70D805D71A57A39F00CACAA9 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 70D805CD1A57A39F00CACAA9 /* README.md */; };
+		70D805DA1A57A3BE00CACAA9 /* BGColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805D91A57A3BE00CACAA9 /* BGColorPickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		70D805DC1A57CC8400CACAA9 /* RotationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805DB1A57CC8400CACAA9 /* RotationController.m */; };
+		70D805E01A5811EA00CACAA9 /* TextColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805DF1A5811EA00CACAA9 /* TextColorPickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		70D805E51A5811F700CACAA9 /* BoldColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805E21A5811F700CACAA9 /* BoldColorPickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		70D805E61A5811F700CACAA9 /* CursorColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805E41A5811F700CACAA9 /* CursorColorPickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9F24A70111D7C6EF00E6EFC0 /* MenuSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F24A6FF11D7C6EF00E6EFC0 /* MenuSettingsViewController.h */; };
 		9F24A70211D7C6EF00E6EFC0 /* MenuSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F24A70011D7C6EF00E6EFC0 /* MenuSettingsViewController.m */; };
 		9F24A7FF11D7EE8100E6EFC0 /* MenuEditViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F24A7FD11D7EE8100E6EFC0 /* MenuEditViewController.h */; };
@@ -258,6 +275,38 @@
 		7060B05019CFE250004B43B2 /* VT323-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VT323-Regular.ttf"; sourceTree = "<group>"; };
 		7060B05919CFE3D0004B43B2 /* LICENSE-2.0.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "LICENSE-2.0.txt"; sourceTree = "<group>"; };
 		7060B05A19CFE3D0004B43B2 /* OFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		706352071A53D89E00FE9BD1 /* ThemeSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeSettingsController.m; sourceTree = "<group>"; };
+		706352091A53D8BF00FE9BD1 /* ThemeSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemeSettingsController.h; sourceTree = "<group>"; };
+		70A3B2C71A596D7B00866321 /* BlackOrWhite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlackOrWhite.m; path = Preferences/BlackOrWhite.m; sourceTree = "<group>"; };
+		70A3B2C91A596D9200866321 /* BlackOrWhite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BlackOrWhite.h; path = Preferences/BlackOrWhite.h; sourceTree = "<group>"; };
+		70D805BC1A57A39F00CACAA9 /* HRBrightnessCursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBrightnessCursor.h; sourceTree = "<group>"; };
+		70D805BD1A57A39F00CACAA9 /* HRBrightnessCursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBrightnessCursor.m; sourceTree = "<group>"; };
+		70D805BE1A57A39F00CACAA9 /* HRBrightnessSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBrightnessSlider.h; sourceTree = "<group>"; };
+		70D805BF1A57A39F00CACAA9 /* HRBrightnessSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBrightnessSlider.m; sourceTree = "<group>"; };
+		70D805C01A57A39F00CACAA9 /* HRColorCursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorCursor.h; sourceTree = "<group>"; };
+		70D805C11A57A39F00CACAA9 /* HRColorCursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorCursor.m; sourceTree = "<group>"; };
+		70D805C21A57A39F00CACAA9 /* HRColorInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorInfoView.h; sourceTree = "<group>"; };
+		70D805C31A57A39F00CACAA9 /* HRColorInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorInfoView.m; sourceTree = "<group>"; };
+		70D805C41A57A39F00CACAA9 /* HRColorMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorMapView.h; sourceTree = "<group>"; };
+		70D805C51A57A39F00CACAA9 /* HRColorMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorMapView.m; sourceTree = "<group>"; };
+		70D805C61A57A39F00CACAA9 /* HRColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRColorPickerView.h; sourceTree = "<group>"; };
+		70D805C71A57A39F00CACAA9 /* HRColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRColorPickerView.m; sourceTree = "<group>"; };
+		70D805C81A57A39F00CACAA9 /* HRHSVColorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRHSVColorUtil.h; sourceTree = "<group>"; };
+		70D805C91A57A39F00CACAA9 /* HRHSVColorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRHSVColorUtil.m; sourceTree = "<group>"; };
+		70D805CA1A57A39F00CACAA9 /* UIImage+CoreGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CoreGraphics.h"; sourceTree = "<group>"; };
+		70D805CB1A57A39F00CACAA9 /* UIImage+CoreGraphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CoreGraphics.m"; sourceTree = "<group>"; };
+		70D805CC1A57A39F00CACAA9 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		70D805CD1A57A39F00CACAA9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		70D805D81A57A3BE00CACAA9 /* BGColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BGColorPickerViewController.h; path = Preferences/BGColorPickerViewController.h; sourceTree = "<group>"; };
+		70D805D91A57A3BE00CACAA9 /* BGColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BGColorPickerViewController.m; path = Preferences/BGColorPickerViewController.m; sourceTree = "<group>"; };
+		70D805DB1A57CC8400CACAA9 /* RotationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RotationController.m; path = Preferences/RotationController.m; sourceTree = "<group>"; };
+		70D805DD1A57CC9F00CACAA9 /* RotationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RotationController.h; path = Preferences/RotationController.h; sourceTree = "<group>"; };
+		70D805DE1A5811EA00CACAA9 /* TextColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextColorPickerViewController.h; path = Preferences/TextColorPickerViewController.h; sourceTree = "<group>"; };
+		70D805DF1A5811EA00CACAA9 /* TextColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextColorPickerViewController.m; path = Preferences/TextColorPickerViewController.m; sourceTree = "<group>"; };
+		70D805E11A5811F700CACAA9 /* BoldColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoldColorPickerViewController.h; path = Preferences/BoldColorPickerViewController.h; sourceTree = "<group>"; };
+		70D805E21A5811F700CACAA9 /* BoldColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoldColorPickerViewController.m; path = Preferences/BoldColorPickerViewController.m; sourceTree = "<group>"; };
+		70D805E31A5811F700CACAA9 /* CursorColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CursorColorPickerViewController.h; path = Preferences/CursorColorPickerViewController.h; sourceTree = "<group>"; };
+		70D805E41A5811F700CACAA9 /* CursorColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CursorColorPickerViewController.m; path = Preferences/CursorColorPickerViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* MobileTerminal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MobileTerminal-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9F24A6FF11D7C6EF00E6EFC0 /* MenuSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuSettingsViewController.h; path = Preferences/MenuSettingsViewController.h; sourceTree = "<group>"; };
 		9F24A70011D7C6EF00E6EFC0 /* MenuSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuSettingsViewController.m; path = Preferences/MenuSettingsViewController.m; sourceTree = "<group>"; };
@@ -375,6 +424,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				70D805BA1A57A39E00CACAA9 /* Color-Picker-for-iOS */,
 				2C11C54C1013A4B700A2746E /* Tests */,
 				2C11C99B1013FEE800A2746E /* Preferences */,
 				2C11C54A1013A4AB00A2746E /* SubProcess */,
@@ -546,6 +596,12 @@
 				9FFD077412CFB33100709B8D /* AboutViewController.m */,
 				9F24A83611D7F27300E6EFC0 /* BorderedTextView.h */,
 				9F24A83711D7F27300E6EFC0 /* BorderedTextView.m */,
+				70D805D81A57A3BE00CACAA9 /* BGColorPickerViewController.h */,
+				70D805D91A57A3BE00CACAA9 /* BGColorPickerViewController.m */,
+				70D805E11A5811F700CACAA9 /* BoldColorPickerViewController.h */,
+				70D805E21A5811F700CACAA9 /* BoldColorPickerViewController.m */,
+				70D805E31A5811F700CACAA9 /* CursorColorPickerViewController.h */,
+				70D805E41A5811F700CACAA9 /* CursorColorPickerViewController.m */,
 				9F3B52151222140200682793 /* GestureEditViewController.h */,
 				9F3B52161222140200682793 /* GestureEditViewController.m */,
 				9FD244F3121790AF009A71C6 /* GestureSettings.h */,
@@ -560,12 +616,20 @@
 				9F24A70011D7C6EF00E6EFC0 /* MenuSettingsViewController.m */,
 				7060B02619CD4B2C004B43B2 /* FontSettingsController.h */,
 				7060B02719CD4B2C004B43B2 /* FontSettingsController.m */,
+				70D805DE1A5811EA00CACAA9 /* TextColorPickerViewController.h */,
+				70D805DF1A5811EA00CACAA9 /* TextColorPickerViewController.m */,
+				706352091A53D8BF00FE9BD1 /* ThemeSettingsController.h */,
+				706352071A53D89E00FE9BD1 /* ThemeSettingsController.m */,
 				9F74BF6F11D326890013DA87 /* PreferencesViewController.h */,
 				9F74BF7011D326890013DA87 /* PreferencesViewController.m */,
 				2C11CC7E10159F7400A2746E /* Settings.h */,
 				2C11CC7F10159F7400A2746E /* Settings.m */,
 				2C11CC8010159F7400A2746E /* TerminalSettings.h */,
 				2C11CC8110159F7400A2746E /* TerminalSettings.m */,
+				70D805DD1A57CC9F00CACAA9 /* RotationController.h */,
+				70D805DB1A57CC8400CACAA9 /* RotationController.m */,
+				70A3B2C91A596D9200866321 /* BlackOrWhite.h */,
+				70A3B2C71A596D7B00866321 /* BlackOrWhite.m */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -586,6 +650,39 @@
 			);
 			name = fonts;
 			path = Resources/fonts;
+			sourceTree = "<group>";
+		};
+		70D805BA1A57A39E00CACAA9 /* Color-Picker-for-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				70D805BB1A57A39E00CACAA9 /* ColorPicker */,
+				70D805CC1A57A39F00CACAA9 /* LICENSE.txt */,
+				70D805CD1A57A39F00CACAA9 /* README.md */,
+			);
+			path = "Color-Picker-for-iOS";
+			sourceTree = "<group>";
+		};
+		70D805BB1A57A39E00CACAA9 /* ColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				70D805BC1A57A39F00CACAA9 /* HRBrightnessCursor.h */,
+				70D805BD1A57A39F00CACAA9 /* HRBrightnessCursor.m */,
+				70D805BE1A57A39F00CACAA9 /* HRBrightnessSlider.h */,
+				70D805BF1A57A39F00CACAA9 /* HRBrightnessSlider.m */,
+				70D805C01A57A39F00CACAA9 /* HRColorCursor.h */,
+				70D805C11A57A39F00CACAA9 /* HRColorCursor.m */,
+				70D805C21A57A39F00CACAA9 /* HRColorInfoView.h */,
+				70D805C31A57A39F00CACAA9 /* HRColorInfoView.m */,
+				70D805C41A57A39F00CACAA9 /* HRColorMapView.h */,
+				70D805C51A57A39F00CACAA9 /* HRColorMapView.m */,
+				70D805C61A57A39F00CACAA9 /* HRColorPickerView.h */,
+				70D805C71A57A39F00CACAA9 /* HRColorPickerView.m */,
+				70D805C81A57A39F00CACAA9 /* HRHSVColorUtil.h */,
+				70D805C91A57A39F00CACAA9 /* HRHSVColorUtil.m */,
+				70D805CA1A57A39F00CACAA9 /* UIImage+CoreGraphics.h */,
+				70D805CB1A57A39F00CACAA9 /* UIImage+CoreGraphics.m */,
+			);
+			path = ColorPicker;
 			sourceTree = "<group>";
 		};
 		9FB73ED711C476B9005E3764 /* Resources-iPad */ = {
@@ -851,6 +948,7 @@
 				7060B05119CFE250004B43B2 /* Anonymous Pro.ttf in Resources */,
 				70222E1019CB345C000B0282 /* Default.png in Resources */,
 				9F6B6D5612297447007BAD59 /* Icon@2x.png in Resources */,
+				70D805D61A57A39F00CACAA9 /* LICENSE.txt in Resources */,
 				9F6B6D5912297452007BAD59 /* Icon-72.png in Resources */,
 				7060B05819CFE250004B43B2 /* VT323-Regular.ttf in Resources */,
 				70222E1619CBD935000B0282 /* twitlogo.png in Resources */,
@@ -928,12 +1026,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70D805E51A5811F700CACAA9 /* BoldColorPickerViewController.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				70D805D41A57A39F00CACAA9 /* HRHSVColorUtil.m in Sources */,
 				1D3623260D0F684500981E51 /* MobileTerminalAppDelegate.m in Sources */,
+				70A3B2C81A596D7B00866321 /* BlackOrWhite.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* MobileTerminalViewController.m in Sources */,
 				2C66C084101C47FB00E4189B /* MenuView.m in Sources */,
+				70D805D11A57A39F00CACAA9 /* HRColorInfoView.m in Sources */,
+				70D805D21A57A39F00CACAA9 /* HRColorMapView.m in Sources */,
+				70D805D51A57A39F00CACAA9 /* UIImage+CoreGraphics.m in Sources */,
+				70D805D31A57A39F00CACAA9 /* HRColorPickerView.m in Sources */,
+				70D805DC1A57CC8400CACAA9 /* RotationController.m in Sources */,
+				706352081A53D89E00FE9BD1 /* ThemeSettingsController.m in Sources */,
+				70D805CF1A57A39F00CACAA9 /* HRBrightnessSlider.m in Sources */,
+				70D805D71A57A39F00CACAA9 /* README.md in Sources */,
+				70D805CE1A57A39F00CACAA9 /* HRBrightnessCursor.m in Sources */,
 				9FF8508E12177F81000CC2A2 /* GestureResponder.m in Sources */,
+				70D805E61A5811F700CACAA9 /* CursorColorPickerViewController.m in Sources */,
+				70D805E01A5811EA00CACAA9 /* TextColorPickerViewController.m in Sources */,
+				70D805D01A57A39F00CACAA9 /* HRColorCursor.m in Sources */,
 				9F6B6D9912297822007BAD59 /* GestureActionRegistry.m in Sources */,
+				70D805DA1A57A3BE00CACAA9 /* BGColorPickerViewController.m in Sources */,
 				7060B02819CD4B2C004B43B2 /* FontSettingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1071,7 +1185,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ANALYZER_OBJC_UNUSED_IVARS = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 慶 上川 (KWJHH6PH5G)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1098,7 +1212,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ANALYZER_OBJC_UNUSED_IVARS = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 慶 上川 (KWJHH6PH5G)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MobileTerminal_Prefix.pch;
