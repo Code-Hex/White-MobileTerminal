@@ -189,7 +189,7 @@
         UISwitch *bwswitch = [[UISwitch alloc] initWithFrame:CGRectZero];
         [bwswitch addTarget:self action:@selector(bwchanger:) forControlEvents:UIControlEventTouchUpInside];
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        bwswitch.on = ![ud boolForKey:@"BlackOrWhite"] ? YES : NO;
+        bwswitch.on = [ud boolForKey:@"BlackOrWhite"] ? YES : NO;
         cell.accessoryView = bwswitch;
         cell.textLabel.text = itemTitle;
         
@@ -231,8 +231,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 -(void)bwchanger:(id)sender {
     UISwitch *bwswitch = (UISwitch *)sender;
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    bwswitch.on ? [ud setBool:false forKey:@"BlackOrWhite"] : [ud setBool:true forKey:@"BlackOrWhite"];
-    NSLog(@"black or white switch tapped. value = %@", (bwswitch.on ? @"ON(false)" : @"OFF(true)"));
+    bwswitch.on ? [ud setBool:true forKey:@"BlackOrWhite"] : [ud setBool:false forKey:@"BlackOrWhite"];
+    NSLog(@"black or white switch tapped. value = %@", (bwswitch.on ? @"ON(true)" : @"OFF(false)"));
 }
 
 -(void)keyboardtypechanger:(id)sender {

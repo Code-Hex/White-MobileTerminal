@@ -323,7 +323,7 @@
     if(![result isEqual:@"Yes"]){
         NSLog(@"WelcomeTerminal!!");
         [ud setObject:@"Yes" forKey:@"AlreadyLaunched"];
-        [ud setBool:true forKey:@"BlackOrWhite"];
+        [ud setBool:false forKey:@"BlackOrWhite"];
         [ud setBool:false forKey:@"KeyboardTypeURL"];
         [ud setObject:@"Courier" forKey:@"font-Name"];
         [ud setObject:IPAD?[NSNumber numberWithFloat:19.0]:[NSNumber numberWithFloat:11.0] forKey:@"font-Size"];
@@ -370,7 +370,7 @@
   //menuButton.transform = CGAffineTransformMakeRotation(-90.0f * M_PI / 180.0f);
    toolbar.clipsToBounds = YES;
    toolbar.hidden = YES;
-    if ([ud boolForKey:@"BlackOrWhite"]) {
+    if (![ud boolForKey:@"BlackOrWhite"]) {
         toolbar.backgroundColor = [[UIColor alloc] initWithWhite:1.f alpha:0.85f];
         toolbar.tintColor = [UIColor blackColor];
         _left.tintColor = [UIColor blackColor];

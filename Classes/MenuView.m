@@ -50,7 +50,7 @@
   }
   MenuItem* menuItem = [menuSettings menuItemAtIndex:[indexPath indexAtPosition:1]];
   NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    if ([ud boolForKey:@"BlackOrWhite"]) {
+    if (![ud boolForKey:@"BlackOrWhite"]) {
         cell.textLabel.textColor = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
         cell.backgroundColor = [[UIColor alloc] initWithWhite:1.f alpha:0.85f];
         menuTableView.backgroundColor = [[UIColor alloc] initWithWhite:0.667f alpha:0.85f];

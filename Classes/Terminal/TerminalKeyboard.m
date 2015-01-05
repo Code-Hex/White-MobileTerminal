@@ -62,14 +62,13 @@ static const int kControlCharacter = 0x2022;
     [self setAutocorrectionType:UITextAutocorrectionTypeNo];
     [self setEnablesReturnKeyAutomatically:NO];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"BlackOrWhite"])
-        [self setKeyboardAppearance:UIKeyboardAppearanceLight];
-    else
         [self setKeyboardAppearance:UIKeyboardAppearanceDark];
+    else
+        [self setKeyboardAppearance:UIKeyboardAppearanceLight];
       
-      if ([[NSUserDefaults standardUserDefaults] boolForKey:@"KeyboardTypeURL"]){
+      if ([[NSUserDefaults standardUserDefaults] boolForKey:@"KeyboardTypeURL"])
         [self setKeyboardType:UIKeyboardTypeURL];
-          NSLog(@"AAAAAAAAAAAAA");
-      }else
+      else
         [self setKeyboardType:UIKeyboardTypeASCIICapable];
       
     [self setReturnKeyType:UIReturnKeyDefault];
