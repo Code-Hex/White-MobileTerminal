@@ -25,7 +25,7 @@
   TerminalKeyboard* terminalKeyboard;
   BOOL shouldShowKeyboard;
   // If the keyboard is actually shown right now (not if it should be shown)
-  BOOL keyboardShown;
+  BOOL keyboardShow;
   BOOL copyPasteEnabled;
   UIButton* preferencesButton;
   UIButton* menuButton;
@@ -52,6 +52,7 @@
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *ctrl;
 @property (nonatomic, retain) IBOutlet UIView *back;
 @property (nonatomic, retain) IBOutlet UIView *behind;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *space;
 
 - (void)terminalSelectionDidChange:(id)sender;
 - (void)preferencesButtonPressed:(id)sender;

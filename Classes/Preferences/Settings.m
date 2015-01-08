@@ -29,7 +29,7 @@ static NSString* kDefaultMenuItems[][2] = {
   { @"pwd", @"pwd" },
   { @"ls -al", @"ls -al" },
   { @"chsh -s", @"chsh -s" },
-  { @"find -name \"NAME\" \"DIR\"", @"find -name" },
+  { @"find \"DIR\" -name \"NAME\"", @"find" },
   { @"ping google.com", @"ping google.com\n" },
   
 };

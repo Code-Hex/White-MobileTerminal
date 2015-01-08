@@ -95,8 +95,20 @@ static const int kControlCharacter = 0x2022;
 
 - (void)insertText:(NSString *)input
 {
-  // First character is always space (that we set)
-  unichar c = [input characterAtIndex:0];
+    int len = 0;
+    //char *chr_len = (char *)[input UTF8String];
+    
+    int size = [input lengthOfBytesUsingEncoding:NSUTF8StringEncoding] + 1;
+    char chars[size];
+    
+    //char str[size]; Secret...
+    //[input getCString:str maxLength:size encoding:NSUTF8StringEncoding];
+    
+    // First character is always space (that we set)
+    unichar c = [input characterAtIndex:0];
+    
+if (input.length == 1 && [input canBeConvertedToEncoding:NSASCIIStringEncoding]) {
+    NSLog(@"1: %@",input);
   if (controlKeyMode) {
     controlKeyMode = NO;
     // Convert the character to a control key with the same ascii name (or
@@ -121,8 +133,18 @@ static const int kControlCharacter = 0x2022;
     }
       if (controlKeyChanged) controlKeyChanged();
   }
+    chars[0] = c;
+    len = 1;
+} else {
+    for (int i = 0; i < input.length; i++, len++) {
+        unichar str_c = [input characterAtIndex:i];
+        chars[i] = str_c;
+    }
+}
   // Re-encode as UTF8
-  NSString* encoded = [NSString stringWithCharacters:&c length:1];
+    NSString* encoded = [[NSString alloc] initWithBytes:chars
+                                                 length:len
+                                               encoding:NSUTF8StringEncoding];
   NSData* data = [encoded dataUsingEncoding:NSUTF8StringEncoding];
   [[keyboard inputDelegate] receiveKeyboardInput:data];
 }

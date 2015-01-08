@@ -18,6 +18,7 @@
                 <outlet property="menuView" destination="62" id="66"/>
                 <outlet property="preferencesButton" destination="21" id="33"/>
                 <outlet property="right" destination="MkZ-Lr-whA" id="7AT-ve-AXi"/>
+                <outlet property="space" destination="afS-L2-Yh4" id="czf-hh-Zgi"/>
                 <outlet property="terminalGroupView" destination="8" id="31"/>
                 <outlet property="terminalSelector" destination="15" id="32"/>
                 <outlet property="toolbar" destination="BCC-Wl-D7V" id="MMi-jR-Mfm"/>
@@ -44,6 +45,11 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                             <items>
+                                <barButtonItem title=" ▼" id="7PZ-fq-6e4">
+                                    <connections>
+                                        <action selector="menudown:" destination="-1" id="rkf-A2-zGs"/>
+                                    </connections>
+                                </barButtonItem>
                                 <barButtonItem title="ctrl" id="83L-sC-XJ9">
                                     <connections>
                                         <action selector="ctrl:" destination="-1" id="p7S-OM-ero"/>
@@ -57,6 +63,21 @@
                                 <barButtonItem title="esc" id="H0r-E7-rza">
                                     <connections>
                                         <action selector="esc:" destination="-1" id="4LQ-iI-Bz6"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem title="␣" id="afS-L2-Yh4">
+                                    <connections>
+                                        <action selector="space:" destination="-1" id="YFJ-8J-Ebu"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem title="|" id="QRS-77-vI4">
+                                    <connections>
+                                        <action selector="bar:" destination="-1" id="HpU-ZX-27X"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem title="&quot;" id="i6Y-lv-mOK">
+                                    <connections>
+                                        <action selector="double_quotes:" destination="-1" id="cnu-MQ-7pO"/>
                                     </connections>
                                 </barButtonItem>
                                 <barButtonItem title="exit" id="gim-Za-bjI">

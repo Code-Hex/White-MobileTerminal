@@ -28,12 +28,13 @@
 @synthesize gestureActionRegistry;
 @synthesize toolbar;
 @synthesize ctrl;
+@synthesize space;
 
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (void)awakeFromNib
 {
   terminalKeyboard = [[TerminalKeyboard alloc] init];
-  keyboardShown = NO;  
+  keyboardShow = NO;
 
   // Copy and paste is off by default
   copyPasteEnabled = NO;
@@ -42,24 +43,38 @@
 - (void)registerForKeyboardNotifications
 {
   [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(keyboardWasShown:)
-                                               name:UIKeyboardDidShowNotification
+                                           selector:@selector(keyboardWillShow:)
+                                               name:UIKeyboardWillShowNotification
                                              object:nil];
-  
   [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(keyboardWasHidden:)
-                                               name:UIKeyboardDidHideNotification
+                                           selector:@selector(keyboardWillHide:)
+                                               name:UIKeyboardWillHideNotification
                                              object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasHidden:)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
+  
 }
 
 - (void)unregisterForKeyboardNotifications
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                  name:UIKeyboardDidShowNotification
+                                                  name:UIKeyboardWillShowNotification
                                                 object:nil];
   [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                  name:UIKeyboardDidHideNotification
+                                                  name:UIKeyboardWillHideNotification
                                                 object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardDidShowNotification
+                                                  object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardDidHideNotification
+                                                  object:nil];
 }
 
 // New added functions
@@ -80,6 +95,19 @@
 -(IBAction)left:(id)sender {
     [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c%c%c",(char)0x1B,(char)0x5B,(char)0x44] dataUsingEncoding:NSASCIIStringEncoding]];
 }
+
+-(IBAction)space:(id)sender {
+    [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c",(char)0x20] dataUsingEncoding:NSASCIIStringEncoding]];
+}
+
+-(IBAction)bar:(id)sender {
+    [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[@"|" dataUsingEncoding:NSASCIIStringEncoding]];
+}
+
+-(IBAction)double_quotes:(id)sender {
+    [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[@"\"" dataUsingEncoding:NSASCIIStringEncoding]];
+}
+
 
 -(void)longPress_left:(UILongPressGestureRecognizer *)left_sender {
     switch (left_sender.state) {
@@ -170,6 +198,30 @@
     [self performSelector:@selector(repeat_down:) withObject:nil afterDelay:0.1];
 }
 
+-(void)longPress_space:(UILongPressGestureRecognizer *)space_sender {
+    switch (space_sender.state) {
+        case UIGestureRecognizerStateBegan:
+            [self performSelector:@selector(repeat_space:) withObject:nil afterDelay:0.07];
+            break;
+            
+        case UIGestureRecognizerStateEnded:
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(repeat_space:) object:nil];
+            break;
+        default:
+            NSLog(@"Default_space");
+            break;
+            
+    }
+    
+}
+
+
+-(void)repeat_space:(id)sender{
+    [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c",(char)0x20] dataUsingEncoding:NSASCIIStringEncoding]];
+    [self performSelector:@selector(repeat_space:) withObject:nil afterDelay:0.07];
+}
+
+
 -(IBAction)esc:(id)sender {
     [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c",0x1b] dataUsingEncoding:NSASCIIStringEncoding]];
     menuView.hidden = YES;
@@ -189,8 +241,39 @@
     toolbar.hidden = YES;
 }
 
+- (IBAction)menudown:(id)ctrl_button {
+    menuView.hidden = YES;
+}
+
 - (IBAction)exit:(id)sender {
-    exit(0);
+    Class class = NSClassFromString(@"UIAlertController");
+    if(class){
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Exit"
+                                                    message:@"Would you like to exit it?"
+                                             preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel"
+                                                  style:UIAlertActionStyleDefault
+                                                handler:nil]];
+        
+        UIAlertAction * okAction =
+        [UIAlertAction actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action) {
+                                   exit(0);
+                               }];
+        
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Exit"
+                                                        message:@"Would you like to exit it?"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"OK", nil];
+        [alert show];
+    }
 }
 
 
@@ -198,57 +281,68 @@
 // below -- it requires more of a change because the replacement
 // is not available in 3.1.3
 
+- (void)keyboardWillShow:(NSNotification*)Notification
+{
+    CGRect keyboardFrameEnd = [[Notification.userInfo objectForKey:UIKeyboardBoundsUserInfoKey
+                                ] CGRectValue];
+    [self movecontentView:(_behind.frame.size.height + 6 - keyboardFrameEnd.size.height) notification:Notification];
+}
+
+- (void)keyboardWillHide:(NSNotification*)Notification
+{
+    
+    CGRect keyboardFrame = [[Notification.userInfo objectForKey:UIKeyboardBoundsUserInfoKey
+                                ] CGRectValue];
+  [self movecontentView:(contentView.frame.size.height + keyboardFrame.size.height) notification:Notification];
+}
+
+- (void)keyboardDidChange:(NSNotification*)Notification
+{
+    CGRect keyboardFrame = [[Notification.userInfo objectForKey:UIKeyboardBoundsUserInfoKey
+                                ] CGRectValue];
+        [self movecontentView:(_behind.frame.size.height + 6 - keyboardFrame.size.height) notification:Notification];
+}
+
+- (void)movecontentView:(CGFloat)high notification:(NSNotification*)Notification
+{
+    NSTimeInterval duration = [[Notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationCurve curve  = [[Notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    void (^animations)(void);
+    animations = ^(void) {
+        CGRect keyboardFrame = [[Notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+        if (keyboardFrame.size.height > 0.f) {
+            CGRect viewFrame = contentView.frame;
+            viewFrame.size.height = high;
+           contentView.frame = viewFrame;
+        }
+    };
+    [UIView animateWithDuration:duration delay:0.f options:(curve << 16) animations:animations completion:nil];
+}
+
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
-  if (keyboardShown) {
-    return;
-  }
-  keyboardShown = YES;
-
-  NSDictionary* info = [aNotification userInfo];
-  
-  // Get the size of the keyboard.
-  NSValue* aValue = info[UIKeyboardBoundsUserInfoKey];
-  CGSize keyboardSize = [aValue CGRectValue].size;
-  
-  // Reset the height of the terminal to full screen not shown by the keyboard
-  CGRect viewFrame = [contentView frame];
-  viewFrame.size.height -= keyboardSize.height;
-  contentView.frame = viewFrame;
+    if (keyboardShow) return;
+    keyboardShow = YES;
 }
 
 - (void)keyboardWasHidden:(NSNotification*)aNotification
 {
-  if (!keyboardShown) {
-    return;
-  }
-  keyboardShown = NO;
-
-  NSDictionary* info = [aNotification userInfo];
-  
-  // Get the size of the keyboard.
-  NSValue* aValue = info[UIKeyboardBoundsUserInfoKey];
-  CGSize keyboardSize = [aValue CGRectValue].size;  
-  
-  // Resize to the original height of the screen without the keyboard
-  CGRect viewFrame = [contentView frame];
-  viewFrame.size.height += keyboardSize.height;
-  contentView.frame = viewFrame;
+    if (!keyboardShow) return;
+    keyboardShow = NO;
 }
 
 - (void)setShowKeyboard:(BOOL)showKeyboard
 {
-  if (showKeyboard) {
+  if (showKeyboard)
     [terminalKeyboard becomeFirstResponder];
-  } else {
+  else
     [terminalKeyboard resignFirstResponder];
-  }
 }
 
 - (void)toggleKeyboard:(id)sender
 {
-  BOOL isShown = keyboardShown;
-  [self setShowKeyboard:!isShown];
+  BOOL isShow = keyboardShow;
+  [self setShowKeyboard:!isShow];
 }
 
 - (void)toggleCopyPaste:(id)sender;
@@ -278,7 +372,7 @@
 {
   // Remember the keyboard state for the next reload and don't listen for
   // keyboard hide/show events
-  shouldShowKeyboard = keyboardShown;
+  shouldShowKeyboard = keyboardShow;
   [self unregisterForKeyboardNotifications];
 
   [interfaceDelegate preferencesButtonPressed];
@@ -287,14 +381,19 @@
 // Invoked when the menu button is pressed
 - (void)menuButtonPressed:(id)sender 
 {
-  [menuView setHidden:![menuView isHidden]];
     toolbar.layer.shouldRasterize = YES;
     CATransition *animation = [CATransition animation];
     animation.type = kCATransitionMoveIn;
     animation.subtype = kCATransitionFromTop;
     animation.duration = 0.25;
     [toolbar.layer addAnimation:animation forKey:nil];
-    [toolbar setHidden:![toolbar isHidden]];
+    if (![toolbar isHidden] && [menuView isHidden]) {
+        [toolbar setHidden:YES];
+        [menuView setHidden:[menuView isHidden]];
+    } else {
+        [toolbar setHidden:![menuView isHidden]];
+        [menuView setHidden:![menuView isHidden]];
+    }
 }
 
 // Invoked when a menu item is clicked, to run the specified command.
@@ -421,6 +520,11 @@
     UILongPressGestureRecognizer *longPress_down = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress_down:)];
     longPress_down.minimumPressDuration = 0.5;
     [_down addGestureRecognizer:longPress_down];
+    UILongPressGestureRecognizer *longPress_space = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress_space:)];
+    longPress_space.minimumPressDuration = 0.5;
+    [[space valueForKey:@"view"] addGestureRecognizer:longPress_space];
+    UITextView *aTextView = [[UITextView alloc] init];
+    aTextView.inputAccessoryView = terminalSelector;
 
 }
 
@@ -473,6 +577,7 @@
     [ctrl release];
     [_back release];
     [_behind release];
+    [space release];
   [super dealloc];
 }
 
