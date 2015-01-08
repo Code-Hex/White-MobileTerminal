@@ -12,6 +12,8 @@ Added fonts setting controller!!
 Added themes setting controller!!  
 I've prepared 10 types of fonts and limitless color themes :D  
   
+[![](http://img.youtube.com/vi/6dqoVRL1LrY/0.jpg)](https://www.youtube.com/watch?v=6dqoVRL1LrY)
+  
 #License  
 Original(GNU GPL v2)  
 https://code.google.com/p/mobileterminal/  
