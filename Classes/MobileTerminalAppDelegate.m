@@ -65,9 +65,9 @@
 
 - (void)rootViewDidAppear
 {
-  if (inPreferences) {
+  if (inPreferences)
     [[Settings sharedInstance] persist];
-  }
+    
   inPreferences = TRUE;
 
   // This must be invoked after the animation to show the root view completes

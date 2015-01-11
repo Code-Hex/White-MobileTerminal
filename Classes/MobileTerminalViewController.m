@@ -108,6 +108,10 @@
     [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[@"\"" dataUsingEncoding:NSASCIIStringEncoding]];
 }
 
+-(IBAction)grave_accent:(id)sender {
+    [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[@"`" dataUsingEncoding:NSASCIIStringEncoding]];
+}
+
 
 -(void)longPress_left:(UILongPressGestureRecognizer *)left_sender {
     switch (left_sender.state) {
@@ -210,7 +214,6 @@
         default:
             NSLog(@"Default_space");
             break;
-            
     }
     
 }
@@ -226,19 +229,23 @@
     [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c",0x1b] dataUsingEncoding:NSASCIIStringEncoding]];
     menuView.hidden = YES;
     toolbar.hidden = YES;
+    CGRect viewFrame = terminalGroupView.frame;
+    viewFrame.size.height += toolbar.frame.size.height;
+    terminalGroupView.frame = viewFrame;
 }
 
 - (IBAction)tab:(id)sender {
     [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[NSData dataWithBytes:"\t" length:1]];
-    menuView.hidden = YES;
-    toolbar.hidden = YES;
 }
 
-- (IBAction)ctrl:(id)ctrl_button {
+- (IBAction)ctrl:(UIButton*)ctrl_button {
     TerminalKeyboard *keyInput = (TerminalKeyboard *)terminalKeyboard.inputTextField;
     keyInput.controlKeyMode = !keyInput.controlKeyMode;
     menuView.hidden = YES;
     toolbar.hidden = YES;
+    CGRect viewFrame = terminalGroupView.frame;
+    viewFrame.size.height += toolbar.frame.size.height;
+    terminalGroupView.frame = viewFrame;
 }
 
 - (IBAction)menudown:(id)ctrl_button {
@@ -385,8 +392,18 @@
     CATransition *animation = [CATransition animation];
     animation.type = kCATransitionMoveIn;
     animation.subtype = kCATransitionFromTop;
-    animation.duration = 0.25;
+    animation.duration = 0.25f;
     [toolbar.layer addAnimation:animation forKey:nil];
+    if (![toolbar isHidden]) {
+        CGRect viewFrame = terminalGroupView.frame;
+        viewFrame.size.height += toolbar.frame.size.height;
+        terminalGroupView.frame = viewFrame;
+    } else {
+        CGRect viewFrame = terminalGroupView.frame;
+        viewFrame.size.height -= toolbar.frame.size.height;
+        terminalGroupView.frame = viewFrame;
+    }
+    
     if (![toolbar isHidden] && [menuView isHidden]) {
         [toolbar setHidden:YES];
         [menuView setHidden:[menuView isHidden]];
@@ -405,7 +422,9 @@
   // Make the menu disappear
     menuView.hidden = YES;
     toolbar.hidden = YES;
-    
+    CGRect viewFrame = terminalGroupView.frame;
+    viewFrame.size.height += toolbar.frame.size.height;
+    terminalGroupView.frame = viewFrame;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -432,7 +451,7 @@
   NSData *colorData = [ud objectForKey:@"Background"];
   [self setNeedsStatusBarAppearanceUpdate];
   UIColor *background = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
-  _back.backgroundColor = background;
+  contentView.backgroundColor = background;
   _behind.backgroundColor = background;
     
   @try {
@@ -523,8 +542,6 @@
     UILongPressGestureRecognizer *longPress_space = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress_space:)];
     longPress_space.minimumPressDuration = 0.5;
     [[space valueForKey:@"view"] addGestureRecognizer:longPress_space];
-    UITextView *aTextView = [[UITextView alloc] init];
-    aTextView.inputAccessoryView = terminalSelector;
 
 }
 
@@ -575,7 +592,6 @@
     [_down release];
     [toolbar release];
     [ctrl release];
-    [_back release];
     [_behind release];
     [space release];
   [super dealloc];

@@ -8,7 +8,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MobileTerminalViewController">
             <connections>
-                <outlet property="back" destination="24" id="zDQ-kP-RWC"/>
                 <outlet property="behind" destination="6" id="7pG-uI-TZu"/>
                 <outlet property="contentView" destination="24" id="26"/>
                 <outlet property="ctrl" destination="83L-sC-XJ9" id="oOF-z6-rAJ"/>
@@ -36,7 +35,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8" customClass="TerminalGroupView">
-                            <rect key="frame" x="0.0" y="1" width="320" height="524"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="531"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
@@ -45,7 +44,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                             <items>
-                                <barButtonItem title=" ▼" id="7PZ-fq-6e4">
+                                <barButtonItem title="▼" id="7PZ-fq-6e4">
                                     <connections>
                                         <action selector="menudown:" destination="-1" id="rkf-A2-zGs"/>
                                     </connections>
@@ -55,17 +54,17 @@
                                         <action selector="ctrl:" destination="-1" id="p7S-OM-ero"/>
                                     </connections>
                                 </barButtonItem>
-                                <barButtonItem title="tab" id="ew9-Yz-LDa">
-                                    <connections>
-                                        <action selector="tab:" destination="-1" id="VSu-lc-nmn"/>
-                                    </connections>
-                                </barButtonItem>
                                 <barButtonItem title="esc" id="H0r-E7-rza">
                                     <connections>
                                         <action selector="esc:" destination="-1" id="4LQ-iI-Bz6"/>
                                     </connections>
                                 </barButtonItem>
-                                <barButtonItem title="␣" id="afS-L2-Yh4">
+                                <barButtonItem title="tab" id="ew9-Yz-LDa">
+                                    <connections>
+                                        <action selector="tab:" destination="-1" id="VSu-lc-nmn"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem title="space" id="afS-L2-Yh4">
                                     <connections>
                                         <action selector="space:" destination="-1" id="YFJ-8J-Ebu"/>
                                     </connections>
@@ -80,6 +79,11 @@
                                         <action selector="double_quotes:" destination="-1" id="cnu-MQ-7pO"/>
                                     </connections>
                                 </barButtonItem>
+                                <barButtonItem title="`" id="tMg-HL-tiY">
+                                    <connections>
+                                        <action selector="grave_accent:" destination="-1" id="ok7-Dy-jXC"/>
+                                    </connections>
+                                </barButtonItem>
                                 <barButtonItem title="exit" id="gim-Za-bjI">
                                     <connections>
                                         <action selector="exit:" destination="-1" id="SHG-Pu-nN1"/>
@@ -89,11 +93,11 @@
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </toolbar>
                         <view hidden="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="62" customClass="MenuView">
-                            <rect key="frame" x="0.0" y="45" width="240" height="418.99999774668834"/>
+                            <rect key="frame" x="0.0" y="44.999995550747876" width="240" height="419"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bouncesZoom="NO" style="plain" separatorStyle="default" rowHeight="43" sectionHeaderHeight="22" sectionFooterHeight="22" id="48">
-                                    <rect key="frame" x="0.0" y="0.0" width="240" height="442.99999774668834"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="443"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
@@ -166,22 +170,8 @@
                             <rect key="frame" x="0.0" y="532" width="108" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <subviews>
-                                <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="35">
-                                    <rect key="frame" x="11" y="8" width="22" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <state key="normal">
-                                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <state key="highlighted">
-                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="menuButtonPressed:" destination="-1" eventType="touchUpInside" id="38"/>
-                                    </connections>
-                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PMi-kR-Aux">
-                                    <rect key="frame" x="74" y="1" width="34" height="36"/>
+                                    <rect key="frame" x="74" y="0.0" width="34" height="36"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <state key="normal" title="▽">
@@ -200,6 +190,20 @@
                                     </state>
                                     <connections>
                                         <action selector="up:" destination="-1" eventType="touchUpInside" id="ihu-pK-Z5v"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="35">
+                                    <rect key="frame" x="8" y="8" width="22" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal">
+                                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="menuButtonPressed:" destination="-1" eventType="touchUpInside" id="38"/>
                                     </connections>
                                 </button>
                             </subviews>

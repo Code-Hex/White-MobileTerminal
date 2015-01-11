@@ -54,8 +54,8 @@
 		2C72B32C101ABC2F00F10E63 /* libPreferences.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C11C9C91014035800A2746E /* libPreferences.a */; };
 		2C72B3E3101AC4D100F10E63 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		7007FD0219CBE03A006D11C6 /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = 7007FD0119CBE03A006D11C6 /* About.png */; };
-		70222E0F19CB345C000B0282 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70222E0D19CB345C000B0282 /* Default-568h@2x.png */; };
-		70222E1019CB345C000B0282 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 70222E0E19CB345C000B0282 /* Default.png */; };
+		700F772A1A62CD1200B9642B /* Loading....xib in Resources */ = {isa = PBXBuildFile; fileRef = 700F77291A62CD1200B9642B /* Loading....xib */; };
+		700F77301A62CF6400B9642B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 700F772F1A62CF6400B9642B /* Images.xcassets */; };
 		70222E1219CBD723000B0282 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70222E1119CBD723000B0282 /* Social.framework */; };
 		70222E1419CBD78B000B0282 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70222E1319CBD78B000B0282 /* Accounts.framework */; };
 		70222E1619CBD935000B0282 /* twitlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70222E1519CBD935000B0282 /* twitlogo.png */; };
@@ -83,6 +83,8 @@
 		70D805E01A5811EA00CACAA9 /* TextColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805DF1A5811EA00CACAA9 /* TextColorPickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		70D805E51A5811F700CACAA9 /* BoldColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805E21A5811F700CACAA9 /* BoldColorPickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		70D805E61A5811F700CACAA9 /* CursorColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D805E41A5811F700CACAA9 /* CursorColorPickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		70F893441A62C5780072ED99 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F893431A62C5780072ED99 /* Default.png */; };
+		70F893561A62CAF40072ED99 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F893551A62CAF40072ED99 /* Default-568h@2x.png */; };
 		9F24A70111D7C6EF00E6EFC0 /* MenuSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F24A6FF11D7C6EF00E6EFC0 /* MenuSettingsViewController.h */; };
 		9F24A70211D7C6EF00E6EFC0 /* MenuSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F24A70011D7C6EF00E6EFC0 /* MenuSettingsViewController.m */; };
 		9F24A7FF11D7EE8100E6EFC0 /* MenuEditViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F24A7FD11D7EE8100E6EFC0 /* MenuEditViewController.h */; };
@@ -256,8 +258,8 @@
 		2C72B2BC101ABA9100F10E63 /* PreferencesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PreferencesTests-Info.plist"; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* MobileTerminal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileTerminal_Prefix.pch; sourceTree = "<group>"; };
 		7007FD0119CBE03A006D11C6 /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = About.png; path = Resources/About.png; sourceTree = "<group>"; };
-		70222E0D19CB345C000B0282 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
-		70222E0E19CB345C000B0282 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
+		700F77291A62CD1200B9642B /* Loading....xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Loading....xib; sourceTree = "<group>"; };
+		700F772F1A62CF6400B9642B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MobileTerminal/Images.xcassets; sourceTree = "<group>"; };
 		70222E1119CBD723000B0282 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		70222E1319CBD78B000B0282 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		70222E1519CBD935000B0282 /* twitlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitlogo.png; path = Resources/twitlogo.png; sourceTree = "<group>"; };
@@ -303,6 +305,8 @@
 		70D805E21A5811F700CACAA9 /* BoldColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BoldColorPickerViewController.m; path = Preferences/BoldColorPickerViewController.m; sourceTree = "<group>"; };
 		70D805E31A5811F700CACAA9 /* CursorColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CursorColorPickerViewController.h; path = Preferences/CursorColorPickerViewController.h; sourceTree = "<group>"; };
 		70D805E41A5811F700CACAA9 /* CursorColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CursorColorPickerViewController.m; path = Preferences/CursorColorPickerViewController.m; sourceTree = "<group>"; };
+		70F893431A62C5780072ED99 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
+		70F893551A62CAF40072ED99 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* MobileTerminal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MobileTerminal-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9F24A6FF11D7C6EF00E6EFC0 /* MenuSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuSettingsViewController.h; path = Preferences/MenuSettingsViewController.h; sourceTree = "<group>"; };
 		9F24A70011D7C6EF00E6EFC0 /* MenuSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuSettingsViewController.m; path = Preferences/MenuSettingsViewController.m; sourceTree = "<group>"; };
@@ -458,6 +462,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				700F77291A62CD1200B9642B /* Loading....xib */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -480,10 +485,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				700F772F1A62CF6400B9642B /* Images.xcassets */,
+				70F893551A62CAF40072ED99 /* Default-568h@2x.png */,
+				70F893431A62C5780072ED99 /* Default.png */,
 				7007FD0119CBE03A006D11C6 /* About.png */,
 				70222E1519CBD935000B0282 /* twitlogo.png */,
-				70222E0D19CB345C000B0282 /* Default-568h@2x.png */,
-				70222E0E19CB345C000B0282 /* Default.png */,
 				9FE6971312E240C200EDE939 /* control.def */,
 				7060B04819CFE24F004B43B2 /* fonts */,
 				9F6B6D5712297452007BAD59 /* Icon-72.png */,
@@ -933,18 +939,20 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				7060B05719CFE250004B43B2 /* UbuntuMono-R.ttf in Resources */,
 				2899E5220DE3E06400AC0155 /* MobileTerminalViewController.xib in Resources */,
+				700F77301A62CF6400B9642B /* Images.xcassets in Resources */,
 				7060B05319CFE250004B43B2 /* CutiveMono-Regular.ttf in Resources */,
 				9FB73ED911C476BA005E3764 /* MainWindow-iPad.xib in Resources */,
+				700F772A1A62CD1200B9642B /* Loading....xib in Resources */,
+				70F893561A62CAF40072ED99 /* Default-568h@2x.png in Resources */,
 				9F6B6D5312297447007BAD59 /* Icon-Small.png in Resources */,
 				9F6B6D5412297447007BAD59 /* Icon-Small@2x.png in Resources */,
-				70222E0F19CB345C000B0282 /* Default-568h@2x.png in Resources */,
 				9F6B6D5512297447007BAD59 /* Icon.png in Resources */,
 				7060B05119CFE250004B43B2 /* Anonymous Pro.ttf in Resources */,
-				70222E1019CB345C000B0282 /* Default.png in Resources */,
 				9F6B6D5612297447007BAD59 /* Icon@2x.png in Resources */,
 				70D805D61A57A39F00CACAA9 /* LICENSE.txt in Resources */,
 				9F6B6D5912297452007BAD59 /* Icon-72.png in Resources */,
 				7060B05819CFE250004B43B2 /* VT323-Regular.ttf in Resources */,
+				70F893441A62C5780072ED99 /* Default.png in Resources */,
 				70222E1619CBD935000B0282 /* twitlogo.png in Resources */,
 				9F6B6D5A12297452007BAD59 /* Icon-Small-50.png in Resources */,
 				7007FD0219CBE03A006D11C6 /* About.png in Resources */,
@@ -1176,6 +1184,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_OBJC_UNUSED_IVARS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 慶 上川 (KWJHH6PH5G)";
 				COPY_PHASE_STRIP = NO;
@@ -1203,6 +1212,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_OBJC_UNUSED_IVARS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 慶 上川 (KWJHH6PH5G)";
 				COPY_PHASE_STRIP = YES;

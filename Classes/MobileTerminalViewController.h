@@ -50,7 +50,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *up;
 @property (nonatomic, retain) IBOutlet UIButton *down;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *ctrl;
-@property (nonatomic, retain) IBOutlet UIView *back;
 @property (nonatomic, retain) IBOutlet UIView *behind;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *space;
 

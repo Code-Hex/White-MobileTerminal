@@ -66,11 +66,11 @@ static const NSTimeInterval kAnimationDuration = 0.25f;
     }
   }
   UIViewAnimationTransition transition;
-  if (previousActiveTerminalIndex < activeTerminalIndex) {
+  if (previousActiveTerminalIndex < activeTerminalIndex)
     transition = UIViewAnimationTransitionCurlUp;
-  } else {
+  else
     transition = UIViewAnimationTransitionCurlDown;
-  } 
+  
   [UIView beginAnimations:NULL context:NULL];
   [UIView setAnimationDuration:kAnimationDuration];
   [UIView setAnimationTransition:transition forView:self cache:YES];

@@ -155,9 +155,8 @@ static const char* kProcessExitedMessage =
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
   [super touchesEnded:touches withEvent:event];
-  if (!copyAndPasteEnabled) {
-    return;
-  }
+  if (!copyAndPasteEnabled) return;
+    
   CGRect rect = [textView cursorRegion];
   if ([textView hasSelection]) {
     UITouch *theTouch = [touches anyObject];

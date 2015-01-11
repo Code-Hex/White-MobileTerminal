@@ -8,15 +8,10 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>Icon</string>
-		<string>Icon@2x</string>
-		<string>Icon-Small</string>
-		<string>Icon-Small@2x</string>
-		<string>Icon-72</string>
-		<string>Icon-Small-50</string>
-	</array>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>com.codehex.whiteterminal.$(PRODUCT_NAME:rfc1034identifier)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -46,6 +41,8 @@
 		<string>UbuntuMono-R.ttf</string>
 		<string>VT323-Regular.ttf</string>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>Loading...</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIStatusBarHidden</key>

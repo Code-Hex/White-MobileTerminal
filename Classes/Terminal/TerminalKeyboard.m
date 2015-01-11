@@ -108,7 +108,6 @@ static const int kControlCharacter = 0x2022;
     unichar c = [input characterAtIndex:0];
     
 if (input.length == 1 && [input canBeConvertedToEncoding:NSASCIIStringEncoding]) {
-    NSLog(@"1: %@",input);
   if (controlKeyMode) {
     controlKeyMode = NO;
     // Convert the character to a control key with the same ascii name (or

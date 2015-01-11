@@ -23,7 +23,7 @@ static NSString* kGestureSettings = @"gestureSettings";
 static NSString* kTerminalSettings = @"terminalSettings";
 
 static NSString* kDefaultMenuItems[][2] = {
-  { @"|", @"|" },
+  { @"sl", @"sl" },
   { @"cd", @"cd" },
   { @"../", @"../" },  
   { @"pwd", @"pwd" },
