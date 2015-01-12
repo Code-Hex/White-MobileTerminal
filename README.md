@@ -7,7 +7,7 @@ Supports ios versions from 7.0 to  8.1 !!
 Changed UI(Cooler than before).  
 Fixed some issues(for example: problems when restarting subprocesses).  
 Completely removed the black line on the screen.  
-(This problem is only solved in white mobile terminal for now.)  
+(This problem is only solved in whiteterminal for now.)  
 Added fonts setting controller!!  
 Added themes setting controller!!  
 I've prepared 10 types of fonts and limitless color themes :D  
