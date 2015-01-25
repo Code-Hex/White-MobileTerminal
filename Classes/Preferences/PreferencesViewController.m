@@ -54,12 +54,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-  return 2;
+    return 1;//2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return (section == 0) ? [sections count] : 1;
+    return /*(section == 0) ? */[sections count];// : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -68,7 +68,7 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (indexPath.section == 0) {
+    //if (indexPath.section == 0) {
         NSString* itemTitle = [sections objectAtIndex:index];
 
         if (cell == nil) {
@@ -79,7 +79,7 @@
             }
         }
         return cell;
-    } else {
+   /* } else {
         NSString* itemTitle = @"Quick Restart";
         if (!cell) {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemTitle] autorelease];
@@ -93,6 +93,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
+      */
 }
 
 - (void)tableView:(UITableView *)tableView
@@ -110,6 +111,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
   itemController.navigationItem.title = [sections objectAtIndex:index];
 }
 
+/*
 -(void)restart:(id)sender {
     UISwitch *qswitch = (UISwitch *)sender;
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
@@ -125,7 +127,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     return section == 1 ? [NSString stringWithFormat:@"When you are finished, quickly restart using the Notification Center."] : 0;
 }
-
+*/
 
 @end
 

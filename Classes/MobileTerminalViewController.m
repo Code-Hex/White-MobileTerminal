@@ -261,6 +261,7 @@
                                handler:^(UIAlertAction * action) {
                                    [[UIApplication sharedApplication] performSelector:@selector(suspend)];
                                    [NSThread sleepForTimeInterval:0.2];
+                                   /*
                                    UILocalNotification *notification = [[UILocalNotification alloc] init];
                                    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
                                    if (notification && [ud boolForKey:@"QuickRestart"])
@@ -269,9 +270,10 @@
                                        notification.repeatInterval = 0;
                                        notification.alertBody = @"Restart terminal to resume.";
                                        notification.alertAction = @"Restart";
-                                       [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+                                       [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
                                    }
                                    [notification release];
+                                    */
                                    exit(0);
                                }];
         
@@ -459,7 +461,7 @@
         [ud setBool:false forKey:@"BlackOrWhite"];
         [ud setBool:false forKey:@"KeyboardTypeURL"];
         [ud setObject:@"Courier" forKey:@"font-Name"];
-        [ud setBool:true forKey:@"QuickRestart"];
+        //[ud setBool:true forKey:@"QuickRestart"];
         [ud setObject:IPAD?[NSNumber numberWithFloat:19.0]:[NSNumber numberWithFloat:11.0] forKey:@"font-Size"];
         [ud synchronize];
     }

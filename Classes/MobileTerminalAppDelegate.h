@@ -25,5 +25,6 @@
 
 - (void)preferencesButtonPressed;
 - (void)rootViewDidAppear;
+
 @end
 

@@ -89,6 +89,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     NSLog(@"Application will terminate.");
+    /*
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     if (notification && [ud boolForKey:@"QuickRestart"])
@@ -100,7 +101,6 @@
         [[UIApplication sharedApplication] scheduleLocalNotification:notification];
     }
     [notification release];
-
+     */
 }
-
 @end
