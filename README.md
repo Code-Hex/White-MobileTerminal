@@ -43,5 +43,5 @@ This is based on the [MIT License](http://opensource.org/licenses/MIT).
 Fixedsys  
 This is based on the [GNU General Public License](https://github.com/Code-Hex/White-MobileTerminal/blob/master/Resources/fonts/readme.txt).  
   
-LuxiMono
+LuxiMono  
 This is based on the [Bigelow & Holmes - Luxi License](https://github.com/Code-Hex/White-MobileTerminal/blob/master/Resources/fonts/Bigelow%20%26%20Holmes%20-%20Luxi%20License.txt).  
