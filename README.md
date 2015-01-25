@@ -28,7 +28,7 @@ Fonts & themes settings.
 https://github.com/hbang/NewTerm  
   
 ###Fonts  
-AnonymousPro, CutiveMono-Regular, MesloLGM-Regular, SourceCodePro-Regular, VT323-Regular  
+AnonymousPro, CutiveMono-Regular, FiraMono, MesloLGM-Regular, SourceCodePro-Regular, VT323-Regular  
 They are based on the [SIL Open Font License version 1.1](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL).
 
 UbuntuMono-Regular  
@@ -36,3 +36,12 @@ This is based on the [Ubuntu Font Licence version 1.0](http://font.ubuntu.com/li
   
 Cousine-Regular  
 This is based on the [Apache License version 2.0](http://www.apache.org/licenses/).  
+  
+ProFont  
+This is based on the [MIT License](http://opensource.org/licenses/MIT).  
+  
+Fixedsys  
+This is based on the [GNU General Public License](https://github.com/Code-Hex/White-MobileTerminal/blob/master/Resources/fonts/readme.txt).  
+  
+LuxiMono
+This is based on the [Bigelow & Holmes - Luxi License](https://github.com/Code-Hex/White-MobileTerminal/blob/master/Resources/fonts/Bigelow%20%26%20Holmes%20-%20Luxi%20License.txt).  
