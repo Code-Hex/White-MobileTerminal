@@ -24,6 +24,11 @@
   [addButtonItem release];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
   return 1;
@@ -72,7 +77,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)addItem:(id)sender
 {
-  [self.tableView reloadData];
   [self startEditing:[MenuItem newItemWithLabel:@"" andCommand:@""] asInsert:TRUE];
 }
 
@@ -91,10 +95,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)finishEditing:(id)sender
 {
-  if (editIsInsert) {
+  if (editIsInsert)
     [menuSettings addMenuItem:menuEditViewController.editingMenuItem];
-  }
-  [self.tableView reloadData];
 }
 
 @end

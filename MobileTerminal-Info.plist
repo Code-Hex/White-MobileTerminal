@@ -35,11 +35,22 @@
 		<string>Anonymous Pro.ttf</string>
 		<string>Cousine-Regular.ttf</string>
 		<string>CutiveMono-Regular.ttf</string>
+		<string>FiraMono-Regular.ttf</string>
+		<string>Fixedsys.ttf</string>
+		<string>HyperFont.ttf</string>
 		<string>Inconsolata-Regular.ttf</string>
+		<string>luximr.ttf</string>
 		<string>MesloLGM-Regular.ttf</string>
+		<string>ProFont.ttf</string>
 		<string>SourceCodePro-Regular.ttf</string>
 		<string>UbuntuMono-R.ttf</string>
 		<string>VT323-Regular.ttf</string>
+	</array>
+	<key>UIApplicationIsOpaque</key>
+	<false/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>Loading...</string>

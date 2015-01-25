@@ -2,6 +2,7 @@
 // MobileTerminal
 
 #import <UIKit/UIKit.h>
+#import "../MobileTerminalViewController.h"
 
 // Protocol implemented by listener of keyboard events
 @protocol TerminalInputProtocol
@@ -24,7 +25,6 @@
 
 // https://github.com/hbang/NewTerm/blob/master/Classes/Terminal/TerminalKeyboard.h
 @property (nonatomic) BOOL controlKeyMode;
-@property (copy) void(^controlKeyChanged)();
 
 
 // Show and hide the keyboard, respectively.  Callers can listen to system

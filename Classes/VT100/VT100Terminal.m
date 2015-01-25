@@ -1102,10 +1102,9 @@ static VT100TCC decode_string(unsigned char *datap, size_t datalen,
 
 - (id)init
 {
-    int i = 0;
-
-    if ([super init] == nil)
-        return nil;
+    
+    self = [super init];
+    if (self == nil) return nil;
 
     ENCODING = NSASCIIStringEncoding;
     total_stream_length = STANDARD_STREAM_SIZE;
@@ -1115,7 +1114,7 @@ static VT100TCC decode_string(unsigned char *datap, size_t datalen,
     streamLock = [[NSLock alloc] init];
 
     termType = nil;
-    for(i = 0; i < TERMINFO_KEYS; i++) {
+    for(int i = 0; i < TERMINFO_KEYS; i++) {
         key_strings[i]=NULL;
     }
 

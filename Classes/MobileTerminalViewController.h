@@ -53,12 +53,6 @@
 @property (nonatomic, retain) IBOutlet UIView *behind;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *space;
 
-- (void)terminalSelectionDidChange:(id)sender;
-- (void)preferencesButtonPressed:(id)sender;
-- (void)menuButtonPressed:(id)sender;
-- (void)selectedCommand:(NSString*)command;
-- (void)toggleKeyboard:(id)sender;
-- (void)toggleCopyPaste:(id)sender;
 
 @end
 

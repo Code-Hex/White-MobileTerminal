@@ -14,4 +14,9 @@
     NSMutableArray* name;
 }
 
+@property (nonatomic, retain) IBOutlet UISlider *slider;
+@property (nonatomic, retain) IBOutlet UILabel *label;
+@property (nonatomic, retain) IBOutlet UILabel *fontsize;
+@property (nonatomic, retain) IBOutlet NSString *fontname;
+
 @end

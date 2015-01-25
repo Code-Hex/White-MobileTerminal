@@ -13,6 +13,7 @@
 #import "GestureResponder.h"
 #import "GestureActionRegistry.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Preferences/UIBorderOnlyButton.h"
 #define IPAD ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
 
 @implementation MobileTerminalViewController
@@ -227,11 +228,6 @@
 
 -(IBAction)esc:(id)sender {
     [[terminalGroupView terminalAtIndex:[terminalSelector currentPage]] receiveKeyboardInput:[[NSString stringWithFormat:@"%c",0x1b] dataUsingEncoding:NSASCIIStringEncoding]];
-    menuView.hidden = YES;
-    toolbar.hidden = YES;
-    CGRect viewFrame = terminalGroupView.frame;
-    viewFrame.size.height += toolbar.frame.size.height;
-    terminalGroupView.frame = viewFrame;
 }
 
 - (IBAction)tab:(id)sender {
@@ -241,11 +237,7 @@
 - (IBAction)ctrl:(UIButton*)ctrl_button {
     TerminalKeyboard *keyInput = (TerminalKeyboard *)terminalKeyboard.inputTextField;
     keyInput.controlKeyMode = !keyInput.controlKeyMode;
-    menuView.hidden = YES;
-    toolbar.hidden = YES;
-    CGRect viewFrame = terminalGroupView.frame;
-    viewFrame.size.height += toolbar.frame.size.height;
-    terminalGroupView.frame = viewFrame;
+    ctrl_button.selected = keyInput.controlKeyMode;
 }
 
 - (IBAction)menudown:(id)ctrl_button {
@@ -267,6 +259,19 @@
         [UIAlertAction actionWithTitle:@"OK"
                                  style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction * action) {
+                                   [[UIApplication sharedApplication] performSelector:@selector(suspend)];
+                                   [NSThread sleepForTimeInterval:0.2];
+                                   UILocalNotification *notification = [[UILocalNotification alloc] init];
+                                   NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+                                   if (notification && [ud boolForKey:@"QuickRestart"])
+                                   {
+                                       notification.timeZone = [NSTimeZone defaultTimeZone];
+                                       notification.repeatInterval = 0;
+                                       notification.alertBody = @"Restart terminal to resume.";
+                                       notification.alertAction = @"Restart";
+                                       [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+                                   }
+                                   [notification release];
                                    exit(0);
                                }];
         
@@ -282,7 +287,6 @@
         [alert show];
     }
 }
-
 
 // TODO(allen): Fix the deprecation of UIKeyboardBoundsUserInfoKey
 // below -- it requires more of a change because the replacement
@@ -429,8 +433,19 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-  // User clicked the Exit button below
-  exit(0);
+    [[UIApplication sharedApplication] performSelector:@selector(suspend)];
+    [NSThread sleepForTimeInterval:0.2];
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    if (notification)
+    {
+        notification.timeZone = [NSTimeZone defaultTimeZone];
+        notification.repeatInterval = 0;
+        notification.alertBody = @"Restart terminal to resume.";
+        notification.alertAction = @"Restart";
+        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    }
+    [notification release];
+    exit(0);
 }
 
 - (void)viewDidLoad {
@@ -444,6 +459,7 @@
         [ud setBool:false forKey:@"BlackOrWhite"];
         [ud setBool:false forKey:@"KeyboardTypeURL"];
         [ud setObject:@"Courier" forKey:@"font-Name"];
+        [ud setBool:true forKey:@"QuickRestart"];
         [ud setObject:IPAD?[NSNumber numberWithFloat:19.0]:[NSNumber numberWithFloat:11.0] forKey:@"font-Size"];
         [ud synchronize];
     }
@@ -459,16 +475,29 @@
   } @catch (NSException* e) {
     NSLog(@"Caught %@: %@", [e name], [e reason]);
     if ([[e name] isEqualToString:@"ForkException"]) {
-      // This happens if we fail to fork for some reason.
-      // TODO(allen): Provide a helpful hint -- a kernel patch?
-      UIAlertView* view =
-      [[UIAlertView alloc] initWithTitle:[e name]
-                                 message:[e reason]
-                                delegate:self
-                       cancelButtonTitle:@"Exit"
-                       otherButtonTitles:NULL];
-      [view show];
-      return;
+        Class class = NSClassFromString(@"UIAlertController");
+        if(class){
+            UIAlertController *view = [UIAlertController alertControllerWithTitle:[e name]
+                                                                           message:[e reason]
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            [view addAction:[UIAlertAction actionWithTitle:@"Exit"
+                                                      style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {
+                                                       exit(0);
+                                                   }]];
+            [self presentViewController:view animated:YES completion:nil];
+        } else {
+            // This happens if we fail to fork for some reason.
+            // TODO(allen): Provide a helpful hint -- a kernel patch?
+            UIAlertView* view =
+            [[UIAlertView alloc] initWithTitle:[e name]
+                                       message:[e reason]
+                                      delegate:self
+                             cancelButtonTitle:@"Exit"
+                             otherButtonTitles:NULL];
+            [view show];
+            return;
+        }
     }
     [e raise];
     return;
@@ -545,6 +574,7 @@
 
 }
 
+
 /* If you want to use statusbar
 - (UIStatusBarStyle)preferredStatusBarStyle {
     BOOL light = [[NSUserDefaults standardUserDefaults] boolForKey:@"Statusbar"];
@@ -571,6 +601,7 @@
     [terminalView setFont:font];
     [terminalView setNeedsLayout];
   }
+    [super viewDidAppear:YES];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation

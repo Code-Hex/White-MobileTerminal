@@ -41,8 +41,9 @@ static const CGFloat kDefaultIPadFont = 19.0f;
     font = nil;
     if ([decoder containsValueForKey:@"fontName"] &&
         [decoder containsValueForKey:@"fontSize"]) {
-      NSString* fontName = [decoder decodeObjectForKey:@"fontName"];
-      CGFloat fontSize = [decoder decodeFloatForKey:@"fontSize"];
+      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+      NSString* fontName = [defaults objectForKey:@"font-Name"];
+      CGFloat fontSize = [defaults floatForKey:@"font-Size"];
       font = [UIFont fontWithName:fontName size:fontSize];
     }
       
@@ -52,11 +53,11 @@ static const CGFloat kDefaultIPadFont = 19.0f;
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         CGFloat fontsize = 0;
         if (IPAD){
-            fontsize = [defaults floatForKey:@"font-Size"]?[defaults floatForKey:@"font-Size"]: kDefaultIPadFont;
-            fontname = [defaults objectForKey:@"font-Name"]?[defaults objectForKey:@"font-Name"]: kDefaultFontName;
+            fontsize = [defaults floatForKey:@"font-Size"]?: kDefaultIPadFont;
+            fontname = [defaults objectForKey:@"font-Name"]?: kDefaultFontName;
         }else{
-            fontsize = [defaults floatForKey:@"font-Size"]?[defaults floatForKey:@"font-Size"]: kDefaultIPhoneFont;
-            fontname = [defaults objectForKey:@"font-Name"]?[defaults objectForKey:@"font-Name"]: kDefaultFontName;
+            fontsize = [defaults floatForKey:@"font-Size"]?: kDefaultIPhoneFont;
+            fontname = [defaults objectForKey:@"font-Name"]?: kDefaultFontName;
         }
       font = [UIFont fontWithName:fontname size:fontsize];
     }

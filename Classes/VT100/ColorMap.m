@@ -75,8 +75,8 @@ alpha:1.0];
                 background = [[UIColor alloc] initWithRed:19/255.0 green:119/255.0 blue:61/255.0 alpha:1.f];
                 foreground = [[UIColor alloc] initWithRed:255/255.0 green:240/255.0 blue:165/255.0 alpha:1.f];
                 foregroundBold = [[UIColor alloc] initWithRed:255/255.0 green:176/255.0 blue:59/255.0 alpha:1.f];
-                foregroundCursor = [[UIColor alloc] initWithRed:142/255.0 green:40/255.0 blue:0.f alpha:1.f];
-                backgroundCursor = foregroundCursor;
+                backgroundCursor = [[UIColor alloc] initWithRed:142/255.0 green:40/255.0 blue:0.f alpha:1.f];
+                foregroundCursor = foreground;
                 //truth = YES;
                 break;
             }
@@ -84,8 +84,8 @@ alpha:1.0];
                 background = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
                 foreground = [[UIColor alloc] initWithRed:19/255.0 green:119/255.0 blue:61/255.0 alpha:1.f];
                 foregroundBold = [[UIColor alloc] initWithRed:0.f green:255/255.0 blue:0.f alpha:1.f];
-                foregroundCursor = [[UIColor alloc] initWithRed:56/255.0 green:254/255.0 blue:39/255.0 alpha:1.f];
-                backgroundCursor = foregroundCursor;
+                backgroundCursor = [[UIColor alloc] initWithRed:56/255.0 green:254/255.0 blue:39/255.0 alpha:1.f];
+                foregroundCursor = foreground;
                 //truth = YES;
                 break;
             }
@@ -93,24 +93,24 @@ alpha:1.0];
                 background = [[UIColor alloc] initWithRed:254/255.0 green:244/255.0 blue:156/255.0 alpha:1.f];
                 foreground = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
                 foregroundBold = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
-                foregroundCursor = [[UIColor alloc] initWithRed:127/255.0 green:127/255.0 blue:127/255.0 alpha:1.f];
-                backgroundCursor = foregroundCursor;
+                backgroundCursor = [[UIColor alloc] initWithRed:127/255.0 green:127/255.0 blue:127/255.0 alpha:1.f];
+                foregroundCursor = foreground;
                 break;
             }
             CASE(@"Novel") {
                 background = [[UIColor alloc] initWithRed:223/255.0 green:219/255.0 blue:195/255.0 alpha:1.f];
                 foreground = [[UIColor alloc] initWithRed:59/255.0 green:35/255.0 blue:34/255.0 alpha:1.f];
                 foregroundBold = [[UIColor alloc] initWithRed:127/255.0 green:42/255.0 blue:25/255.0 alpha:1.f];
-                foregroundCursor = [[UIColor alloc] initWithRed:58/255.0 green:35/255.0 blue:34/255.0 alpha:1.f];
-                backgroundCursor = foregroundCursor;
+                backgroundCursor = [[UIColor alloc] initWithRed:58/255.0 green:35/255.0 blue:34/255.0 alpha:1.f];
+                foregroundCursor = foreground;
                 break;
             }
             CASE(@"Ocean") {
                 background = [[UIColor alloc] initWithRed:34/255.0 green:79/255.0 blue:188/255.0 alpha:1.f];
                 foreground = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
                 foregroundBold = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
-                foregroundCursor = [[UIColor alloc] initWithRed:127/255.0 green:127/255.0 blue:127/255.0 alpha:1.f];
-                backgroundCursor = foregroundCursor;
+                backgroundCursor = [[UIColor alloc] initWithRed:127/255.0 green:127/255.0 blue:127/255.0 alpha:1.f];
+                foregroundCursor = foreground;
                 //truth = YES;
                 break;
             }
@@ -118,8 +118,8 @@ alpha:1.0];
                 background = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
                 foreground = [[UIColor alloc] initWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.f];
                 foregroundBold = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
-                foregroundCursor = [[UIColor alloc] initWithRed:77/255.0 green:77/255.0 blue:77/255.0 alpha:1.f];
-                backgroundCursor = foregroundCursor;
+                backgroundCursor = [[UIColor alloc] initWithRed:77/255.0 green:77/255.0 blue:77/255.0 alpha:1.f];
+                foregroundCursor = foreground;
                 //truth = YES;
                 break;
             }
@@ -127,8 +127,8 @@ alpha:1.0];
                 background = [[UIColor alloc] initWithRed:122/255.0 green:37/255.0 blue:30/255.0 alpha:1.f];
                 foreground = [[UIColor alloc] initWithRed:215/255.0 green:201/255.0 blue:167/255.0 alpha:1.f];
                 foregroundBold = [[UIColor alloc] initWithRed:223/255.0 green:189/255.0 blue:34/255.0 alpha:1.f];
-                foregroundCursor = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
-                backgroundCursor = foregroundCursor;
+                backgroundCursor = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
+                foregroundCursor = foreground;
                 //truth = YES;
                 break;
             }
@@ -136,8 +136,8 @@ alpha:1.0];
                 background = [[UIColor alloc] initWithRed:128/255.0 green:128/255.0 blue:128/255.0 alpha:1.f];
                 foreground = [[UIColor alloc] initWithWhite:0.f alpha:1.f];
                 foregroundBold = [[UIColor alloc] initWithWhite:1.f alpha:1.f];
-                foregroundCursor = [[UIColor alloc] initWithRed:217/255.0 green:217/255.0 blue:217/255.0 alpha:1.f];
-                backgroundCursor = foregroundCursor;
+                backgroundCursor = [[UIColor alloc] initWithRed:217/255.0 green:217/255.0 blue:217/255.0 alpha:1.f];
+                foregroundCursor = foreground;
                 break;
             }
             CASE(@"My Theme") {
@@ -196,6 +196,7 @@ alpha:1.0];
                 foregroundBold = term_bold;
                 foregroundCursor = term_cursor;
                 backgroundCursor = term_cursor;
+                foregroundCursor = foreground;
                 break;
             }
             DEFAULT {

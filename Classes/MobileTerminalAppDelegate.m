@@ -17,30 +17,41 @@
 @synthesize terminalViewController;
 @synthesize preferencesViewController;
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]; // Fixed 4 inch problem
-  Settings* settings = Settings.sharedInstance;
-  settings.svnVersion = 8.1; // Version
-  
-  [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]; // Fixed 4 inch problem
+    Settings* settings = Settings.sharedInstance;
+    settings.svnVersion = 8.1; // Version
     
-  NSMutableArray* viewControllers = [[NSMutableArray alloc] init];
-  [viewControllers addObject:terminalViewController];
-  [navigationController setViewControllers:viewControllers animated:NO];
-  [viewControllers release];
-   window.rootViewController = navigationController;
-  [window makeKeyAndVisible];
-  inPreferences = FALSE;
+    NSMutableArray* viewControllers = [[NSMutableArray alloc] init];
+    [viewControllers addObject:terminalViewController];
+    [navigationController setViewControllers:viewControllers animated:NO];
+    [viewControllers release];
+    window.rootViewController = navigationController;
+    [window makeKeyAndVisible];
+    inPreferences = FALSE;
+    
+    /* Navigation color */
+    [UINavigationBar appearance].TintColor = [UIColor blackColor];
+    [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
+    
+    /* http://stackoverflow.com/questions/19226965/how-to-hide-ios7-uinavigationbar-1px-bottom-line */
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:navigationBar];
+    navBarHairlineImageView.hidden = YES;
+    
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil];
+        [application registerUserNotificationSettings:settings];
+    }
+    
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalNever];
+    return YES;
+}
 
-  /* Navigation color */
-  [UINavigationBar appearance].TintColor = [UIColor blackColor];
-  [UINavigationBar appearance].barTintColor = [UIColor whiteColor];
-    
-  /* http://stackoverflow.com/questions/19226965/how-to-hide-ios7-uinavigationbar-1px-bottom-line */
-  UINavigationBar *navigationBar = self.navigationController.navigationBar;
-  UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:navigationBar];
-  navBarHairlineImageView.hidden = YES;
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    completionHandler(UIBackgroundFetchResultNoData);
 }
 
 /* http://stackoverflow.com/questions/19226965/how-to-hide-ios7-uinavigationbar-1px-bottom-line */
@@ -54,6 +65,7 @@
     }
     return nil;
 }
+
 // static const NSTimeInterval kAnimationDuration = 1.00f;
 
 - (void)preferencesButtonPressed
@@ -72,6 +84,23 @@
 
   // This must be invoked after the animation to show the root view completes
     [navigationController setNavigationBarHidden:YES];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    NSLog(@"Application will terminate.");
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    if (notification && [ud boolForKey:@"QuickRestart"])
+    {
+        notification.timeZone = [NSTimeZone defaultTimeZone];
+        notification.repeatInterval = 0;
+        notification.alertBody = @"Restart terminal to resume.";
+        notification.alertAction = @"Restart";
+        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    }
+    [notification release];
+
 }
 
 @end

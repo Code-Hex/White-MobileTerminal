@@ -59,6 +59,19 @@
 		70222E1219CBD723000B0282 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70222E1119CBD723000B0282 /* Social.framework */; };
 		70222E1419CBD78B000B0282 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70222E1319CBD78B000B0282 /* Accounts.framework */; };
 		70222E1619CBD935000B0282 /* twitlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70222E1519CBD935000B0282 /* twitlogo.png */; };
+		703D1C461A7231F400E38C61 /* UIBorderOnlyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 703D1C451A7231F400E38C61 /* UIBorderOnlyButton.m */; };
+		703D1C481A72321900E38C61 /* UIBorderOnlyButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 703D1C471A72321900E38C61 /* UIBorderOnlyButton.h */; };
+		703D1C551A739ACD00E38C61 /* Fixedsys.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 703D1C4F1A739A7000E38C61 /* Fixedsys.ttf */; };
+		703D1C561A739AD300E38C61 /* HyperFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 703D1C531A739A7C00E38C61 /* HyperFont.ttf */; };
+		703D1C571A739AD900E38C61 /* ProFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 703D1C501A739A7000E38C61 /* ProFont.ttf */; };
+		703D1C591A73AE4200E38C61 /* FiraMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 703D1C581A73AE4200E38C61 /* FiraMono-Regular.ttf */; };
+		703D1C5B1A73B1ED00E38C61 /* luximr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 703D1C5A1A73B1ED00E38C61 /* luximr.ttf */; };
+		703D1C5D1A73B6C600E38C61 /* ubuntu-font-licence-1.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 703D1C5C1A73B6C600E38C61 /* ubuntu-font-licence-1.0.txt */; };
+		703D1C611A73B6E200E38C61 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 703D1C5E1A73B6E200E38C61 /* LICENSE */; };
+		703D1C621A73B6E200E38C61 /* liesmich.txt in Resources */ = {isa = PBXBuildFile; fileRef = 703D1C5F1A73B6E200E38C61 /* liesmich.txt */; };
+		703D1C631A73B6E200E38C61 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 703D1C601A73B6E200E38C61 /* readme.txt */; };
+		703D1C661A73B6FF00E38C61 /* Bigelow & Holmes - Luxi License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 703D1C641A73B6FF00E38C61 /* Bigelow & Holmes - Luxi License.txt */; };
+		703D1C671A73B6FF00E38C61 /* LICENSE(FiraMono).txt in Resources */ = {isa = PBXBuildFile; fileRef = 703D1C651A73B6FF00E38C61 /* LICENSE(FiraMono).txt */; };
 		7060B02819CD4B2C004B43B2 /* FontSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7060B02719CD4B2C004B43B2 /* FontSettingsController.m */; };
 		7060B05119CFE250004B43B2 /* Anonymous Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B04919CFE24F004B43B2 /* Anonymous Pro.ttf */; };
 		7060B05219CFE250004B43B2 /* Cousine-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7060B04A19CFE250004B43B2 /* Cousine-Regular.ttf */; };
@@ -263,6 +276,20 @@
 		70222E1119CBD723000B0282 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		70222E1319CBD78B000B0282 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		70222E1519CBD935000B0282 /* twitlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitlogo.png; path = Resources/twitlogo.png; sourceTree = "<group>"; };
+		703D1C451A7231F400E38C61 /* UIBorderOnlyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIBorderOnlyButton.m; path = Preferences/UIBorderOnlyButton.m; sourceTree = "<group>"; };
+		703D1C471A72321900E38C61 /* UIBorderOnlyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBorderOnlyButton.h; path = Preferences/UIBorderOnlyButton.h; sourceTree = "<group>"; };
+		703D1C4F1A739A7000E38C61 /* Fixedsys.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fixedsys.ttf; sourceTree = "<group>"; };
+		703D1C501A739A7000E38C61 /* ProFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProFont.ttf; sourceTree = "<group>"; };
+		703D1C531A739A7C00E38C61 /* HyperFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyperFont.ttf; sourceTree = "<group>"; };
+		703D1C581A73AE4200E38C61 /* FiraMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraMono-Regular.ttf"; sourceTree = "<group>"; };
+		703D1C5A1A73B1ED00E38C61 /* luximr.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = luximr.ttf; sourceTree = "<group>"; };
+		703D1C5C1A73B6C600E38C61 /* ubuntu-font-licence-1.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ubuntu-font-licence-1.0.txt"; sourceTree = "<group>"; };
+		703D1C5E1A73B6E200E38C61 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		703D1C5F1A73B6E200E38C61 /* liesmich.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = liesmich.txt; sourceTree = "<group>"; };
+		703D1C601A73B6E200E38C61 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		703D1C641A73B6FF00E38C61 /* Bigelow & Holmes - Luxi License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Bigelow & Holmes - Luxi License.txt"; sourceTree = "<group>"; };
+		703D1C651A73B6FF00E38C61 /* LICENSE(FiraMono).txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE(FiraMono).txt"; sourceTree = "<group>"; };
+		7052C5C71A73DB8900D77814 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7060B02619CD4B2C004B43B2 /* FontSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontSettingsController.h; path = Preferences/FontSettingsController.h; sourceTree = "<group>"; };
 		7060B02719CD4B2C004B43B2 /* FontSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontSettingsController.m; path = Preferences/FontSettingsController.m; sourceTree = "<group>"; };
 		7060B04919CFE24F004B43B2 /* Anonymous Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Anonymous Pro.ttf"; sourceTree = "<group>"; };
@@ -512,6 +539,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7052C5C71A73DB8900D77814 /* CoreLocation.framework */,
 				70222E1319CBD78B000B0282 /* Accounts.framework */,
 				70222E1119CBD723000B0282 /* Social.framework */,
 				2C66C155101C54C800E4189B /* QuartzCore.framework */,
@@ -630,6 +658,8 @@
 				2C11CC8110159F7400A2746E /* TerminalSettings.m */,
 				70D805DD1A57CC9F00CACAA9 /* RotationController.h */,
 				70D805DB1A57CC8400CACAA9 /* RotationController.m */,
+				703D1C471A72321900E38C61 /* UIBorderOnlyButton.h */,
+				703D1C451A7231F400E38C61 /* UIBorderOnlyButton.m */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -637,16 +667,27 @@
 		7060B04819CFE24F004B43B2 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				7060B05919CFE3D0004B43B2 /* LICENSE-2.0.txt */,
-				7060B05A19CFE3D0004B43B2 /* OFL.txt */,
-				7060B04919CFE24F004B43B2 /* Anonymous Pro.ttf */,
 				7060B04A19CFE250004B43B2 /* Cousine-Regular.ttf */,
+				7060B04919CFE24F004B43B2 /* Anonymous Pro.ttf */,
 				7060B04B19CFE250004B43B2 /* CutiveMono-Regular.ttf */,
+				703D1C581A73AE4200E38C61 /* FiraMono-Regular.ttf */,
+				703D1C4F1A739A7000E38C61 /* Fixedsys.ttf */,
+				703D1C531A739A7C00E38C61 /* HyperFont.ttf */,
 				7060B04C19CFE250004B43B2 /* Inconsolata-Regular.ttf */,
+				703D1C5A1A73B1ED00E38C61 /* luximr.ttf */,
 				7060B04D19CFE250004B43B2 /* MesloLGM-Regular.ttf */,
+				703D1C501A739A7000E38C61 /* ProFont.ttf */,
 				7060B04E19CFE250004B43B2 /* SourceCodePro-Regular.ttf */,
 				7060B04F19CFE250004B43B2 /* UbuntuMono-R.ttf */,
 				7060B05019CFE250004B43B2 /* VT323-Regular.ttf */,
+				703D1C641A73B6FF00E38C61 /* Bigelow & Holmes - Luxi License.txt */,
+				703D1C5E1A73B6E200E38C61 /* LICENSE */,
+				703D1C651A73B6FF00E38C61 /* LICENSE(FiraMono).txt */,
+				7060B05919CFE3D0004B43B2 /* LICENSE-2.0.txt */,
+				703D1C5F1A73B6E200E38C61 /* liesmich.txt */,
+				7060B05A19CFE3D0004B43B2 /* OFL.txt */,
+				703D1C601A73B6E200E38C61 /* readme.txt */,
+				703D1C5C1A73B6C600E38C61 /* ubuntu-font-licence-1.0.txt */,
 			);
 			name = fonts;
 			path = Resources/fonts;
@@ -704,6 +745,7 @@
 				2C11C6681013AE0F00A2746E /* ColorMap.h in Headers */,
 				2C11C6691013AE0F00A2746E /* VT100TextView.h in Headers */,
 				9FE3EF4D12D2647500CF3F00 /* VT100TableViewController.h in Headers */,
+				703D1C481A72321900E38C61 /* UIBorderOnlyButton.h in Headers */,
 				9FE3EF4F12D2648000CF3F00 /* VT100RowView.h in Headers */,
 				9FE3EF5112D2648500CF3F00 /* FontMetrics.h in Headers */,
 				9FE3EF6612D269CE00CF3F00 /* VT100StringSupplier.h in Headers */,
@@ -936,14 +978,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				703D1C621A73B6E200E38C61 /* liesmich.txt in Resources */,
+				703D1C571A739AD900E38C61 /* ProFont.ttf in Resources */,
+				703D1C561A739AD300E38C61 /* HyperFont.ttf in Resources */,
+				703D1C551A739ACD00E38C61 /* Fixedsys.ttf in Resources */,
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				7060B05719CFE250004B43B2 /* UbuntuMono-R.ttf in Resources */,
 				2899E5220DE3E06400AC0155 /* MobileTerminalViewController.xib in Resources */,
 				700F77301A62CF6400B9642B /* Images.xcassets in Resources */,
 				7060B05319CFE250004B43B2 /* CutiveMono-Regular.ttf in Resources */,
+				703D1C591A73AE4200E38C61 /* FiraMono-Regular.ttf in Resources */,
 				9FB73ED911C476BA005E3764 /* MainWindow-iPad.xib in Resources */,
 				700F772A1A62CD1200B9642B /* Loading....xib in Resources */,
 				70F893561A62CAF40072ED99 /* Default-568h@2x.png in Resources */,
+				703D1C5D1A73B6C600E38C61 /* ubuntu-font-licence-1.0.txt in Resources */,
 				9F6B6D5312297447007BAD59 /* Icon-Small.png in Resources */,
 				9F6B6D5412297447007BAD59 /* Icon-Small@2x.png in Resources */,
 				9F6B6D5512297447007BAD59 /* Icon.png in Resources */,
@@ -951,16 +999,21 @@
 				9F6B6D5612297447007BAD59 /* Icon@2x.png in Resources */,
 				70D805D61A57A39F00CACAA9 /* LICENSE.txt in Resources */,
 				9F6B6D5912297452007BAD59 /* Icon-72.png in Resources */,
+				703D1C671A73B6FF00E38C61 /* LICENSE(FiraMono).txt in Resources */,
 				7060B05819CFE250004B43B2 /* VT323-Regular.ttf in Resources */,
 				70F893441A62C5780072ED99 /* Default.png in Resources */,
 				70222E1619CBD935000B0282 /* twitlogo.png in Resources */,
 				9F6B6D5A12297452007BAD59 /* Icon-Small-50.png in Resources */,
+				703D1C631A73B6E200E38C61 /* readme.txt in Resources */,
 				7007FD0219CBE03A006D11C6 /* About.png in Resources */,
 				9F6B6E481229A71E007BAD59 /* GestureInputActions.plist in Resources */,
 				7060B05219CFE250004B43B2 /* Cousine-Regular.ttf in Resources */,
+				703D1C611A73B6E200E38C61 /* LICENSE in Resources */,
 				9F86D380123D386A00FAA3C4 /* PreferencesViewController.xib in Resources */,
+				703D1C5B1A73B1ED00E38C61 /* luximr.ttf in Resources */,
 				7060B05419CFE250004B43B2 /* Inconsolata-Regular.ttf in Resources */,
 				7060B05619CFE250004B43B2 /* SourceCodePro-Regular.ttf in Resources */,
+				703D1C661A73B6FF00E38C61 /* Bigelow & Holmes - Luxi License.txt in Resources */,
 				7060B05519CFE250004B43B2 /* MesloLGM-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1049,6 +1102,7 @@
 				9F6B6D9912297822007BAD59 /* GestureActionRegistry.m in Sources */,
 				70D805DA1A57A3BE00CACAA9 /* BGColorPickerViewController.m in Sources */,
 				7060B02819CD4B2C004B43B2 /* FontSettingsController.m in Sources */,
+				703D1C461A7231F400E38C61 /* UIBorderOnlyButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1186,7 +1240,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_OBJC_UNUSED_IVARS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 慶 上川 (KWJHH6PH5G)";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1214,7 +1268,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_OBJC_UNUSED_IVARS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 慶 上川 (KWJHH6PH5G)";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MobileTerminal_Prefix.pch;

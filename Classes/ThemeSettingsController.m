@@ -38,7 +38,9 @@
                @"Cursor",nil];
     
     blackorwhite = [[NSMutableArray alloc]initWithObjects:@"BlackMode",nil];
-    keyboardtype = [[NSMutableArray alloc]initWithObjects:@"KeyTypeURL", nil];
+    keyboardtype = [[NSMutableArray alloc]initWithObjects:
+                    @"KeyTypeURL",
+                    @"KeyTypeASCIIOnly",nil];
     
     NSUserDefaults *colorDefaults = [NSUserDefaults standardUserDefaults];
     NSData *colorData1 = [colorDefaults objectForKey:@"Term_Background"];
@@ -192,7 +194,7 @@
         bwswitch.on = [ud boolForKey:@"BlackOrWhite"] ? YES : NO;
         cell.accessoryView = bwswitch;
         cell.textLabel.text = itemTitle;
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         
     } else if (indexPath.section == 3) {
@@ -204,13 +206,23 @@
         if (!cell) {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemTitle] autorelease];
         }
+        
         UISwitch *keytypeswitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-        [keytypeswitch  addTarget:self action:@selector(keyboardtypechanger:) forControlEvents:UIControlEventTouchUpInside];
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        keytypeswitch.on = [ud boolForKey:@"KeyboardTypeURL"] ? YES : NO;
+        
+        if (itemTitle == [keyboardtype objectAtIndex:0]) {
+            [keytypeswitch addTarget:self action:@selector(keyboardtypechanger:)
+                        forControlEvents:UIControlEventTouchUpInside];
+            keytypeswitch.on = [ud boolForKey:@"KeyboardTypeURL"] ? YES : NO;
+            cell.accessoryView = keytypeswitch;
+        } else {
+            [keytypeswitch addTarget:self action:@selector(keyboardtypeasciionly:)
+                    forControlEvents:UIControlEventTouchUpInside];
+            keytypeswitch.on = [ud boolForKey:@"KeyTypeASCIIOnly"] ? YES : NO;
+        }
         cell.accessoryView = keytypeswitch;
         cell.textLabel.text = itemTitle;
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     return 0;
@@ -228,6 +240,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     return section == 0 ? [NSString stringWithFormat:@"Themes"] : section == 1 ? [NSString stringWithFormat:@"My Theme"] : section == 2 ? [NSString stringWithFormat:@"UIChange"] : section == 3 ? [NSString stringWithFormat:@"KeyBoardType"] : 0;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    return section == 3 ? [NSString stringWithFormat:@"If you have to turn on the \"KeyTypeASCIIOnly\", it takes precedence."] : 0;
+}
+
 -(void)bwchanger:(id)sender {
     UISwitch *bwswitch = (UISwitch *)sender;
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
@@ -242,6 +258,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     NSLog(@"keyboard switch tapped. value = %@", (keytypeswitch.on ? @"ON(true)" : @"OFF(false)"));
 }
 
-
+-(void)keyboardtypeasciionly:(id)sender {
+    UISwitch *keytypeswitch = (UISwitch *)sender;
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    keytypeswitch.on ? [ud setBool:YES forKey:@"KeyTypeASCIIOnly"] : [ud setBool:NO forKey:@"KeyTypeASCIIOnly"];
+    NSLog(@"keyboard switch tapped. value = %@", (keytypeswitch.on ? @"ON(true)" : @"OFF(false)"));
+}
 
 @end

@@ -11,7 +11,7 @@ static const int kControlCharacter = 0x2022;
 @interface TerminalKeyInput : UITextInputBase
 {
 @private
-  TerminalKeyboard* keyboard;  
+  TerminalKeyboard* keyboard;
   NSData* backspaceData;
 
   // UIKeyInput
@@ -28,7 +28,6 @@ static const int kControlCharacter = 0x2022;
 
 // https://github.com/hbang/NewTerm/blob/master/Classes/Terminal/TerminalKeyboard.h
 @property (nonatomic) BOOL controlKeyMode;
-@property (copy) void(^controlKeyChanged)();
 
 // UIKeyInput
 @property (nonatomic) UITextAutocapitalizationType autocapitalizationType;
@@ -51,7 +50,6 @@ static const int kControlCharacter = 0x2022;
 @synthesize returnKeyType;
 @synthesize secureTextEntry;
 @synthesize controlKeyMode;
-@synthesize controlKeyChanged;
 
 - (id)init:(TerminalKeyboard*)theKeyboard
 {
@@ -72,12 +70,13 @@ static const int kControlCharacter = 0x2022;
         [self setKeyboardType:UIKeyboardTypeASCIICapable];
       
     [self setReturnKeyType:UIReturnKeyDefault];
-    [self setSecureTextEntry:NO];
+    [[NSUserDefaults standardUserDefaults] boolForKey:@"KeyTypeASCIIOnly"] ?: [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"KeyTypeASCIIOnly"];
+    [self setSecureTextEntry:[[NSUserDefaults standardUserDefaults] boolForKey:@"KeyTypeASCIIOnly"]];
 
     // Data to send in response to a backspace.  This is created now so it is
     // not re-allocated on ever backspace event.
     backspaceData = [[NSData alloc] initWithBytes:"\x7F" length:1];    
-    controlKeyMode = FALSE;
+    controlKeyMode = NO;
   }
   return self;
 }
@@ -109,17 +108,13 @@ static const int kControlCharacter = 0x2022;
     
 if (input.length == 1 && [input canBeConvertedToEncoding:NSASCIIStringEncoding]) {
   if (controlKeyMode) {
-    controlKeyMode = NO;
+    //controlKeyMode = NO;
     // Convert the character to a control key with the same ascii name (or
     // just use the original character if not in the acsii range)
-    if (c < 0x60 && c > 0x40) {
-      // Uppercase (and a few characters nearby, such as escape)
-      c -= 0x40;
-    } else if (c < 0x7B && c > 0x60) {
-      // Lowercase
-      c -= 0x60;
-    }
-      if (controlKeyChanged) controlKeyChanged();
+    if (c < 0x60 && c > 0x40)
+      c -= 0x40; // Uppercase (and a few characters nearby, such as escape)
+    else if (c < 0x7B && c > 0x60)
+      c -= 0x60; // Lowercase
   } else {
     if (c == kControlCharacter) {
       // Control character was pressed.  The next character will be interpred
@@ -130,7 +125,6 @@ if (input.length == 1 && [input canBeConvertedToEncoding:NSASCIIStringEncoding])
       // Convert newline to a carraige return
       c = 0x0d;
     }
-      if (controlKeyChanged) controlKeyChanged();
   }
     chars[0] = c;
     len = 1;
@@ -175,9 +169,7 @@ if (input.length == 1 && [input canBeConvertedToEncoding:NSASCIIStringEncoding])
 - (void)paste:(id)sender
 {
   UIPasteboard* pb = [UIPasteboard generalPasteboard];
-  if (![pb containsPasteboardTypes:UIPasteboardTypeListString]) {
-    return;
-  }
+  if (![pb containsPasteboardTypes:UIPasteboardTypeListString]) return;
   NSData* data = [pb.string dataUsingEncoding:NSUTF8StringEncoding];
   [[keyboard inputDelegate] receiveKeyboardInput:data];
 }

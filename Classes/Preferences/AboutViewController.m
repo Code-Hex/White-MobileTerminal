@@ -25,7 +25,7 @@
                 // Grab the initial Twitter account to tweet from.
                 ACAccount *twitterAccount = accountsArray[0];
                 
-                NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
+                NSMutableDictionary *tempDict = [[[NSMutableDictionary alloc] init] autorelease];
                 [tempDict setValue:@"CodeHex" forKey:@"screen_name"];
                 [tempDict setValue:@"true" forKey:@"follow"];
                 
@@ -95,13 +95,8 @@
 -(IBAction)tweetbutton:(id)sender
 {
     SLComposeViewController *tweet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-    [tweet setInitialText:@"\"#WhiteTerminal is simple & powerful & awesome!! Don't you wanna try it?\""];
+    [tweet setInitialText:@"\"#WhiteTerminal is simple & powerful & awesome!! Don't you wanna try it?\nhttp://cydia.saurik.com/package/com.codehex.whiteterminal/\""];
     [self presentViewController:tweet animated:YES completion:nil];
-}
-
--(BOOL)shouldAutorotate
-{
-    return NO;
 }
 
 - (void)awakeFromNib

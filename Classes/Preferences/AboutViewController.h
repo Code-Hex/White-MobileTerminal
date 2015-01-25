@@ -15,6 +15,6 @@
 
 -(IBAction)tweetbutton:(id)sender;
 -(IBAction)followButton:(id)sender;
--(BOOL)shouldAutorotate;
+
 
 @end

@@ -38,6 +38,13 @@
   //self.tableView.SeparatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
+    [super viewWillAppear:YES];
+    NSLog(@"Preference WillAppear");
+    //[navigationController setNavigationBarHidden:NO];
+}
+
 - (void)dealloc
 {
   [super dealloc];
@@ -47,29 +54,45 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-  return 1;
+  return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return [sections count];
+    return (section == 0) ? [sections count] : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  NSUInteger index = [indexPath indexAtPosition:1];  
-  NSString* itemTitle = [sections objectAtIndex:index];
-  
-  static NSString *CellIdentifier = @"Cell";
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  if (cell == nil) {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemTitle] autorelease];
-    cell.textLabel.text = itemTitle;
-    if ([controllers objectAtIndex:index] != nil) {
-      cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    NSUInteger index = [indexPath indexAtPosition:1];
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (indexPath.section == 0) {
+        NSString* itemTitle = [sections objectAtIndex:index];
+
+        if (cell == nil) {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemTitle] autorelease];
+            cell.textLabel.text = itemTitle;
+            if ([controllers objectAtIndex:index] != nil) {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }
+        }
+        return cell;
+    } else {
+        NSString* itemTitle = @"Quick Restart";
+        if (!cell) {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemTitle] autorelease];
+        }
+        UISwitch *qswitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+        [qswitch addTarget:self action:@selector(restart:) forControlEvents:UIControlEventTouchUpInside];
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        qswitch.on = [ud boolForKey:@"QuickRestart"] ? YES : NO;
+        cell.accessoryView = qswitch;
+        cell.textLabel.text = itemTitle;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
     }
-  }
-  return cell;
 }
 
 - (void)tableView:(UITableView *)tableView
@@ -86,6 +109,23 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
   [self.navigationController pushViewController:itemController animated:YES];
   itemController.navigationItem.title = [sections objectAtIndex:index];
 }
+
+-(void)restart:(id)sender {
+    UISwitch *qswitch = (UISwitch *)sender;
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    qswitch.on ? [ud setBool:true forKey:@"QuickRestart"] : [ud setBool:false forKey:@"QuickRestart"];
+    NSLog(@"black or white switch tapped. value = %@", (qswitch.on ? @"ON(true)" : @"OFF(false)"));
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    return section == 0 ? [NSString stringWithFormat:@"Settings"] : section == 1 ? [NSString stringWithFormat:@"Quick Restart Mode"] : 0;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    return section == 1 ? [NSString stringWithFormat:@"When you are finished, quickly restart using the Notification Center."] : 0;
+}
+
 
 @end
 
