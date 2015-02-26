@@ -48,7 +48,7 @@ static const char* kProcessExitedMessage =
 
 - (void)dataAvailable:(NSNotification *)aNotification {
   NSData* data = [[aNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
-  if ([data length] == 0) {
+  if (data.length == 0) {
     // I would expect from the documentation that an EOF would be present as
     // an entry in the userinfo dictionary as @"NSFileHandleError", but that is
     // never present.  Instead, it seems to just appear as an empty data
@@ -68,7 +68,7 @@ static const char* kProcessExitedMessage =
     [self releaseSubProcess];
     return;
   }
-  
+    
   // Forward the subprocess data into the terminal character handler
   [textView readInputStream:data];
   
@@ -78,8 +78,7 @@ static const char* kProcessExitedMessage =
 
 - (id)initWithCoder:(NSCoder *)decoder
 {
-  self = [super initWithCoder:decoder];
-  if (self != nil) {
+  if (self = [super initWithCoder:decoder]) {
     subProcess = nil;
     copyAndPasteEnabled = NO;
     textView = [[VT100TextView alloc] initWithCoder:decoder];
@@ -108,8 +107,9 @@ static const char* kProcessExitedMessage =
   [pty setWidth:[textView width] withHeight:[textView height]];
 }
 
-- (void)receiveKeyboardInput:(NSData*)data
+- (void)receiveKeyboardInput:(NSMutableData*)data
 {
+    
   if (stopped) {
     // The sub process previously exited, restart it at the users request.
     [textView clearScreen];
@@ -117,6 +117,7 @@ static const char* kProcessExitedMessage =
   } else {
     // Forward the data from the keyboard directly to the subprocess
     [[subProcess fileHandle] writeData:data];
+    [[subProcess fileHandle] synchronizeFile];
   }
 }
 

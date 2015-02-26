@@ -13,13 +13,9 @@
 @synthesize fontMetrics;
 @synthesize stringSupplier;
 
-- (id) initWithColorMap:(ColorMap*)someColormap;
+- (id)initWithColorMap:(ColorMap*)someColormap;
 {
-  self = [super init];
-  if (self != nil) {
-    colorMap = [someColormap retain];
-    self.tableView.IndicatorStyle = UIScrollViewIndicatorStyleBlack;
-    self.tableView.BackgroundColor = [colorMap background];
+  if (self = [super init]) {
     self.tableView.AllowsSelection = NO;
     self.tableView.SeparatorStyle = UITableViewCellSeparatorStyleNone;
   }
@@ -34,14 +30,14 @@
 
 // Computes the size of a single row
 - (CGRect)cellFrame {
-  int height = [fontMetrics boundingBox].height;
-  int width = [self.tableView frame].size.width;
+  int height = fontMetrics.boundingBox.height;
+  int width = self.tableView.frame.size.width;
     return CGRectMake(0, 0, width, height); // Start position
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  return [self cellFrame].size.height;
+  return self.cellFrame.size.height;
 }
 
 #pragma mark -
@@ -52,7 +48,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return [stringSupplier rowCount];
+  return stringSupplier.rowCount;
 }
 
 - (UITableViewCell*)tableViewCell:(UITableView *)tableView
@@ -63,7 +59,7 @@
     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                    reuseIdentifier:kCellIdentifier] autorelease];
     VT100RowView* rowView =
-        [[VT100RowView alloc] initWithFrame:[self cellFrame]];
+        [[VT100RowView alloc] initWithFrame:self.cellFrame];
     rowView.stringSupplier = stringSupplier;
     [cell.contentView addSubview:rowView];
     [rowView release];
@@ -91,11 +87,12 @@
   NSArray* subviews = [cell.contentView subviews];
   NSAssert([subviews count] == 1, @"Invalid contentView size");
   VT100RowView* rowView = [subviews objectAtIndex:0];
-  rowView.rowIndex = tableRow;
-  rowView.fontMetrics = fontMetrics;  
+  rowView.rowIndex = (int)tableRow;
+  rowView.fontMetrics = fontMetrics;
+  rowView.backgroundColor = colorMap.background;  
   // resize the row in case the table has changed size
-  cell.frame = [self cellFrame];
-  rowView.frame = [self cellFrame];  
+  cell.frame = self.cellFrame;
+  rowView.frame = self.cellFrame;
   [cell setNeedsDisplay];
   [rowView setNeedsDisplay];
   return cell;  
@@ -114,7 +111,12 @@
 
 - (void)refresh
 {
-  UITableView* tableView = [self tableView];
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSString *themename = [defaults objectForKey:@"colorMap"];
+  NSDictionary *themes = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Themes" ofType:@"plist"]];
+  colorMap = [[ColorMap alloc] initWithDictionary:themes[themename]];
+  UITableView* tableView = self.tableView;
+  tableView.backgroundColor = colorMap.background;
   [tableView reloadData];
   [tableView setNeedsDisplay];  
   // Scrolling to the bottom with animations looks much nicer, but will not

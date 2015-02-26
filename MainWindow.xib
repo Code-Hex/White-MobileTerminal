@@ -36,7 +36,7 @@
         <window opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" resizesToFullScreen="NO" id="12">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </window>
         <navigationController title="Preferences" navigationBarHidden="YES" id="52">

@@ -18,8 +18,7 @@ static const int kDefaultHeight = 25;
 
 - (id) init
 {
-  self = [super init];
-  if (self != nil) {
+  if (self = [super init]) {
     terminal = [[VT100Terminal alloc] init];
     screen = [[VT100Screen alloc] init];
     [screen setTerminal:terminal];
@@ -48,7 +47,7 @@ static const int kDefaultHeight = 25;
   [screen resetDirty];
 }
 
-- (void)readInputStream:(NSData*)data
+- (void)readInputStream:(NSMutableData*)data
 {
   // Push the input stream into the terminal, then parse the stream back out as
   // a series of tokens and feed them back to the screen

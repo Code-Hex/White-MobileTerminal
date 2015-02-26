@@ -8,20 +8,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MobileTerminalViewController">
             <connections>
+                <outlet property="FNController" destination="CZB-X0-SPm" id="eaf-O8-JYu"/>
                 <outlet property="behind" destination="6" id="7pG-uI-TZu"/>
+                <outlet property="browser" destination="GdT-N1-8Ql" id="gVD-FH-Fd3"/>
                 <outlet property="contentView" destination="24" id="26"/>
-                <outlet property="ctrl" destination="83L-sC-XJ9" id="oOF-z6-rAJ"/>
-                <outlet property="down" destination="PMi-kR-Aux" id="xpy-Hx-owt"/>
-                <outlet property="left" destination="qsw-GJ-PKC" id="hks-Kt-07q"/>
+                <outlet property="keyhide" destination="gqa-0o-dqM" id="k0j-kW-XMw"/>
                 <outlet property="menuButton" destination="35" id="36"/>
                 <outlet property="menuView" destination="62" id="66"/>
+                <outlet property="ocr" destination="EVL-pa-a1r" id="YgO-j6-RZs"/>
                 <outlet property="preferencesButton" destination="21" id="33"/>
-                <outlet property="right" destination="MkZ-Lr-whA" id="7AT-ve-AXi"/>
-                <outlet property="space" destination="afS-L2-Yh4" id="czf-hh-Zgi"/>
                 <outlet property="terminalGroupView" destination="8" id="31"/>
                 <outlet property="terminalSelector" destination="15" id="32"/>
+                <outlet property="texttoolbar" destination="yqL-lB-MLb" id="n8B-q9-dnX"/>
                 <outlet property="toolbar" destination="BCC-Wl-D7V" id="MMi-jR-Mfm"/>
-                <outlet property="up" destination="uER-fP-aWZ" id="wYQ-KZ-AqY"/>
+                <outlet property="toolview" destination="8Ma-8W-oB6" id="pJa-wl-JaD"/>
                 <outlet property="view" destination="6" id="23"/>
             </connections>
         </placeholder>
@@ -39,61 +39,8 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="BCC-Wl-D7V">
-                            <rect key="frame" x="0.0" y="488" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
-                            <items>
-                                <barButtonItem title="▼" id="7PZ-fq-6e4">
-                                    <connections>
-                                        <action selector="menudown:" destination="-1" id="rkf-A2-zGs"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem title="ctrl" id="83L-sC-XJ9">
-                                    <connections>
-                                        <action selector="ctrl:" destination="-1" id="p7S-OM-ero"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem title="esc" id="H0r-E7-rza">
-                                    <connections>
-                                        <action selector="esc:" destination="-1" id="4LQ-iI-Bz6"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem title="tab" id="ew9-Yz-LDa">
-                                    <connections>
-                                        <action selector="tab:" destination="-1" id="VSu-lc-nmn"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem title="space" id="afS-L2-Yh4">
-                                    <connections>
-                                        <action selector="space:" destination="-1" id="YFJ-8J-Ebu"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem title="|" id="QRS-77-vI4">
-                                    <connections>
-                                        <action selector="bar:" destination="-1" id="HpU-ZX-27X"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem title="&quot;" id="i6Y-lv-mOK">
-                                    <connections>
-                                        <action selector="double_quotes:" destination="-1" id="cnu-MQ-7pO"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem title="`" id="tMg-HL-tiY">
-                                    <connections>
-                                        <action selector="grave_accent:" destination="-1" id="ok7-Dy-jXC"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem title="exit" id="gim-Za-bjI">
-                                    <connections>
-                                        <action selector="exit:" destination="-1" id="SHG-Pu-nN1"/>
-                                    </connections>
-                                </barButtonItem>
-                            </items>
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        </toolbar>
                         <view hidden="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="62" customClass="MenuView">
-                            <rect key="frame" x="0.0" y="45" width="240" height="419"/>
+                            <rect key="frame" x="0.0" y="90" width="240" height="419"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bouncesZoom="NO" style="plain" separatorStyle="default" rowHeight="43" sectionHeaderHeight="22" sectionFooterHeight="22" id="48">
@@ -115,21 +62,50 @@
                         <pageControl opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" id="15">
                             <rect key="frame" x="0.0" y="532" width="320" height="36"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="0.84999999999999998" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.005222486413043459" green="0.005222486413043459" blue="0.005222486413043459" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                            <inset key="insetFor6xAndEarlier" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
                             <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="terminalSelectionDidChange:" destination="-1" eventType="valueChanged" id="40"/>
                             </connections>
                         </pageControl>
-                        <view contentMode="scaleToFill" id="lNm-fF-MwG">
-                            <rect key="frame" x="209" y="532" width="108" height="37"/>
+                        <view contentMode="scaleToFill" id="B2U-Px-dTa">
+                            <rect key="frame" x="3" y="532" width="108" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="35">
+                                    <rect key="frame" x="2" y="2" width="33" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="menuButtonPressed:" destination="-1" eventType="touchUpInside" id="38"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8Ma-8W-oB6">
+                                    <rect key="frame" x="37" y="1" width="33" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <state key="normal">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EVL-pa-a1r">
+                                    <rect key="frame" x="72" y="1" width="33" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="Nc0-Uh-AHA">
+                            <rect key="frame" x="209" y="532" width="108" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <subviews>
-                                <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="21">
-                                    <rect key="frame" x="78" y="8" width="22" height="22"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="21">
+                                    <rect key="frame" x="74" y="3" width="29" height="29"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -141,83 +117,74 @@
                                         <action selector="preferencesButtonPressed:" destination="-1" eventType="touchUpInside" id="39"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qsw-GJ-PKC">
-                                    <rect key="frame" x="0.0" y="1" width="35" height="36"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gqa-0o-dqM">
+                                    <rect key="frame" x="3" y="2" width="33" height="33"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="◁">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="left:" destination="-1" eventType="touchUpInside" id="Oty-Ws-xD2"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MkZ-Lr-whA">
-                                    <rect key="frame" x="37" y="1" width="35" height="36"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="▷">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="right:" destination="-1" eventType="touchUpInside" id="oCS-U3-B6y"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </view>
-                        <view contentMode="scaleToFill" id="esJ-hI-xXl">
-                            <rect key="frame" x="0.0" y="532" width="108" height="36"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PMi-kR-Aux">
-                                    <rect key="frame" x="74" y="0.0" width="34" height="36"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="▽">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="down:" destination="-1" eventType="touchUpInside" id="GEc-vl-lBN"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uER-fP-aWZ">
-                                    <rect key="frame" x="41" y="0.0" width="34" height="39"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                    <state key="normal" title="△">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="up:" destination="-1" eventType="touchUpInside" id="ihu-pK-Z5v"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="35">
-                                    <rect key="frame" x="9" y="8" width="22" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal">
-                                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
-                                    <state key="highlighted">
-                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GdT-N1-8Ql">
+                                    <rect key="frame" x="39" y="2" width="33" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
-                                    <connections>
-                                        <action selector="menuButtonPressed:" destination="-1" eventType="touchUpInside" id="38"/>
-                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
+                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="BCC-Wl-D7V">
+                            <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                            <items/>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </toolbar>
+                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="yqL-lB-MLb">
+                            <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                            <items/>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </toolbar>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.75" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="21" y="114"/>
+            <point key="canvasLocation" x="-274" y="101"/>
         </view>
+        <viewController id="CZB-X0-SPm" customClass="fnviewcontroller">
+            <view key="view" contentMode="scaleToFill" id="ceg-PO-vPr">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="if5-L1-rB7">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <items>
+                            <barButtonItem title="Item" id="Wrg-cf-Lo7"/>
+                        </items>
+                    </toolbar>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <extendedEdge key="edgesForExtendedLayout"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <size key="freeformSize" width="300" height="44"/>
+            <connections>
+                <outlet property="fntool1" destination="if5-L1-rB7" id="AaC-5K-QSk"/>
+            </connections>
+            <point key="canvasLocation" x="104" y="187"/>
+        </viewController>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

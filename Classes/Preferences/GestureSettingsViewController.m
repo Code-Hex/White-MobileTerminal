@@ -20,6 +20,10 @@
   return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 60;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   return [gestureSettings gestureItemCount];
@@ -32,7 +36,7 @@
   if (cell == nil) {
     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
   }
-  int index = [indexPath indexAtPosition:1];
+  int index = (int)[indexPath indexAtPosition:1];
   GestureItem* gestureItem = [gestureSettings gestureItemAtIndex:index];
   cell.textLabel.text = gestureItem.name;
   // This must re-validate the action in case the action label isn't valid.
@@ -56,7 +60,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  int index = [indexPath indexAtPosition:1];  
+  int index = (int)[indexPath indexAtPosition:1];
   [self startEditing:[gestureSettings gestureItemAtIndex:index]];
 }
 
@@ -69,6 +73,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)finishEditing:(id)sender
 {
   [self.tableView reloadData];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+        return [NSString stringWithFormat:@"Gestures"];
 }
 
 @end

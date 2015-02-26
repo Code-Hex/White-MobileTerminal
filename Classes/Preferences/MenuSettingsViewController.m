@@ -46,7 +46,7 @@
   if (cell == nil) {
     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
   }
-  int index = [indexPath indexAtPosition:1];
+  int index = (int)[indexPath indexAtPosition:1];
   MenuItem* menuItem = [menuSettings menuItemAtIndex:index];
   cell.textLabel.text = menuItem.label;
   cell.detailTextLabel.text = menuItem.command;
@@ -68,7 +68,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  int index = [indexPath indexAtPosition:1];
+  int index = (int)[indexPath indexAtPosition:1];
   if (editingStyle == UITableViewCellEditingStyleDelete) {
     [menuSettings removeMenuItemAtIndex:index];
     [self.tableView reloadData];
@@ -82,7 +82,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  int index = [indexPath indexAtPosition:1];  
+  int index = (int)[indexPath indexAtPosition:1];
   [self startEditing:[menuSettings menuItemAtIndex:index] asInsert:FALSE];
 }
 
@@ -97,6 +97,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if (editIsInsert)
     [menuSettings addMenuItem:menuEditViewController.editingMenuItem];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [NSString stringWithFormat:@"Shortcut menu"];
 }
 
 @end

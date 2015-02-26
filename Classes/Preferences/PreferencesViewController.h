@@ -3,7 +3,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface PreferencesViewController : UITableViewController {
 @private
   UINavigationController* navigationController;  
@@ -15,6 +14,7 @@
   
   NSMutableArray* sections;
   NSMutableArray* controllers;
+  NSMutableArray* icons;
 }
 
 @property(nonatomic, retain) IBOutlet UINavigationController* navigationController;

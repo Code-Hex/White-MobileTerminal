@@ -4,8 +4,6 @@
 #import "TerminalKeyboard.h"
 #import "UITextInputBase.h"
 
-static const int kControlCharacter = 0x2022;
-
 // This text field is the first responder that intercepts keyboard events and
 // copy and paste events.
 @interface TerminalKeyInput : UITextInputBase
@@ -53,29 +51,22 @@ static const int kControlCharacter = 0x2022;
 
 - (id)init:(TerminalKeyboard*)theKeyboard
 {
-  self = [super init];
-  if (self != nil) {
+  if (self = [super init]) {
     keyboard = theKeyboard;
+    bool isblack = [[NSUserDefaults standardUserDefaults] boolForKey:@"BlackOrWhite"];
+    bool iskeytype = [[NSUserDefaults standardUserDefaults] boolForKey:@"KeyboardTypeURL"];
     [self setAutocapitalizationType:UITextAutocapitalizationTypeNone];
     [self setAutocorrectionType:UITextAutocorrectionTypeNo];
     [self setEnablesReturnKeyAutomatically:NO];
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"BlackOrWhite"])
-        [self setKeyboardAppearance:UIKeyboardAppearanceDark];
-    else
-        [self setKeyboardAppearance:UIKeyboardAppearanceLight];
-      
-      if ([[NSUserDefaults standardUserDefaults] boolForKey:@"KeyboardTypeURL"])
-        [self setKeyboardType:UIKeyboardTypeURL];
-      else
-        [self setKeyboardType:UIKeyboardTypeASCIICapable];
-      
     [self setReturnKeyType:UIReturnKeyDefault];
     [[NSUserDefaults standardUserDefaults] boolForKey:@"KeyTypeASCIIOnly"] ?: [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"KeyTypeASCIIOnly"];
-    [self setSecureTextEntry:[[NSUserDefaults standardUserDefaults] boolForKey:@"KeyTypeASCIIOnly"]];
 
+    self.keyboardAppearance = isblack? UIKeyboardAppearanceDark : UIKeyboardAppearanceLight;
+    self.keyboardType = iskeytype? UIKeyboardTypeURL : UIKeyboardTypeASCIICapable;
+    [self setSecureTextEntry:[[NSUserDefaults standardUserDefaults] boolForKey:@"KeyTypeASCIIOnly"]];
     // Data to send in response to a backspace.  This is created now so it is
     // not re-allocated on ever backspace event.
-    backspaceData = [[NSData alloc] initWithBytes:"\x7F" length:1];    
+    backspaceData = [[NSData alloc] initWithBytes:"\x7F" length:1];
     controlKeyMode = NO;
   }
   return self;
@@ -94,61 +85,25 @@ static const int kControlCharacter = 0x2022;
 
 - (void)insertText:(NSString *)input
 {
-    int len = 0;
-    //char *chr_len = (char *)[input UTF8String];
-    
-    int size = [input lengthOfBytesUsingEncoding:NSUTF8StringEncoding] + 1;
-    char chars[size];
-    
-    //char str[size]; Secret...
-    //[input getCString:str maxLength:size encoding:NSUTF8StringEncoding];
-    
-    // First character is always space (that we set)
-    unichar c = [input characterAtIndex:0];
-    
-if (input.length == 1 && [input canBeConvertedToEncoding:NSASCIIStringEncoding]) {
-  if (controlKeyMode) {
-    //controlKeyMode = NO;
-    // Convert the character to a control key with the same ascii name (or
-    // just use the original character if not in the acsii range)
-    if (c < 0x60 && c > 0x40)
-      c -= 0x40; // Uppercase (and a few characters nearby, such as escape)
-    else if (c < 0x7B && c > 0x60)
-      c -= 0x60; // Lowercase
-  } else {
-    if (c == kControlCharacter) {
-      // Control character was pressed.  The next character will be interpred
-      // as a control key.
-      controlKeyMode = YES;
-      return;
-    } else if (c == 0x0a) {
-      // Convert newline to a carraige return
-      c = 0x0d;
+    if (input.length == 1 && [input canBeConvertedToEncoding:NSASCIIStringEncoding]) {
+        unichar c = [input characterAtIndex:0];
+        if (controlKeyMode)
+            c -= (c < 0x60 && c > 0x40) ? 0x40 : (c < 0x7B && c > 0x60) ? 0x60 : 0;
+        if (c == 0x0a) c = 0x0d;
+        input = [NSString stringWithCharacters:&c length:1];
     }
-  }
-    chars[0] = c;
-    len = 1;
-} else {
-    for (int i = 0; i < input.length; i++, len++) {
-        unichar str_c = [input characterAtIndex:i];
-        chars[i] = str_c;
-    }
+    [[keyboard inputDelegate] receiveKeyboardInput:[input dataUsingEncoding:NSUTF8StringEncoding]];
 }
-  // Re-encode as UTF8
-    NSString* encoded = [[NSString alloc] initWithBytes:chars
-                                                 length:len
-                                               encoding:NSUTF8StringEncoding];
-  NSData* data = [encoded dataUsingEncoding:NSUTF8StringEncoding];
-  [[keyboard inputDelegate] receiveKeyboardInput:data];
-}
+
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
 {
+  
   if (action == @selector(copy:)) {
     // Only show the copy menu if we actually have any data selected
-    NSMutableData* data = [NSMutableData  dataWithCapacity:0];
+    NSMutableData* data = [NSMutableData dataWithCapacity:0];
     [[keyboard inputDelegate] fillDataWithSelection:data];
-    return [data length] > 0;
+    return data.length > 0;
   }
   if (action == @selector(paste:)) {
     // Only paste if the board contains plain text
@@ -159,11 +114,11 @@ if (input.length == 1 && [input canBeConvertedToEncoding:NSASCIIStringEncoding])
 
 - (void)copy:(id)sender
 {
-  NSMutableData* data = [NSMutableData  dataWithCapacity:0];
+  NSMutableData* data = [NSMutableData dataWithCapacity:0];
   [[keyboard inputDelegate] fillDataWithSelection:data];
   UIPasteboard* pb = [UIPasteboard generalPasteboard];
-  pb.string = [[NSString alloc] initWithData:data 
-                                    encoding:NSUTF8StringEncoding];
+  pb.string = [[[NSString alloc] initWithData:data
+                                    encoding:NSUTF8StringEncoding] autorelease];
 }
 
 - (void)paste:(id)sender
@@ -194,8 +149,7 @@ if (input.length == 1 && [input canBeConvertedToEncoding:NSASCIIStringEncoding])
 
 - (id)init
 {
-  self = [super init];
-  if (self != nil) {
+  if (self = [super init]) {
     [self setOpaque:YES];  
     _inputTextField = [[TerminalKeyInput alloc] init:self];
     [self addSubview:_inputTextField];
@@ -209,7 +163,6 @@ if (input.length == 1 && [input canBeConvertedToEncoding:NSASCIIStringEncoding])
 
 - (BOOL)becomeFirstResponder
 {
-  // XXX
   return [_inputTextField becomeFirstResponder];
 }
 

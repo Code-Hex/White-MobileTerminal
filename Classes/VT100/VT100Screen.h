@@ -30,6 +30,7 @@
 //_______________________________________________________________________________
 
 #define TABWINDOW 300
+#import <Foundation/Foundation.h>
 
 @interface VT100Screen : NSObject
 {
@@ -185,6 +186,7 @@
 - (void)setBell;
 - (int)scrollUpLines;
 - (void)resetScrollUpLines;
+
 
 @end
 

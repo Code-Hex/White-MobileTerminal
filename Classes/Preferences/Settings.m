@@ -20,7 +20,6 @@ static NSString* kSettingsKey = @"com.googlecode.whitemobileterminal.Settings";
 static NSString* kVersionKey = @"version";
 static NSString* kMenuSettings = @"menuSettings";
 static NSString* kGestureSettings = @"gestureSettings";
-static NSString* kTerminalSettings = @"terminalSettings";
 
 static NSString* kDefaultMenuItems[][2] = {
   { @"sl", @"sl" },
@@ -83,50 +82,29 @@ static Settings* settings = nil;
   }
 }
 
-- (void)initDefaultGestureSettings
-{
-  // Initialize the defaults from the .plist file.
-  NSString* path =
-    [[NSBundle mainBundle] pathForResource:@"GestureDefaults"
-                                    ofType:@"plist"]; 
-  NSDictionary* defaultLabels =
-    [[NSDictionary alloc] initWithContentsOfFile:path];
-  for (int i = 0; i < [gestureSettings gestureItemCount]; ++i) {
-    GestureItem* item = [gestureSettings gestureItemAtIndex: i];
-    NSString* actionLabel = [[defaultLabels objectForKey:[item name]] retain];
-    if (actionLabel != nil) {
-      item.actionLabel = actionLabel;
-    }
-    [actionLabel release];
-  }
-  [defaultLabels release];
-}
-
 - (id)initWithCoder:(NSCoder *)decoder
 {
-  self = [super init];
-  if (self != nil) {
+
+  if (self = [super init]) {
+      
     if ([decoder containsValueForKey:kVersionKey]) {
       float version = [decoder decodeIntForKey:kVersionKey];
-      NSLog(@"Settings previously written by v%f", version);
+      NSLog(@"Settings previously written by v%0.1f", version);
     }
+      
     if ([decoder containsValueForKey:kMenuSettings]) {
       menuSettings = [[decoder decodeObjectForKey:kMenuSettings] retain];
     } else {
       menuSettings = [[MenuSettings alloc] init];
       [self initDefaultMenuSettings];
     }
+      
     if ([decoder containsValueForKey:kGestureSettings]) {
       gestureSettings = [[decoder decodeObjectForKey:kGestureSettings] retain];
-    } else {
+    } else
       gestureSettings = [[GestureSettings alloc] init];
-      [self initDefaultGestureSettings];
-    }
-    if ([decoder containsValueForKey:kTerminalSettings]) {
-      terminalSettings = [[decoder decodeObjectForKey:kTerminalSettings] retain];
-    } else {
+    
       terminalSettings = [[TerminalSettings alloc] init];
-    }
   }
   return self;
 }
@@ -146,7 +124,6 @@ static Settings* settings = nil;
   
   [encoder encodeObject:menuSettings forKey:kMenuSettings];
   [encoder encodeObject:gestureSettings forKey:kGestureSettings];
-  [encoder encodeObject:terminalSettings forKey:kTerminalSettings];
 }
 
 @end

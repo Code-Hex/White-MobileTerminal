@@ -15,8 +15,7 @@
 
 - (id) initWithFileHandle:(NSFileHandle*)fileHandle
 {
-  self = [super init];
-  if (self != nil) {
+  if (self = [super init]) {
     self->handle = fileHandle;
     // Initialize with the current window size
     struct winsize window_size;
@@ -33,10 +32,9 @@
 
 - (void)setWidth:(int)terminalWidth withHeight:(int)terminalHeight;
 {
-  if (width == terminalWidth && height == terminalHeight) {
-    // Nothing changed
-    return;
-  }
+  if (width == terminalWidth && height == terminalHeight)
+    return; // Nothing changed
+
   width = terminalWidth;
   height = terminalHeight;
   

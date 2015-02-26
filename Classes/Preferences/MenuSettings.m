@@ -13,8 +13,7 @@ static NSString* kCommandKey = @"command";
 
 - (id)initWithLabel:(NSString*)aLabel andCommand:(NSString*)aCommand;
 {
-  self = [super init];
-  if (self != nil) {
+  if (self = [super init]) {
     label = aLabel;
     command = aCommand;
   }
@@ -28,8 +27,7 @@ static NSString* kCommandKey = @"command";
 
 - (id)initWithCoder:(NSCoder *)decoder
 {
-  self = [super init];
-  if (self != nil) {
+  if (self = [super init]) {
     if ([decoder containsValueForKey:kLabelKey] &&
         [decoder containsValueForKey:kCommandKey]) {
       label = [[decoder decodeObjectForKey:kLabelKey] retain];
@@ -71,14 +69,13 @@ static NSString* kMenuItemsKey = @"menuitems";
 
 - (id)initWithCoder:(NSCoder *)decoder
 {
-  self = [super init];
-  if (self != nil) {
-    if ([decoder containsValueForKey:kMenuItemsKey]) {
+  if (self = [super init]) {
+    if ([decoder containsValueForKey:kMenuItemsKey])
       menuItems = [[decoder decodeObjectForKey:kMenuItemsKey] retain];
-    }
-    if (menuItems == nil) {
+
+    if (menuItems == nil)
       menuItems = [[NSMutableArray alloc] init];
-    }
+
   }
   return self;
 }
@@ -96,7 +93,7 @@ static NSString* kMenuItemsKey = @"menuitems";
 
 - (int)menuItemCount
 {
-  return [menuItems count];
+  return (int)[menuItems count];
 }
 
 - (MenuItem*)menuItemAtIndex:(int)index

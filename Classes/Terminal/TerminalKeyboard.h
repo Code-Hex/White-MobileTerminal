@@ -2,7 +2,6 @@
 // MobileTerminal
 
 #import <UIKit/UIKit.h>
-#import "../MobileTerminalViewController.h"
 
 // Protocol implemented by listener of keyboard events
 @protocol TerminalInputProtocol

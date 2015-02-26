@@ -3,6 +3,7 @@
 
 #import "PreferencesViewController.h"
 #import "RotationController.h"
+#import "UIImagefix.h"
 
 @implementation PreferencesViewController
 
@@ -13,14 +14,12 @@
 @synthesize themeSettingsController;
 @synthesize aboutController;
 
-#pragma mark -
-#pragma mark Initialization
-
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   sections = [[NSMutableArray alloc] init];
   controllers = [[NSMutableArray alloc] init];
+  icons = [[NSMutableArray alloc] init];
   [sections addObject:@"Shortcut Menu"];
   [sections addObject:@"Gestures"];
   [sections addObject:@"Themes"];
@@ -31,76 +30,109 @@
   [controllers addObject:themeSettingsController];
   [controllers addObject:fontSettingsController];
   [controllers addObject:aboutController];
-    
-  self.navigationItem.title = @"Top";
-    
-  /* Delete cell separator */
-  //self.tableView.SeparatorStyle = UITableViewCellSeparatorStyleNone;
+  unichar c = 0xf03a;
+  NSString *icon = [NSString stringWithCharacters:&c length:1];
+  [icons addObject:icon];
+  c = 0xf0a6;
+  icon = [NSString stringWithCharacters:&c length:1];
+  [icons addObject:icon];
+  c = 0xf009;
+  icon = [NSString stringWithCharacters:&c length:1];
+  [icons addObject:icon];
+  c = 0xf031;
+  icon = [NSString stringWithCharacters:&c length:1];
+  [icons addObject:icon];
+  c = 0xf120;
+  icon = [NSString stringWithCharacters:&c length:1];
+  [icons addObject:icon];
+  self.navigationItem.title = @"Settings";
+  self.tableView.backgroundColor = [UIColor whiteColor];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [self.tableView reloadData];
-    [super viewWillAppear:YES];
-    NSLog(@"Preference WillAppear");
-    //[navigationController setNavigationBarHidden:NO];
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [NSString stringWithFormat:@"settings"];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *attention = [ud objectForKey:@"Alreadytweeted"];
+    
+    if(![attention isEqual:@"Yes"]){
+        Class class = NSClassFromString(@"UIAlertController");
+        if(class){
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Thank you!!"
+                                                                           message:@"Thank you for using the terminal.\n I do not wish to donate. Instead, I am want to spread the splendor of this terminal to a lot of people.\n\nBest regards\n- CodeHex -"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"No, Thanks"
+                                                      style:UIAlertActionStyleDefault
+                                                    handler:nil]];
+            
+            UIAlertAction * okAction =
+            [UIAlertAction actionWithTitle:@"Tweet"
+                                     style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action) {
+                                       SLComposeViewController *tweet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+                                       [tweet setInitialText:@"\"#WhiteTerminal is simple & powerful & awesome!! Don't you wanna try it?\nhttp://cydia.saurik.com/package/com.codehex.whiteterminal/\""];
+                                       [self presentViewController:tweet animated:YES completion:nil];
+                                   }];
+            
+            [alert addAction:okAction];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thank you!!"
+                                                            message:@"Thank you for using the WhiteTerminal.\n I don't wish to donate. Instead, I'm want to spread the splendor of this terminal to a lot of people.\n\nBest regards\n- CodeHex -"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"No, Thanks"
+                                                  otherButtonTitles:@"OK", nil];
+            [alert show];
+        }
+        [ud setObject:@"Yes" forKey:@"Alreadytweeted"];
+        [ud synchronize];
+    }
+    
 }
 
 - (void)dealloc
 {
   [super dealloc];
-  [sections dealloc];
-  [controllers dealloc];
+  [sections release];
+  [controllers release];
+  [icons release];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;//2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return /*(section == 0) ? */[sections count];// : 1;
+    return [sections count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger index = [indexPath indexAtPosition:1];
     static NSString *CellIdentifier = @"Cell";
+    UIImage *img = [UIImage imageNamed:@"Icon-Small.png"];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    //if (indexPath.section == 0) {
-        NSString* itemTitle = [sections objectAtIndex:index];
 
+        NSString* itemTitle = [sections objectAtIndex:index];
+        NSString* itemIcon = [icons objectAtIndex:index];
+    
         if (cell == nil) {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemTitle] autorelease];
             cell.textLabel.text = itemTitle;
-            if ([controllers objectAtIndex:index] != nil) {
+            cell.imageView.image = [img imageWithText:itemIcon fontName:@"FontAwesome" fontSize:17 rectSize:CGSizeMake(20,20)];
+            if ([controllers objectAtIndex:index] != nil)
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            }
+        
         }
         return cell;
-   /* } else {
-        NSString* itemTitle = @"Quick Restart";
-        if (!cell) {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemTitle] autorelease];
-        }
-        UISwitch *qswitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-        [qswitch addTarget:self action:@selector(restart:) forControlEvents:UIControlEventTouchUpInside];
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        qswitch.on = [ud boolForKey:@"QuickRestart"] ? YES : NO;
-        cell.accessoryView = qswitch;
-        cell.textLabel.text = itemTitle;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-    }
-      */
-}
-
-- (void)tableView:(UITableView *)tableView
-  willDisplayCell:(UITableViewCell *)cell
-forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    self.tableView.backgroundColor = [UIColor whiteColor]; // Background Color
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,25 +141,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
   UIViewController* itemController = [controllers objectAtIndex:index];
   [self.navigationController pushViewController:itemController animated:YES];
   itemController.navigationItem.title = [sections objectAtIndex:index];
+  [self.tableView reloadData];
 }
-
-/*
--(void)restart:(id)sender {
-    UISwitch *qswitch = (UISwitch *)sender;
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    qswitch.on ? [ud setBool:true forKey:@"QuickRestart"] : [ud setBool:false forKey:@"QuickRestart"];
-    NSLog(@"black or white switch tapped. value = %@", (qswitch.on ? @"ON(true)" : @"OFF(false)"));
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
-    return section == 0 ? [NSString stringWithFormat:@"Settings"] : section == 1 ? [NSString stringWithFormat:@"Quick Restart Mode"] : 0;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return section == 1 ? [NSString stringWithFormat:@"When you are finished, quickly restart using the Notification Center."] : 0;
-}
-*/
 
 @end
 

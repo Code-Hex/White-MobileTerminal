@@ -45,6 +45,8 @@
 		<string>SourceCodePro-Regular.ttf</string>
 		<string>UbuntuMono-R.ttf</string>
 		<string>VT323-Regular.ttf</string>
+		<string>FontAwesome.ttf</string>
+		<string>ionicons.ttf</string>
 	</array>
 	<key>UIApplicationIsOpaque</key>
 	<false/>
@@ -55,9 +57,9 @@
 	<key>UILaunchStoryboardName</key>
 	<string>Loading...</string>
 	<key>UIPrerenderedIcon</key>
-	<true/>
-	<key>UIStatusBarHidden</key>
 	<false/>
+	<key>UIStatusBarHidden</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -65,6 +67,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
+	<false/>
 </dict>
 </plist>

@@ -38,7 +38,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     CGFloat fontSize = [defaults floatForKey:@"font-Size"];
     fontname = [defaults objectForKey:@"font-Name"];
-    label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 50)];
+    label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 110)];
     label.text = [NSString stringWithFormat:@"Blowin' in the Wind"];
     label.textAlignment = UITextAlignmentCenter;
     [self.view addSubview:label];
@@ -69,7 +69,7 @@
 #pragma mark - Table view data source
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return (section == 0)? 80 : 45;
+    return (section == 0)? 120 : 45;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

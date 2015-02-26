@@ -42,7 +42,7 @@
   if (cell == nil) {
     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
   }
-  MenuItem* menuItem = [menuSettings menuItemAtIndex:[indexPath indexAtPosition:1]];
+  MenuItem* menuItem = [menuSettings menuItemAtIndex:(int)[indexPath indexAtPosition:1]];
   NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     if (![ud boolForKey:@"BlackOrWhite"]) {
         cell.textLabel.textColor = [UIColor blackColor];
@@ -61,7 +61,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  MenuItem* menuItem = [menuSettings menuItemAtIndex:[indexPath indexAtPosition:1]];
+  [menuTableView reloadData];
+  MenuItem* menuItem = [menuSettings menuItemAtIndex:(int)[indexPath indexAtPosition:1]];
   [delegate selectedCommand:menuItem.command];
 }
 

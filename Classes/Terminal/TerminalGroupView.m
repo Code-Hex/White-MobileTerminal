@@ -12,12 +12,12 @@ static const int NUM_TERMINALS = 4;
 
 - (id)initWithCoder:(NSCoder *)decoder
 {
-  self = [super initWithCoder:decoder];
-  if (self != nil) {
+  if (self = [super initWithCoder:decoder]) {
     terminals = [[NSMutableArray alloc] init];
     
-    TerminalSettings* settings = [[Settings sharedInstance] terminalSettings];
-    UIFont* font = [settings font];
+    CGFloat fontSize = [[NSUserDefaults standardUserDefaults] floatForKey:@"font-Size"];
+    NSString *fontName = [[NSUserDefaults standardUserDefaults] objectForKey:@"font-Name"];
+    UIFont* font = [UIFont fontWithName:fontName size:fontSize];
     for (int i = 0; i < NUM_TERMINALS; ++i) {
       TerminalView* view = [[TerminalView alloc] initWithCoder:decoder];
       [view setFont:font];
@@ -45,7 +45,7 @@ static const int NUM_TERMINALS = 4;
 
 - (int)terminalCount
 {
-  return [terminals count];
+  return (int)[terminals count];
 }
 
 - (TerminalView*)terminalAtIndex:(int)index

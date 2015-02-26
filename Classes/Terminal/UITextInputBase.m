@@ -130,6 +130,10 @@
   return nil;
 }
 
+- (NSArray *)selectionRectsForRange:(UITextRange *)range {
+    return nil;
+}
+
 - (NSDictionary *)textStylingAtPosition:(UITextPosition *)position inDirection:(UITextStorageDirection)direction
 {
   return nil;

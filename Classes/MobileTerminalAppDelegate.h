@@ -8,8 +8,7 @@
 
 @class Settings;
 
-@interface MobileTerminalAppDelegate : NSObject <UIApplicationDelegate,
-                                                 MobileTerminalInterfaceDelegate> {
+@interface MobileTerminalAppDelegate : NSObject <UIApplicationDelegate,MobileTerminalInterfaceDelegate>{
 @private
   UIWindow *window;
   UINavigationController *navigationController;
@@ -22,9 +21,6 @@
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) IBOutlet MobileTerminalViewController *terminalViewController;
 @property (nonatomic, retain) IBOutlet PreferencesViewController *preferencesViewController;
-
-- (void)preferencesButtonPressed;
-- (void)rootViewDidAppear;
 
 @end
 

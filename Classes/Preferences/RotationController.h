@@ -11,4 +11,5 @@
 #import "../MobileTerminalViewController.h"
 
 @interface UINavigationController (Portrait)
+
 @end

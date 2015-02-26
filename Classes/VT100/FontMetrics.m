@@ -7,17 +7,19 @@
 
 - (id)initWithFont:(UIFont*)uiFont;
 {
-  self = [super init];
-  if (self != nil) {
-    font = [uiFont retain];
-    ctFont = CTFontCreateWithName((CFStringRef)font.fontName, font.pointSize, NULL);
+  if (self = [super init]) {
+      
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    CGFloat fontSize = [defaults floatForKey:@"font-Size"];
+    NSString *fontName = [defaults objectForKey:@"font-Name"];
+    ctFont = CTFontCreateWithName((CFStringRef)fontName, fontSize, NULL);
     NSAssert(ctFont != NULL, @"Error in CTFontCreateWithName");  
     
     // This creates a CoreText line that isn't drawn, but used to get the
     // size of a single character.  This will probably fail miserably if used
     // with a non-monospaced font.
     CFStringRef string = CFSTR("A");
-    CFMutableAttributedStringRef attrString = 
+    CFMutableAttributedStringRef attrString =
         CFAttributedStringCreateMutable(kCFAllocatorDefault, 0);
     CFAttributedStringReplaceString(attrString, CFRangeMake(0, 0), string);  
     CFAttributedStringSetAttribute(attrString, CFRangeMake(0, CFStringGetLength(string)),
@@ -26,21 +28,15 @@
     float width = CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
     CFRelease(line);
     CFRelease(attrString);
-    boundingBox = CGSizeMake(width, ascent + descent + leading);
+    boundingBox = CGSizeMake(width, ascent + descent + leading + ceilf(CTFontGetDescent(ctFont)));
   }
   return self;
 }
 
 - (void) dealloc
 {
-  [font release];
   CFRelease(ctFont);
   [super dealloc];
-}
-
-- (UIFont*)font
-{
-  return font;
 }
 
 - (CTFontRef)ctFont
@@ -50,6 +46,7 @@
 
 - (CGSize)boundingBox
 {
+    
   return boundingBox;
 }
 

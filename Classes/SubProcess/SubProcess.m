@@ -43,8 +43,7 @@ static int start_process(const char *path,
 
 - (id) init
 {
-  self = [super init];
-  if (self != nil) {
+  if (self = [super init]) {
     child_pid = 0;
     fd = 0;
     fileHandle = nil;
@@ -70,9 +69,9 @@ static int start_process(const char *path,
   }
 
   const char* username = getenv("USER");
-  if (username == NULL) {
+  if (username == NULL)
     username = kDefaultUsername;
-  }
+
   
   struct winsize window_size;
   window_size.ws_col = kDefaultWidth;

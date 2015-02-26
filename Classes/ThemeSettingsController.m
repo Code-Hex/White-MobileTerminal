@@ -19,28 +19,27 @@
 {
     [super viewDidLoad];
     
-    sections = [[NSMutableArray alloc]initWithObjects:
-                @"Basic",
-                @"Grass",
-                @"Homebrew",
-                @"Man Page",
-                @"Novel",
-                @"Ocean",
-                @"Pro",
-                @"Red Sands",
-                @"Silver Aerogel",
-                @"My Theme", nil];
+    sections = [[NSMutableArray alloc] initWithArray:nil];
+    NSString *themes = [[NSBundle mainBundle] pathForResource:@"Themes" ofType:@"plist"];
+    NSDictionary *name = [[NSDictionary alloc] initWithContentsOfFile:themes];
+    NSArray *keys = [name allKeys];
+    keys = [keys sortedArrayUsingComparator:^(id o1, id o2) {
+        return [o1 compare:o2];
+    }];
     
-    pickers = [[NSMutableArray alloc]initWithObjects:
+    for (NSString *title in keys) [sections addObject:title];
+    
+    [name release];
+    pickers = [[NSMutableArray alloc] initWithObjects:
                @"Background",
                @"Text",
                @"BoldText",
                @"Cursor",nil];
     
-    blackorwhite = [[NSMutableArray alloc]initWithObjects:@"BlackMode",nil];
-    keyboardtype = [[NSMutableArray alloc]initWithObjects:
+    blackorwhite = [[NSMutableArray alloc] initWithObjects:@"BlackMode",nil];
+    keyboardtype = [[NSMutableArray alloc] initWithObjects:
                     @"KeyTypeURL",
-                    @"KeyTypeASCIIOnly",nil];
+                    @"Default Only",nil];
     
     NSUserDefaults *colorDefaults = [NSUserDefaults standardUserDefaults];
     NSData *colorData1 = [colorDefaults objectForKey:@"Term_Background"];
@@ -53,11 +52,12 @@
     UIColor *cursor = [NSKeyedUnarchiver unarchiveObjectWithData:colorData4];
     
     controllers = [[NSMutableArray alloc]initWithObjects:
-                   [[BGColorPickerViewController alloc] initWithColor:background ?: [UIColor blackColor] fullColor:YES],
-                   [[TextColorPickerViewController alloc] initWithColor:text ?: [UIColor colorWithRed:0.2 green:0.8 blue:0 alpha:1] fullColor:YES],
-                   [[BoldColorPickerViewController alloc] initWithColor:bold ?: [UIColor colorWithRed:0.6 green:0 blue:0 alpha:1] fullColor:YES],
-                   [[CursorColorPickerViewController alloc] initWithColor:cursor ?: [UIColor colorWithRed:0.6 green:0 blue:0 alpha:1] fullColor:YES],
+                   [[[BGColorPickerViewController alloc] initWithColor:background fullColor:YES] autorelease],
+                   [[[TextColorPickerViewController alloc] initWithColor:text fullColor:YES] autorelease],
+                   [[[BoldColorPickerViewController alloc] initWithColor:bold fullColor:YES] autorelease],
+                   [[[CursorColorPickerViewController alloc] initWithColor:cursor fullColor:YES] autorelease],
                    nil];
+    self.tableView.backgroundColor = [UIColor whiteColor];
 
 }
 
@@ -92,8 +92,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
+
     return section == 0 ? [sections count] : section == 1 ? [pickers count] : section == 2 ? [blackorwhite count] : section == 3 ? [keyboardtype count] : 0;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    return indexPath.section == 0 ? YES : NO;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -228,20 +233,13 @@
     return 0;
 }
 
--(void)tableView:(UITableView *)tableView
-willDisplayCell:(UITableViewCell *)cell
-forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    self.tableView.backgroundColor = [UIColor whiteColor]; // Background Color
-}
-
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
     return section == 0 ? [NSString stringWithFormat:@"Themes"] : section == 1 ? [NSString stringWithFormat:@"My Theme"] : section == 2 ? [NSString stringWithFormat:@"UIChange"] : section == 3 ? [NSString stringWithFormat:@"KeyBoardType"] : 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return section == 3 ? [NSString stringWithFormat:@"If you have to turn on the \"KeyTypeASCIIOnly\", it takes precedence."] : 0;
+    return section == 3 ? [NSString stringWithFormat:@"If you have to turn on the \"Default Only\", it takes precedence."] : 0;
 }
 
 -(void)bwchanger:(id)sender {

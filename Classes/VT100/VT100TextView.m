@@ -84,28 +84,26 @@ extern void CGFontGetGlyphsForUnichars(CGFontRef, unichar[], CGGlyph[], size_t);
 
 - (int)width
 {
-  return [buffer screenSize].width;
+  return buffer.screenSize.width;
 }
 
 - (int)height
 {
-  return [buffer screenSize].height;
+  return buffer.screenSize.height;
 }
 
 - (int)adjacentCharactersWithSameColor:(screen_char_t*)data withSize:(int)length
 {
   int i = 1;
-  for (i = 1; i < length; ++i) {
-      
+  for (i = 1; i < length; ++i)
     if (data[0].fg_color != data[i].fg_color) break;
 
-  }
   return i;
 }
 
 - (ScreenPosition)positionFromPoint:(CGPoint)point
 {
-  CGSize glyphSize = [fontMetrics boundingBox];
+  CGSize glyphSize = fontMetrics.boundingBox;
 
   ScreenPosition pos;
   pos.x = point.x / glyphSize.width;
@@ -166,11 +164,7 @@ extern void CGFontGetGlyphsForUnichars(CGFontRef, unichar[], CGGlyph[], size_t);
       screen_char_t* col = &row[startX];
       unichar buf[kMaxRowBufferSize];
       for (int i = 0; i < width; ++i) {
-        if (col->ch == '\0') {
-          buf[i] = ' ';
-        } else {
-          buf[i] = col->ch;
-        }
+        buf[i] = (col->ch == '\0') ? ' ' : col->ch;
         ++col;
       }
       [s appendString:[NSString stringWithCharacters:buf length:width]];
@@ -227,7 +221,7 @@ extern void CGFontGetGlyphsForUnichars(CGFontRef, unichar[], CGGlyph[], size_t);
 {
   // Allow scrolling on the right side of the view near the scrollbar.
   // Otherwise, bubble up hit events to the gesture recognizer.
-  if (point.x > [self frame].size.width * kSwipeWidth) {
+  if (point.x > self.frame.size.width * kSwipeWidth) {
     return [super hitTest:point withEvent:event];
   }
   return NULL;

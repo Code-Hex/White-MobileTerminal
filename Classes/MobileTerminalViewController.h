@@ -2,12 +2,25 @@
 // MobileTerminal
 
 #import <UIKit/UIKit.h>
+#import <Social/Social.h>
 #import "MenuView.h"
+#import "Preferences/PreferencesViewController.h"
+#import "Frameworks/TesseractOCR.framework/Headers/TesseractOCR.h"
+#import "HPGrowingTextView/class/HPGrowingTextView.h"
+#import "SVModalWebViewController.h"
+#import "Frameworks/GPUImage.framework/Headers/GPUImage.h"
+#import "MBProgressHUD/MBProgressHUD.h"
+#import "WYPopoverController/WYPopoverController.h"
+#import "fnviewcontroller.h"
 
 @class TerminalGroupView;
 @class TerminalKeyboard;
 @class GestureResponder;
 @class GestureActionRegistry;
+@class ColorMap;
+@class SVModalWebViewController;
+@class WYPopoverController;
+@class fnviewcontroller;
 
 // Protocol to get notified about when the preferences button is pressed.
 // TOOD(allen): We should find a better way to do this.
@@ -17,7 +30,7 @@
 - (void)rootViewDidAppear;
 @end
 
-@interface MobileTerminalViewController : UIViewController <MenuViewDelegate> {
+@interface MobileTerminalViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIPopoverControllerDelegate, MenuViewDelegate, TesseractDelegate, HPGrowingTextViewDelegate, WYPopoverControllerDelegate, fnviewcontrollerDelegate>{
 @private
   UIView* contentView;
   TerminalGroupView* terminalGroupView;
@@ -33,6 +46,20 @@
   id<MobileTerminalInterfaceDelegate> interfaceDelegate;
   GestureResponder* gestureResponder;
   GestureActionRegistry* gestureActionRegistry;
+  UIBarButtonItem *hidemenu;
+  UIBarButtonItem *change;
+  UIBarButtonItem *camera;
+  UIBarButtonItem *send;
+  UIButton *browser;
+  UIButton *ocr;
+  Tesseract *tesseract;  
+  SVModalWebViewController *webcontroller;
+  HPGrowingTextView *textView;
+  MBProgressHUD *hud;
+  WYPopoverController *popover;
+  fnviewcontroller *FNController;
+  UIButton *box;
+  UIButton *backbtn;
 }
 
 @property (nonatomic, retain) IBOutlet UIView* contentView;
@@ -44,15 +71,23 @@
 @property (nonatomic, retain) IBOutlet MenuView* menuView;
 @property (nonatomic, retain) IBOutlet GestureResponder* gestureResponder;
 @property (nonatomic, retain) IBOutlet GestureActionRegistry* gestureActionRegistry;
+@property (nonatomic, retain) IBOutlet ColorMap* colorMap;
+@property (nonatomic, retain) IBOutlet UIToolbar *texttoolbar;
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
-@property (nonatomic, retain) IBOutlet UIButton *left;
-@property (nonatomic, retain) IBOutlet UIButton *right;
-@property (nonatomic, retain) IBOutlet UIButton *up;
-@property (nonatomic, retain) IBOutlet UIButton *down;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *ctrl;
+@property (nonatomic, retain) IBOutlet UIButton *toolview;
+@property (nonatomic, retain) IBOutlet UIButton *keyhide;
+@property (nonatomic, retain) IBOutlet UIButton *browser;
+@property (nonatomic, retain) IBOutlet UIButton *ocr;
 @property (nonatomic, retain) IBOutlet UIView *behind;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *space;
-
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *hidemenu;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *change;
+@property (nonatomic, retain) IBOutlet SVModalWebViewController *webcontroller;
+@property (nonatomic, retain) IBOutlet HPGrowingTextView *textView;
+@property (nonatomic, retain) IBOutlet fnviewcontroller *FNController;
+@property (nonatomic, retain) IBOutlet Tesseract *tesseract;
+@property (nonatomic, retain) IBOutlet UIButton *box;
+@property (nonatomic, retain) IBOutlet UIImagePickerController *imagePickerController;
+@property UIEdgeInsets tappableInsets;
 
 @end
 
