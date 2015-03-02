@@ -24,8 +24,7 @@ extern void CGFontGetGlyphsForUnichars(CGFontRef, unichar[], CGGlyph[], size_t);
 
 - (id)initWithCoder:(NSCoder *)decoder
 {
-  self = [super initWithCoder:decoder];
-  if (self != nil) {
+  if (self = [super initWithCoder:decoder]) {
     VT100* vt100 = [[VT100 alloc] init];
     [vt100 setRefreshDelegate:self];
     buffer = vt100;
@@ -71,8 +70,8 @@ extern void CGFontGetGlyphsForUnichars(CGFontRef, unichar[], CGGlyph[], size_t);
   // Determine the screen size based on the font size
   CGSize frameSize = [self frame].size;
   ScreenSize size;
-  size.width = (int)(frameSize.width / glyphSize.width);
-  size.height = (int)(frameSize.height / glyphSize.height);
+  size.width = (float)(frameSize.width / glyphSize.width);
+  size.height = (float)(frameSize.height / glyphSize.height);
   // The font size should not be too small that it overflows the glyph buffers.
   // It is not worth the effort to fail gracefully (increasing the buffer size would
   // be better).

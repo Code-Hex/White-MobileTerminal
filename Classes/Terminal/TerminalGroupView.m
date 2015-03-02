@@ -22,6 +22,7 @@ static const int NUM_TERMINALS = 4;
       TerminalView* view = [[TerminalView alloc] initWithCoder:decoder];
       [view setFont:font];
       [terminals addObject:view];
+        
       [self addSubview:view];
     }
     [self bringTerminalToFront:0];

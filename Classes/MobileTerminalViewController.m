@@ -292,18 +292,10 @@ static const NSInteger kTagAlert = 1;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if(kTagAlert == alertView.tag){
-        if(buttonIndex != alertView.cancelButtonIndex) {
-            SLComposeViewController *tweet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-            [tweet setInitialText:@"\"#WhiteTerminal is simple & powerful & awesome!! Don't you wanna try it?\nhttp://cydia.saurik.com/package/com.codehex.whiteterminal/\""];
-            [self presentViewController:tweet animated:YES completion:nil];
-        }
-    } else {
-        if(buttonIndex != alertView.cancelButtonIndex) {
-            [[UIApplication sharedApplication] performSelector:@selector(suspend)];
-            [NSThread sleepForTimeInterval:0.2];
-            exit(0);
-        }
+    if(buttonIndex != alertView.cancelButtonIndex) {
+        [[UIApplication sharedApplication] performSelector:@selector(suspend)];
+        [NSThread sleepForTimeInterval:0.2];
+        exit(0);
     }
 }
 
@@ -702,6 +694,7 @@ static const NSInteger kTagAlert = 1;
     popover.theme.fillBottomColor = [UIColor clearColor];
     popover.theme.outerStrokeColor = [UIColor clearColor];
     popover.theme.glossShadowColor = [UIColor clearColor];
+    
 }
 
 - (void)growingTextView:(HPGrowingTextView *)growingTextView willChangeHeight:(float)height
@@ -832,10 +825,12 @@ static const NSInteger kTagAlert = 1;
     texttoolbar.layer.shouldRasterize = YES;
     CATransition *animation = [CATransition animation];
     animation.type = kCATransitionMoveIn;
-    animation.subtype = kCATransitionFromTop;
     animation.duration = 0.25f;
     [texttoolbar.layer addAnimation:animation forKey:nil];
     texttoolbar.hidden = YES;
+    CGRect viewFrame = terminalGroupView.frame;
+    viewFrame.size.height += 7.5;
+    terminalGroupView.frame = viewFrame;
     [textView resignFirstResponder];
     [self setShowKeyboard:keyboardShow];
 }
@@ -845,10 +840,12 @@ static const NSInteger kTagAlert = 1;
     texttoolbar.layer.shouldRasterize = YES;
     CATransition *animation = [CATransition animation];
     animation.type = kCATransitionMoveIn;
-    animation.subtype = kCATransitionFromTop;
     animation.duration = 0.25f;
     [texttoolbar.layer addAnimation:animation forKey:nil];
     texttoolbar.hidden = YES;
+    CGRect viewFrame = terminalGroupView.frame;
+    viewFrame.size.height += 7.5;
+    terminalGroupView.frame = viewFrame;
     [textView resignFirstResponder];
     [self setShowKeyboard:keyboardShow];
 }
@@ -1009,31 +1006,41 @@ static const NSInteger kTagAlert = 1;
     UIInterfaceOrientation interfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
     CGFloat width = 300;
     CGFloat height = 44;
-    if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
-        CGFloat angle = 90.0 * M_PI / 180.0;
-        FNController.view.transform = CGAffineTransformMakeRotation(angle);
-        popover.popoverContentSize = CGSizeMake(height, width);
-        [popover presentPopoverFromRect:sender.bounds
-                                 inView:sender
-               permittedArrowDirections:UIPopoverArrowDirectionLeft
-                               animated:YES];
-    } else if (interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-        CGFloat angle = 270.0 * M_PI / 180.0;
-        FNController.view.transform = CGAffineTransformMakeRotation(angle);
-        popover.popoverContentSize = CGSizeMake(height, width);
-        [popover presentPopoverFromRect:sender.bounds
-                                 inView:sender
-               permittedArrowDirections:UIPopoverArrowDirectionRight
-                               animated:YES];
+    float version = [[UIDevice currentDevice].systemVersion floatValue];
+    if (version >= 8.0) {
+        if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
+            CGFloat angle = 90.0 * M_PI / 180.0;
+            FNController.view.transform = CGAffineTransformMakeRotation(angle);
+            popover.popoverContentSize = CGSizeMake(height, width);
+            [popover presentPopoverFromRect:sender.bounds
+                                     inView:sender
+                   permittedArrowDirections:UIPopoverArrowDirectionLeft
+                                   animated:YES];
+        } else if (interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+            CGFloat angle = 270.0 * M_PI / 180.0;
+            FNController.view.transform = CGAffineTransformMakeRotation(angle);
+            popover.popoverContentSize = CGSizeMake(height, width);
+            [popover presentPopoverFromRect:sender.bounds
+                                     inView:sender
+                   permittedArrowDirections:UIPopoverArrowDirectionRight
+                                   animated:YES];
+        } else {
+            CGFloat angle = 0;
+            FNController.view.transform = CGAffineTransformMakeRotation(angle);
+            popover.popoverContentSize = CGSizeMake(width, height);
+            [popover presentPopoverFromRect:sender.bounds
+                                     inView:sender
+                   permittedArrowDirections:UIPopoverArrowDirectionDown
+                                   animated:YES];
+        }
     } else {
-        CGFloat angle = 0;
-        FNController.view.transform = CGAffineTransformMakeRotation(angle);
         popover.popoverContentSize = CGSizeMake(width, height);
         [popover presentPopoverFromRect:sender.bounds
                                  inView:sender
                permittedArrowDirections:UIPopoverArrowDirectionDown
                                animated:YES];
     }
+    
 }
 
 - (void)changey:(id)sender
@@ -1064,6 +1071,9 @@ static const NSInteger kTagAlert = 1;
     [texttoolbar.layer addAnimation:animation forKey:nil];
     texttoolbar.hidden = NO;
     menuView.hidden = YES;
+    CGRect viewFrame = terminalGroupView.frame;
+    viewFrame.size.height -= 7.5;
+    terminalGroupView.frame = viewFrame;
 }
 
 - (void)function:(NSString *)sender

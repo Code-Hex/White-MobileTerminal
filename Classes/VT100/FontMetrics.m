@@ -28,7 +28,7 @@
     float width = CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
     CFRelease(line);
     CFRelease(attrString);
-    boundingBox = CGSizeMake(width, ascent + descent + leading + ceilf(CTFontGetDescent(ctFont)));
+    boundingBox = CGSizeMake(width, ascent + descent + leading);
   }
   return self;
 }

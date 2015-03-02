@@ -87,7 +87,7 @@
                                                             message:@"Thank you for using the WhiteTerminal.\n I don't wish to donate. Instead, I'm want to spread the splendor of this terminal to a lot of people.\n\nBest regards\n- CodeHex -"
                                                            delegate:self
                                                   cancelButtonTitle:@"No, Thanks"
-                                                  otherButtonTitles:@"OK", nil];
+                                                  otherButtonTitles:@"Tweet", nil];
             [alert show];
         }
         [ud setObject:@"Yes" forKey:@"Alreadytweeted"];
@@ -95,6 +95,13 @@
     }
     
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    SLComposeViewController *tweet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+    [tweet setInitialText:@"\"#WhiteTerminal is simple & powerful & awesome!! Don't you wanna try it?\nhttp://cydia.saurik.com/package/com.codehex.whiteterminal/\""];
+    [self presentViewController:tweet animated:YES completion:nil];
+}
+
 
 - (void)dealloc
 {

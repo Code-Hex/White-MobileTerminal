@@ -53,10 +53,13 @@
     [navigationController setViewControllers:viewControllers animated:NO];
 
     self.window.rootViewController = navigationController;
-    navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1, 0);
-    navigationController.navigationBar.layer.shadowColor = [[UIColor blackColor] CGColor];
-    navigationController.navigationBar.layer.shadowRadius = 3;
-    navigationController.navigationBar.layer.shadowOpacity = .25;
+    float version = [[UIDevice currentDevice].systemVersion floatValue];
+    if (version >= 8.0) {
+        navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1, 0);
+        navigationController.navigationBar.layer.shadowColor = [[UIColor blackColor] CGColor];
+        navigationController.navigationBar.layer.shadowRadius = 3;
+        navigationController.navigationBar.layer.shadowOpacity = .25;
+    }
 
     [window makeKeyAndVisible];
     inPreferences = FALSE;

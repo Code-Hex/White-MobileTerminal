@@ -98,7 +98,6 @@
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
 {
-  
   if (action == @selector(copy:)) {
     // Only show the copy menu if we actually have any data selected
     NSMutableData* data = [NSMutableData dataWithCapacity:0];
