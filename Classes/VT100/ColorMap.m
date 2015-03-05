@@ -49,11 +49,12 @@
     return self;
 }
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+{
 
     if(self = [self init]){
         NSUserDefaults *colorDefaults = [NSUserDefaults standardUserDefaults];
-        if ([dictionary[@"Item 0"] isEqual:@"My Theme"]) {
+        if ([dictionary[@"Theme"] isEqual:@"My Theme"]) {
             CGFloat red, green, blue;
             
             NSData *colorData1 = [colorDefaults objectForKey:@"Term_Background"];
@@ -107,6 +108,24 @@
             foregroundBold = term_bold;
             foregroundCursor = term_cursor;
             backgroundCursor = term_cursor;
+            
+        } else if ([dictionary[@"Theme"] isEqual:@"Solid Colors"]) {
+            int c = (int)arc4random_uniform(10);
+            
+            NSArray *background_color = dictionary[@"background"];
+            
+            
+            NSArray *foreground_color = dictionary[@"foreground"];
+            NSArray *foregroundbold_color = dictionary[@"foregroundBold"];
+            NSArray *cursor_color = dictionary[@"cursor"];
+            
+            background = [[UIColor alloc] initWithRed:[background_color[c][0] doubleValue]/255 green:[background_color[c][1] doubleValue]/255 blue:[background_color[c][2] doubleValue]/255 alpha:1.f];
+            
+            foreground = [[UIColor alloc] initWithRed:[foreground_color[0] doubleValue]/255 green:[foreground_color[1] doubleValue]/255 blue:[foreground_color[2] doubleValue]/255 alpha:1.f];
+            
+            foregroundBold = [[UIColor alloc] initWithRed:[foregroundbold_color[0] doubleValue]/255 green:[foregroundbold_color[1] doubleValue]/255 blue:[foregroundbold_color[2] doubleValue]/255 alpha:1.f];
+            
+            backgroundCursor = [[UIColor alloc] initWithRed:[cursor_color[0] doubleValue]/255 green:[cursor_color[1] doubleValue]/255 blue:[cursor_color[2] doubleValue]/255 alpha:1.f];
         } else {
             NSArray *background_color = dictionary[@"background"];
             NSArray *foreground_color = dictionary[@"foreground"];
@@ -134,10 +153,8 @@
 
 //Color settings
 - (UIColor *)_colorFromArray:(NSArray *)array {
-	if (!array || array.count != 3)
-		return nil;
 	
-	return [UIColor colorWithRed:((NSNumber *)array[0]).floatValue / 255.f green:((NSNumber *)array[1]).floatValue / 255.f blue:((NSNumber *)array[2]).floatValue / 255.f alpha:1.f];
+    return (!array || array.count != 3) ? nil : [UIColor colorWithRed:((NSNumber *)array[0]).floatValue / 255.f green:((NSNumber *)array[1]).floatValue / 255.f blue:((NSNumber *)array[2]).floatValue / 255.f alpha:1.f];
 }
 
 

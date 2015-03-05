@@ -247,11 +247,60 @@
 	</dict>
 	<key>Solid Colors</key>
 	<dict>
+		<key>Theme</key>
+		<string>Solid Colors</string>
 		<key>background</key>
 		<array>
-			<integer>153</integer>
-			<integer>204</integer>
-			<integer>255</integer>
+			<array>
+				<integer>70</integer>
+				<integer>123</integer>
+				<integer>190</integer>
+			</array>
+			<array>
+				<string>117</string>
+				<string>132</string>
+				<string>153</string>
+			</array>
+			<array>
+				<integer>94</integer>
+				<integer>94</integer>
+				<integer>94</integer>
+			</array>
+			<array>
+				<integer>146</integer>
+				<integer>146</integer>
+				<integer>146</integer>
+			</array>
+			<array>
+				<integer>225</integer>
+				<integer>215</integer>
+				<integer>244</integer>
+			</array>
+			<array>
+				<integer>209</integer>
+				<integer>225</integer>
+				<integer>241</integer>
+			</array>
+			<array>
+				<integer>69</integer>
+				<integer>137</integer>
+				<integer>124</integer>
+			</array>
+			<array>
+				<string>255</string>
+				<string>255</string>
+				<string>255</string>
+			</array>
+			<array>
+				<integer>218</integer>
+				<integer>218</integer>
+				<integer>218</integer>
+			</array>
+			<array>
+				<integer>57</integer>
+				<integer>102</integer>
+				<integer>159</integer>
+			</array>
 		</array>
 		<key>foreground</key>
 		<array>
@@ -274,7 +323,7 @@
 	</dict>
 	<key>My Theme</key>
 	<dict>
-		<key>Item 0</key>
+		<key>Theme</key>
 		<string>My Theme</string>
 	</dict>
 </dict>

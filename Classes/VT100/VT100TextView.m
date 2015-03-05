@@ -37,7 +37,7 @@ extern void CGFontGetGlyphsForUnichars(CGFontRef, unichar[], CGGlyph[], size_t);
     stringSupplier.colorMap = colorMap;
     stringSupplier.screenBuffer = buffer;
     
-    tableViewController = [[VT100TableViewController alloc] initWithColorMap:colorMap];
+    tableViewController = [[VT100TableViewController alloc] init];
     tableViewController.stringSupplier = stringSupplier;
     tableViewController.fontMetrics = fontMetrics;
     [self addSubview:tableViewController.tableView];
@@ -45,6 +45,12 @@ extern void CGFontGetGlyphsForUnichars(CGFontRef, unichar[], CGGlyph[], size_t);
     [stringSupplier release];
   }
   return self;
+}
+
+- (void)setColorMap:(ColorMap *)colormap
+{
+    colorMap = colormap;
+    [tableViewController setColorMap:colorMap];
 }
 
 - (void)dealloc

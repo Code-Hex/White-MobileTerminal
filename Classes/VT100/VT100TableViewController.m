@@ -6,6 +6,7 @@
 #import "ColorMap.h"
 #import "FontMetrics.h"
 #import "VT100RowView.h"
+#import "VT100StringSupplier.h"
 #import "VT100Types.h"
 
 @implementation VT100TableViewController
@@ -13,7 +14,7 @@
 @synthesize fontMetrics;
 @synthesize stringSupplier;
 
-- (id)initWithColorMap:(ColorMap*)someColormap;
+- (id)init
 {
   if (self = [super init]) {
     self.tableView.AllowsSelection = NO;
@@ -22,7 +23,14 @@
   return self;
 }
 
-- (void) dealloc
+- (void)setColorMap:(ColorMap *)colormap
+{
+    colorMap = colormap;
+    self.tableView.backgroundColor = colorMap.background;
+    [stringSupplier setColorMap:colorMap];
+}
+
+- (void)dealloc
 {
   [colorMap release];
   [super dealloc];
@@ -89,7 +97,8 @@
   VT100RowView* rowView = [subviews objectAtIndex:0];
   rowView.rowIndex = (int)tableRow;
   rowView.fontMetrics = fontMetrics;
-  rowView.backgroundColor = colorMap.background;  
+  rowView.backgroundColor = colorMap.background;
+
   // resize the row in case the table has changed size
   cell.frame = self.cellFrame;
   rowView.frame = self.cellFrame;
@@ -111,14 +120,10 @@
 
 - (void)refresh
 {
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  NSString *themename = [defaults objectForKey:@"colorMap"];
-  NSDictionary *themes = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Themes" ofType:@"plist"]];
-  colorMap = [[ColorMap alloc] initWithDictionary:themes[themename]];
   UITableView* tableView = self.tableView;
-  tableView.backgroundColor = colorMap.background;
+  
   [tableView reloadData];
-  [tableView setNeedsDisplay];  
+  [tableView setNeedsDisplay];
   // Scrolling to the bottom with animations looks much nicer, but will not
   // work if the table cells have not finished loading yet.
   [self scrollToBottom:NO];

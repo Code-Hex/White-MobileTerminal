@@ -58,7 +58,7 @@
 @synthesize FNController;
 
 static NSString *const kFontIoniconsFamilyName = @"Ionicons";
-static const NSInteger kTagAlert = 1;
+
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (void)awakeFromNib
 {
@@ -307,7 +307,7 @@ static const NSInteger kTagAlert = 1;
 {
     CGRect keyboardFrameEnd = [[Notification.userInfo objectForKey:UIKeyboardBoundsUserInfoKey
                                 ] CGRectValue];
-    [self movecontentView:(_behind.frame.size.height + 6 - keyboardFrameEnd.size.height) notification:Notification];
+    [self movecontentView:(self.view.frame.size.height + 6 - keyboardFrameEnd.size.height) notification:Notification];
 }
 
 - (void)keyboardWillHide:(NSNotification*)Notification
@@ -321,7 +321,7 @@ static const NSInteger kTagAlert = 1;
 {
     CGRect keyboardFrame = [[Notification.userInfo objectForKey:UIKeyboardBoundsUserInfoKey
                                 ] CGRectValue];
-        [self movecontentView:(_behind.frame.size.height + 6 - keyboardFrame.size.height) notification:Notification];
+        [self movecontentView:(self.view.frame.size.height + 6 - keyboardFrame.size.height) notification:Notification];
 }
 
 - (void)movecontentView:(CGFloat)high notification:(NSNotification*)Notification
@@ -1250,11 +1250,10 @@ static const NSInteger kTagAlert = 1;
     NSString *themename = [ud objectForKey:@"colorMap"];
     NSDictionary *themes = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Themes" ofType:@"plist"]];
     colorMap = [[ColorMap alloc] initWithDictionary:themes[themename]];
-    UIColor *background = colorMap.background;
     
-    contentView.backgroundColor = background;
-    _behind.backgroundColor = background;
-    
+    contentView.backgroundColor = colorMap.background;
+    self.view.backgroundColor = colorMap.background;
+ 
     if (![ud boolForKey:@"BlackOrWhite"]) {
         toolbar.backgroundColor = [[[UIColor alloc] initWithWhite:1.f alpha:1.f] autorelease];
         toolbar.tintColor = [[[UIColor alloc] initWithWhite:0.f alpha:1.f] autorelease];
@@ -1367,6 +1366,7 @@ static const NSInteger kTagAlert = 1;
     for (int i = 0; i < [terminalGroupView terminalCount]; ++i) {
         TerminalView* terminalView = [terminalGroupView terminalAtIndex:i];
         [terminalView setFont:font];
+        [terminalView setColorMap:colorMap];
         [terminalView setNeedsLayout];
     }
 }
@@ -1394,7 +1394,6 @@ static const NSInteger kTagAlert = 1;
 - (void)dealloc {
     [terminalKeyboard release];
     [toolbar release];
-    [_behind release];
     [hidemenu release];
     [change release];
     [webcontroller release];

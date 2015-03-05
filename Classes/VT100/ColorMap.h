@@ -24,6 +24,7 @@
 
 - (instancetype)init;
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
 // Terminal color index
 - (UIColor*)color:(unsigned int)index;
 

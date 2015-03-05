@@ -43,5 +43,6 @@
 
 // Configures terminal behavior for responding to touch events
 - (void)setCopyPasteEnabled:(BOOL)enabled;
+- (void)setColorMap:(ColorMap *)colormap;
 
 @end

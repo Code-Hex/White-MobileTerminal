@@ -54,7 +54,7 @@
 @property (NS_NONATOMIC_IOSONLY, readonly) CGRect selectionRegion;
 // Copies the UTF8 text selected on the screen into the specified data object
 - (void)fillDataWithSelection:(NSMutableData*)data;
-
+- (void)setColorMap:(ColorMap *)colormap;
 // Rectangle that represents the position where the cursor is drawn
 @property (NS_NONATOMIC_IOSONLY, readonly) CGRect cursorRegion;
 

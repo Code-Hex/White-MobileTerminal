@@ -6,7 +6,7 @@
 // have to depend on each other.
 
 #import <Foundation/Foundation.h>
-
+@class ColorMap;
 // Buffer space used to draw any particular row.
 static const int kMaxRowBufferSize = 200;
 
@@ -73,6 +73,7 @@ typedef struct {
 - (int)rowCount;
 - (CFStringRef)newString:(int)rowIndex;
 - (CFAttributedStringRef)newAttributedString:(int)rowIndex;
+- (void)setColorMap:(ColorMap *)colormap;
 @end
 
 

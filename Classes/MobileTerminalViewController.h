@@ -78,7 +78,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *keyhide;
 @property (nonatomic, retain) IBOutlet UIButton *browser;
 @property (nonatomic, retain) IBOutlet UIButton *ocr;
-@property (nonatomic, retain) IBOutlet UIView *behind;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *hidemenu;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *change;
 @property (nonatomic, retain) IBOutlet SVModalWebViewController *webcontroller;

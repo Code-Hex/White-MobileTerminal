@@ -32,7 +32,7 @@ CFStringRef const kBackgroundColorAttributeName = CFSTR("-background-color-");
   int width = self.columnCount;
   screen_char_t* row = [screenBuffer bufferForRow:rowIndex];
     for (int j = 0; j < width; ++j)
-        unicharBuffer[j] = row[j].ch == 0x00 ? ' ' : row[j].ch;
+        unicharBuffer[j] = row[j].ch == '\0' ? ' ' : row[j].ch;
 
 
   return CFStringCreateWithCharacters(NULL, unicharBuffer, width);
@@ -45,12 +45,7 @@ CFStringRef const kBackgroundColorAttributeName = CFSTR("-background-color-");
       CFAttributedStringCreateMutable(kCFAllocatorDefault, 0);
   CFAttributedStringReplaceString(attrString, CFRangeMake(0, 0), string);
   CFRelease(string);
-  if (!rowIndex) {
-      NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-      NSString *themename = [ud objectForKey:@"colorMap"];
-      NSDictionary *themes = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Themes" ofType:@"plist"]];
-      colorMap = [[ColorMap alloc] initWithDictionary:themes[themename]];
-  }
+
   // The cursor is initially relative to the screen, not the position in the
   // scrollback buffer.
   ScreenPosition cursorPosition = screenBuffer.cursorPosition;
@@ -75,7 +70,6 @@ CFStringRef const kBackgroundColorAttributeName = CFSTR("-background-color-");
         color = (cursorPosition.x == j && cursorPosition.y == rowIndex) ?
         [colorMap backgroundCursor] : [colorMap color:row[j].bg_color];
       
-      
     if (eol || ![color isEqual:lastColor]) {
       if (lastColorIndex != -1) {
         int length = j - lastColorIndex;
@@ -83,7 +77,8 @@ CFStringRef const kBackgroundColorAttributeName = CFSTR("-background-color-");
                                        CFRangeMake(lastColorIndex, length),
                                        kBackgroundColorAttributeName,
                                        [lastColor CGColor]);
-            /*
+          
+          /*
               SInt32 type = kCTUnderlineStyleSingle;
               CFNumberRef underline = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &type);
               CFAttributedStringSetAttribute(attrString,
@@ -95,8 +90,7 @@ CFStringRef const kBackgroundColorAttributeName = CFSTR("-background-color-");
                                              kCTUnderlineColorAttributeName,
                                              [UIColor redColor]);
               CFRelease(underline);
-             */
-          
+        */
       }
       if (!eol) {
         lastColorIndex = j;

@@ -33,7 +33,7 @@
   return self;
 }
 
-- (void) dealloc
+- (void)dealloc
 {
   CFRelease(ctFont);
   [super dealloc];
@@ -46,7 +46,6 @@
 
 - (CGSize)boundingBox
 {
-    
   return boundingBox;
 }
 

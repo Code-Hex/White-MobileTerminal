@@ -16,7 +16,7 @@ static const int kDefaultHeight = 25;
 
 @synthesize refreshDelegate;
 
-- (id) init
+- (id)init
 {
   if (self = [super init]) {
     terminal = [[VT100Terminal alloc] init];

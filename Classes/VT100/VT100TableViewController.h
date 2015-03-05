@@ -15,11 +15,12 @@
   id<AttributedStringSupplier> stringSupplier;
 }
 
-- (id)initWithColorMap:(ColorMap*)colorMap;
+- (id)init;
 
 @property (nonatomic, retain) FontMetrics* fontMetrics;
 @property (nonatomic, retain) id<AttributedStringSupplier> stringSupplier;
 
 - (void)refresh;
+- (void)setColorMap:(ColorMap *)colormap;
 
 @end
