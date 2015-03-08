@@ -5,7 +5,7 @@
 
 @implementation FontMetrics
 
-- (id)initWithFont:(UIFont*)uiFont;
+- (id)init
 {
   if (self = [super init]) {
       

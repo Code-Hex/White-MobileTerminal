@@ -24,34 +24,19 @@
   return NO;
 }
 
-- (void)insertText:(NSString *)text
-{
-  
-}
+- (void)insertText:(NSString *)text{}
 
-- (void)deleteBackward
-{
-  
-}
+- (void)deleteBackward{}
+
+- (void)replaceRange:(UITextRange *)range withText:(NSString *)text{}
+
+- (void)setMarkedText:(NSString *)markedText selectedRange:(NSRange)selectedRange{}
+
+- (void)unmarkText{}
 
 - (NSString *)textInRange:(UITextRange *)range
 {
   return nil;
-}
-
-- (void)replaceRange:(UITextRange *)range withText:(NSString *)text
-{
-  
-}
-
-
-- (void)setMarkedText:(NSString *)markedText selectedRange:(NSRange)selectedRange
-{
-
-}
-
-- (void)unmarkText
-{
 }
 
 /* Methods for creating ranges and positions. */
@@ -97,18 +82,16 @@
   return UITextWritingDirectionNatural;
 }
 
-- (void)setBaseWritingDirection:(UITextWritingDirection)writingDirection forRange:(UITextRange *)range
-{
-}
+- (void)setBaseWritingDirection:(UITextWritingDirection)writingDirection forRange:(UITextRange *)range{}
 
 - (CGRect)firstRectForRange:(UITextRange *)range
 {
-  return CGRectMake(0.0f, 0.0f, 0.0f, 0.0f);
+  return CGRectZero;
 }
 
 - (CGRect)caretRectForPosition:(UITextPosition *)position
 {
-  return CGRectMake(0.0f, 0.0f, 0.0f, 0.0f);
+  return CGRectZero;
 }
 
 - (UITextPosition *)closestPositionToPoint:(CGPoint)point
@@ -130,7 +113,8 @@
   return nil;
 }
 
-- (NSArray *)selectionRectsForRange:(UITextRange *)range {
+- (NSArray *)selectionRectsForRange:(UITextRange *)range
+{
     return nil;
 }
 
@@ -149,5 +133,6 @@
 {
   return 0;
 }
+
 
 @end

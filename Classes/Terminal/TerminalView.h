@@ -32,7 +32,7 @@
 }
 
 - (instancetype)initWithCoder:(NSCoder *)decoder;
-- (void)setFont:(UIFont*)font;
+- (void)setFont;
 @property (NS_NONATOMIC_IOSONLY, readonly, strong) ColorMap *colorMap;
 
 // Must be invoked to start the sub processes

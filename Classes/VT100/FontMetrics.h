@@ -16,7 +16,7 @@
   CGSize boundingBox;
 }
 
-- (id)initWithFont:(UIFont*)font;
+- (id)init;
 - (CTFontRef)ctFont;
 
 // The dimensions of a single glyph on the screen

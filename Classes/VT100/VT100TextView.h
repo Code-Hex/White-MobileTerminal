@@ -30,7 +30,7 @@
 
 // Sets the font to display on the screen.
 // The caller should likely also call setNeedsLayout on this object.
-- (void)setFont:(UIFont*)font;
+- (void)setFont;
 
 // Returns the height and width of the terminal in characters
 @property (NS_NONATOMIC_IOSONLY, readonly) int width;

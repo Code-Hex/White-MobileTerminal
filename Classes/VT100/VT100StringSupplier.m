@@ -76,7 +76,7 @@ CFStringRef const kBackgroundColorAttributeName = CFSTR("-background-color-");
         CFAttributedStringSetAttribute(attrString,
                                        CFRangeMake(lastColorIndex, length),
                                        kBackgroundColorAttributeName,
-                                       [lastColor CGColor]);
+                                       lastColor.CGColor);
           
           /*
               SInt32 type = kCTUnderlineStyleSingle;
@@ -117,7 +117,7 @@ CFStringRef const kBackgroundColorAttributeName = CFSTR("-background-color-");
         CFAttributedStringSetAttribute(attrString,
                                        CFRangeMake(lastColorIndex, length),
                                        kCTForegroundColorAttributeName,
-                                       [lastColor CGColor]);
+                                       lastColor.CGColor);
       }
       if (!eol) {
         lastColorIndex = j;

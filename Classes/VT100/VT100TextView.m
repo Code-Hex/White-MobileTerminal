@@ -29,8 +29,7 @@ extern void CGFontGetGlyphsForUnichars(CGFontRef, unichar[], CGGlyph[], size_t);
     [vt100 setRefreshDelegate:self];
     buffer = vt100;
     colorMap = [[ColorMap alloc] init];
-    UIFont* font = [UIFont systemFontOfSize:[UIFont smallSystemFontSize]];
-    fontMetrics = [[FontMetrics alloc] initWithFont:font];
+    fontMetrics = [[FontMetrics alloc] init];
     [self clearSelection];
     
     VT100StringSupplier* stringSupplier = [[VT100StringSupplier alloc] init];
@@ -60,10 +59,10 @@ extern void CGFontGetGlyphsForUnichars(CGFontRef, unichar[], CGGlyph[], size_t);
   [super dealloc];
 }
 
-- (void)setFont:(UIFont*)font;
+- (void)setFont
 {
   [fontMetrics release];
-  fontMetrics = [[FontMetrics alloc] initWithFont:font];
+  fontMetrics = [[FontMetrics alloc] init];
   tableViewController.fontMetrics = fontMetrics;
 }
 

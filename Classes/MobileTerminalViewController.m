@@ -463,15 +463,6 @@ static NSString *const kFontIoniconsFamilyName = @"Ionicons";
     return self.commands;
 }
 
-/*
-- (void)keyappear:(id)sender
-{
-    if (!keyboardShow)
-        [terminalKeyboard becomeFirstResponder];
-}
-*/
-
-
 - (void)viewDidLoad {
   [super viewDidLoad];
     
@@ -506,6 +497,7 @@ static NSString *const kFontIoniconsFamilyName = @"Ionicons";
     tesseract.delegate = self;
     FNController.delegate = self;
     popover.delegate = self;
+    
     [keyhide addTarget:self action:@selector(toggleKeyboard:) forControlEvents:UIControlEventTouchUpInside];
     [toolview addTarget:self action:@selector(toolbarButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [browser addTarget:self action:@selector(web:) forControlEvents:UIControlEventTouchUpInside];
@@ -694,7 +686,7 @@ static NSString *const kFontIoniconsFamilyName = @"Ionicons";
     popover.theme.fillBottomColor = [UIColor clearColor];
     popover.theme.outerStrokeColor = [UIColor clearColor];
     popover.theme.glossShadowColor = [UIColor clearColor];
-    
+
 }
 
 - (void)growingTextView:(HPGrowingTextView *)growingTextView willChangeHeight:(float)height
@@ -1360,12 +1352,10 @@ static NSString *const kFontIoniconsFamilyName = @"Ionicons";
     [self setShowKeyboard:shouldShowKeyboard];
     
     // Reset the font in case it changed in the preferenes view
-    CGFloat fontSize = [ud floatForKey:@"font-Size"];
-    NSString *fontName = [ud objectForKey:@"font-Name"];
-    UIFont* font = [UIFont fontWithName:fontName size:fontSize];
+
     for (int i = 0; i < [terminalGroupView terminalCount]; ++i) {
         TerminalView* terminalView = [terminalGroupView terminalAtIndex:i];
-        [terminalView setFont:font];
+        [terminalView setFont];
         [terminalView setColorMap:colorMap];
         [terminalView setNeedsLayout];
     }
@@ -1394,7 +1384,7 @@ static NSString *const kFontIoniconsFamilyName = @"Ionicons";
 - (void)dealloc {
     [terminalKeyboard release];
     [toolbar release];
-    [hidemenu release];
+    [hidemenu dealloc];
     [change release];
     [webcontroller release];
     [texttoolbar release];

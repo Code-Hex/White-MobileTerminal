@@ -15,12 +15,9 @@ static const int NUM_TERMINALS = 4;
   if (self = [super initWithCoder:decoder]) {
     terminals = [[NSMutableArray alloc] init];
     
-    CGFloat fontSize = [[NSUserDefaults standardUserDefaults] floatForKey:@"font-Size"];
-    NSString *fontName = [[NSUserDefaults standardUserDefaults] objectForKey:@"font-Name"];
-    UIFont* font = [UIFont fontWithName:fontName size:fontSize];
     for (int i = 0; i < NUM_TERMINALS; ++i) {
       TerminalView* view = [[TerminalView alloc] initWithCoder:decoder];
-      [view setFont:font];
+      [view setFont];
       [terminals addObject:view];
         
       [self addSubview:view];
@@ -66,11 +63,8 @@ static const NSTimeInterval kAnimationDuration = 0.25f;
       break;
     }
   }
-  UIViewAnimationTransition transition;
-  if (previousActiveTerminalIndex < activeTerminalIndex)
-    transition = UIViewAnimationTransitionCurlUp;
-  else
-    transition = UIViewAnimationTransitionCurlDown;
+    
+    UIViewAnimationTransition transition = (previousActiveTerminalIndex < activeTerminalIndex) ? UIViewAnimationTransitionCurlUp : UIViewAnimationTransitionCurlDown;
   
   [UIView beginAnimations:NULL context:NULL];
   [UIView setAnimationDuration:kAnimationDuration];

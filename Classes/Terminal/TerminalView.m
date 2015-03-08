@@ -188,9 +188,9 @@ static const char* kProcessExitedMessage =
   [textView clearSelection];
 }
 
-- (void)setFont:(UIFont*)font
+- (void)setFont
 {
-  [textView setFont:font];
+  [textView setFont];
 }
 
 @end
